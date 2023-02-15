@@ -1,7 +1,21 @@
 part of '../../data_page.dart';
 
 class _ClusterPageSmall extends ConsumerWidget {
-  const _ClusterPageSmall({super.key});
+  const _ClusterPageSmall(
+      {super.key,
+      required this.onSearch,
+      required this.onRefresh,
+      required this.onImport,
+      required this.onAdd,
+      required this.onDeleteSelected,
+      required this.onExport});
+
+  final void Function(String? value) onSearch;
+  final void Function() onRefresh;
+  final void Function() onImport;
+  final void Function() onExport;
+  final void Function() onAdd;
+  final void Function() onDeleteSelected;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -20,9 +34,7 @@ class _ClusterPageSmall extends ConsumerWidget {
                     width: 300,
                     child: CustomTextField(
                       hintText: 'Search',
-                      onChanged: (value) {
-                        ref.read(clusterProvider.notifier).search(value);
-                      },
+                      onChanged: onSearch,
                       prefixIcon: const Icon(Icons.search),
                     )),
                 const Expanded(child: SizedBox()),
@@ -30,47 +42,25 @@ class _ClusterPageSmall extends ConsumerWidget {
                     itemBuilder: (context) => [
                           PopupMenuItem(
                             child: Text('Refresh'),
-                            onTap: () {
-                              ref
-                                  .read(clusterProvider.notifier)
-                                  .fetchClusters();
-                            },
+                            onTap: onRefresh,
                           ),
                           PopupMenuItem(
                             child: Text('Delete selected'),
                             enabled: state.selectedClusterIds.isNotEmpty,
-                            onTap: () async {
-                              final bool? result = await showDialog<bool>(
-                                  context: context,
-                                  builder: (context) => DestructiveAlert(
-                                        title: 'Delete cluster',
-                                        content:
-                                            'Are you sure you want to delete ${state.selectedClusterIds.length} cluster?',
-                                        cancelText: 'Cancel',
-                                        destructiveText: 'Delete',
-                                      ));
-                              if (result ?? false) {
-                                ref
-                                    .read(clusterProvider.notifier)
-                                    .deleteSelected();
-                              }
-                            },
+                            onTap: onDeleteSelected,
                           ),
                           PopupMenuItem(
                             child: Text('Add'),
-                            onTap: () {
-                              showDialog(
-                                  context: context,
-                                  builder: (context) =>
-                                      const _AddClusterDialog());
-                            },
+                            onTap: onAdd,
                           ),
                           PopupMenuItem(
                             child: Text('Import'),
+                            onTap: onImport,
                             value: 'import',
                           ),
                           PopupMenuItem(
                             child: Text('Export'),
+                            onTap: onExport,
                             value: 'export',
                           ),
                         ]),
@@ -89,5 +79,3 @@ class _ClusterPageSmall extends ConsumerWidget {
     );
   }
 }
-
-

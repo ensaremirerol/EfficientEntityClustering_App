@@ -1,7 +1,21 @@
 part of '../../data_page.dart';
 
 class _ClusterPageLarge extends ConsumerWidget {
-  const _ClusterPageLarge({super.key});
+  const _ClusterPageLarge(
+      {super.key,
+      required this.onSearch,
+      required this.onRefresh,
+      required this.onImport,
+      required this.onAdd,
+      required this.onDeleteSelected,
+      required this.onExport});
+
+  final void Function(String? value) onSearch;
+  final void Function() onRefresh;
+  final void Function() onImport;
+  final void Function() onExport;
+  final void Function() onAdd;
+  final void Function() onDeleteSelected;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -20,53 +34,32 @@ class _ClusterPageLarge extends ConsumerWidget {
                     width: 300,
                     child: CustomTextField(
                       hintText: 'Search',
-                      onChanged: (value) {
-                        ref.read(clusterProvider.notifier).search(value);
-                      },
+                      onChanged: onSearch,
                       prefixIcon: const Icon(Icons.search),
                     )),
                 const Expanded(child: SizedBox()),
                 TextButton.icon(
-                  onPressed: () {
-                    ref.read(clusterProvider.notifier).fetchClusters();
-                  },
+                  onPressed: onRefresh,
                   icon: const Icon(Icons.refresh),
                   label: const Text('Refresh'),
                 ),
                 TextButton.icon(
                   onPressed: state.selectedClusterIds.isEmpty
                       ? null
-                      : () async {
-                          final bool? result = await showDialog<bool>(
-                              context: context,
-                              builder: (context) => DestructiveAlert(
-                                    title: 'Delete cluster',
-                                    content:
-                                        'Are you sure you want to delete ${state.selectedClusterIds.length} cluster?',
-                                    cancelText: 'Cancel',
-                                    destructiveText: 'Delete',
-                                  ));
-                          if (result ?? false) {
-                            ref.read(clusterProvider.notifier).deleteSelected();
-                          }
-                        },
+                      : onDeleteSelected,
                   icon: const Icon(Icons.delete),
                   label: const Text('Delete'),
                 ),
                 TextButton.icon(
-                    onPressed: () {
-                      showDialog(
-                          context: context,
-                          builder: (context) => const _AddClusterDialog());
-                    },
+                    onPressed: onAdd,
                     icon: const Icon(Icons.add),
                     label: const Text('Add')),
                 TextButton.icon(
-                    onPressed: () {},
+                    onPressed: onImport,
                     icon: const Icon(Icons.document_scanner),
                     label: const Text('Import')),
                 TextButton.icon(
-                    onPressed: () {},
+                    onPressed: onExport,
                     icon: const Icon(Icons.download),
                     label: const Text('Export')),
               ],
