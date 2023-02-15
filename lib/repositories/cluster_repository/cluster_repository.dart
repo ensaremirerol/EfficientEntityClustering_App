@@ -1,6 +1,7 @@
 import 'package:eec_app/models/cluster_model/cluster_model.dart';
 import 'package:eec_app/services/API_service/api_calls/cluster/create_cluster.dart';
 import 'package:eec_app/services/API_service/api_calls/cluster/delete_cluster.dart';
+import 'package:eec_app/services/API_service/api_calls/cluster/export_all_clusters.dart';
 import 'package:eec_app/services/API_service/api_calls/cluster/get_all_clusters.dart';
 import 'package:eec_app/services/API_service/api_service.dart';
 import 'package:eec_app/services/snackbar_service/snackbar_service.dart';
@@ -37,10 +38,11 @@ class ClusterRepository {
     }
   }
 
-  Future<void> deleteCluster(String clusterId)async {
+  Future<void> deleteCluster(String clusterId) async {
     _logger.i('Deleting cluster');
     try {
-      final response = await apiService.call(const DeleteCluster(), DeleteClusterArgs(id: clusterId));
+      final response = await apiService.call(
+          const DeleteCluster(), DeleteClusterArgs(id: clusterId));
       if ((response.statusCode ?? 0) ~/ 100 == 2) {
         _clusters.removeWhere((element) => element.cluster_id == clusterId);
       } else {
@@ -58,13 +60,15 @@ class ClusterRepository {
 
   Future<void> deleteClusters(Set<String> selectedClusterIds) async {
     _logger.i('Deleting clusters');
-    await Future.forEach(selectedClusterIds, (element) => deleteCluster(element));
+    await Future.forEach(
+        selectedClusterIds, (element) => deleteCluster(element));
   }
 
-  Future<bool> addCluster(String clusterName)async{
+  Future<bool> addCluster(String clusterName) async {
     _logger.i('Adding cluster');
     try {
-      final response = await apiService.call(const CreateCluster(), CreateClusterArgs(clusterName: clusterName));
+      final response = await apiService.call(
+          const CreateCluster(), CreateClusterArgs(clusterName: clusterName));
       if ((response.statusCode ?? 0) ~/ 100 == 2) {
         _clusters.add(ClusterModel.fromJson(response.data));
         return true;
@@ -79,6 +83,25 @@ class ClusterRepository {
       _logger.e('Error while adding cluster');
       _logger.e(e);
       return false;
+    }
+  }
+
+  Future<String> exportAll() async {
+    try {
+      final response = await apiService.call(const ExportAllClusters(), null);
+      if (response.statusCode == 200) {
+        return response.data!;
+      } else {
+        _logger.e('Response status code is not 200');
+        _logger.e(response);
+        InstanceController().getByType<SnackBarService>().showErrorMessage(
+            'Error while exporting entities:\n${response.data['detail']}');
+        throw Exception('Response status code is not 200');
+      }
+    } on Exception catch (e) {
+      _logger.e('Error while exporting entities');
+      _logger.e(e);
+      rethrow;
     }
   }
 }

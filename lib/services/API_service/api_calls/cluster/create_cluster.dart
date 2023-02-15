@@ -5,7 +5,7 @@ class CreateCluster extends IAPICall {
   const CreateCluster()
       : super(
             name: 'CreateCluster',
-            path: '/clusters/create',
+            path: '/clusters/cluster/create',
             method: 'POST',
             requiresArgs: true);
 }

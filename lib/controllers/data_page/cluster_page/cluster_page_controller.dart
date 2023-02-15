@@ -1,8 +1,14 @@
+import 'dart:io';
+
 import 'package:eec_app/controllers/data_page/cluster_page/cluster_page_state.dart';
 import 'package:eec_app/models/cluster_model/cluster_model.dart';
 import 'package:eec_app/repositories/cluster_repository/cluster_repository.dart';
+import 'package:eec_app/services/snackbar_service/snackbar_service.dart';
 import 'package:eec_app/utils/instance_controller.dart';
+import 'package:file_picker/file_picker.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:path_provider/path_provider.dart';
 
 class ClusterPageController extends StateNotifier<ClusterPageState> {
   ClusterPageController({required this.ref})
@@ -99,5 +105,37 @@ class ClusterPageController extends StateNotifier<ClusterPageState> {
 
   void setPage(int page) {
     state = state.copyWith(tablePage: page);
+  }
+
+  Future<void> exportAll() async {
+    String data;
+    try {
+      data = await _clusterRepository.exportAll();
+    } catch (e) {
+      InstanceController()
+          .getByType<SnackBarService>()
+          .showErrorMessage(e.toString());
+      rethrow;
+    }
+
+    String? path;
+    if (Platform.isAndroid || Platform.isIOS || kIsWeb) {
+      path = getDownloadsDirectory().toString() + '/clusters.csv';
+    } else {
+      path = await FilePicker.platform.saveFile(
+          fileName: 'clusters.csv',
+          dialogTitle: 'Export entities',
+          lockParentWindow: true,
+          type: FileType.custom,
+          allowedExtensions: ['csv']);
+    }
+
+    if (path == null) {
+      return;
+    }
+
+    File file = File(path);
+    file = await file.create();
+    file = await file.writeAsString(data);
   }
 }

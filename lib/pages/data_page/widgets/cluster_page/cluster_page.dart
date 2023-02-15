@@ -48,7 +48,9 @@ class _ClusterPageState extends ConsumerState<_ClusterPage> {
 
   void _onImport() async {}
 
-  void _onExport() async {}
+  void _onExport() async {
+    await ref.read(clusterProvider.notifier).exportAll();
+  }
 
   void _onAdd() async {
     showDialog(

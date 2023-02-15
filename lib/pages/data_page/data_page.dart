@@ -72,6 +72,7 @@ class _DataPageState extends ConsumerState<DataPage>
           const SizedBox(height: 20),
           Expanded(
             child: TabBarView(
+              physics: const NeverScrollableScrollPhysics(),
               controller: _tabController,
               children: [
                 _EntityPage(),
