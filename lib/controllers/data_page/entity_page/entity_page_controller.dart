@@ -1,6 +1,8 @@
 import 'package:eec_app/controllers/data_page/entity_page/entity_page_state.dart';
 import 'package:eec_app/models/entity_model/entity_model.dart';
 import 'package:eec_app/repositories/entity_repository/entity_repository.dart';
+import 'package:eec_app/services/csv_service/csv_service.dart';
+import 'package:eec_app/services/snackbar_service/snackbar_service.dart';
 import 'package:eec_app/utils/instance_controller.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -91,12 +93,42 @@ class EntityPageController extends StateNotifier<EntityPageState> {
   }
 
   Future<bool> addEntity(String mention, String source, String sourceId) async {
-    try{
+    try {
       await _entityRepository.addEntity(mention, source, sourceId);
-    }
-    catch(e){
+    } catch (e) {
       return false;
     }
+    state = state.copyWith(entityList: _entityRepository.entities);
+    return true;
+  }
+
+  Future<bool> addEntitiesFromCsv(CsvModel csvModel, String idColumn,
+      String mentionColumn, String entitySource) async {
+    try {
+      final idIndex = csvModel.headers.indexOf(idColumn);
+      final mentionIndex = csvModel.headers.indexOf(mentionColumn);
+      final ids = csvModel.rows.map((e) => '${e[idIndex]}').toList();
+      final mentions = csvModel.rows.map((e) => '${e[mentionIndex]}').toList();
+
+      for (final id in ids) {
+        if (id.isEmpty) {
+          throw Exception('There is at least one empty id');
+        }
+      }
+
+      for (final mention in mentions) {
+        if (mention.isEmpty) {
+          throw Exception('There is at least one empty mention');
+        }
+      }
+      await _entityRepository.addEntities(mentions, entitySource, ids);
+    } on Exception catch (e) {
+      InstanceController()
+          .getByType<SnackBarService>()
+          .showErrorMessage(e.toString());
+      return false;
+    }
+
     state = state.copyWith(entityList: _entityRepository.entities);
     return true;
   }

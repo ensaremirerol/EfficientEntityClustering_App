@@ -1,5 +1,6 @@
 import 'package:eec_app/models/data_models/api_entity_in/api_entity_in.dart';
 import 'package:eec_app/models/entity_model/entity_model.dart';
+import 'package:eec_app/services/API_service/api_calls/entity/create_entities.dart';
 import 'package:eec_app/services/API_service/api_calls/entity/create_entity.dart';
 import 'package:eec_app/services/API_service/api_calls/entity/delete_entity.dart';
 import 'package:eec_app/services/API_service/api_calls/entity/get_all_entities.dart';
@@ -84,6 +85,40 @@ class EntityRepository {
       }
     } on Exception catch (e) {
       _logger.e('Error while adding entity with mention $mention');
+      _logger.e(e);
+      rethrow;
+    }
+  }
+
+  Future<void> addEntities(
+      List<String> mentions, String source, List<String> sourceIds) async {
+    _logger.i('Adding Multiple entities!');
+    try {
+      final response = await apiService.call(
+          const CreateEntities(),
+          CreateEntitiesArgs(
+            entities: List.generate(
+              mentions.length,
+              (index) => ApiEntityIn(
+                entity_id: '-1',
+                entity_source: source,
+                entity_source_id: sourceIds[index],
+                mention: mentions[index],
+              ),
+            ),
+          ));
+      if (response.statusCode == 200 || response.statusCode == 201) {
+        _entities.addAll(
+            (response.data as List).map((e) => EntityModel.fromJson(e)));
+      } else {
+        _logger.e('Response status code is not 200');
+        _logger.e(response);
+        InstanceController().getByType<SnackBarService>().showErrorMessage(
+            'Error while adding entities:\n${response.data['detail']}');
+      }
+    } 
+    on Exception catch (e) {
+      _logger.e('Error while adding entities');
       _logger.e(e);
       rethrow;
     }

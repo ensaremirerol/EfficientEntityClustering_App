@@ -2,9 +2,11 @@ import 'package:eec_app/controllers/data_page/cluster_page/cluster_page_controll
 import 'package:eec_app/controllers/data_page/cluster_page/cluster_page_state.dart';
 import 'package:eec_app/controllers/data_page/entity_page/entity_page_controller.dart';
 import 'package:eec_app/controllers/data_page/entity_page/entity_page_state.dart';
+import 'package:eec_app/services/csv_service/csv_service.dart';
 import 'package:eec_app/widgets/custom_text_field/custom_text_field.dart';
 import 'package:eec_app/widgets/destructive_alert/destructive_alert.dart';
 import 'package:eec_app/widgets/responsive_builder/responsive_builder.dart';
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -14,6 +16,7 @@ part 'widgets/entity_page/entity_page_medium.dart';
 part 'widgets/entity_page/entity_page_small.dart';
 part 'widgets/entity_page/entity_table.dart';
 part 'widgets/entity_page/add_entity_dialog.dart';
+part 'widgets/entity_page/import_entity_dialog.dart';
 
 part 'widgets/cluster_page/cluster_page.dart';
 part 'widgets/cluster_page/cluster_page_large.dart';

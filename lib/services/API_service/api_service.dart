@@ -37,7 +37,6 @@ class APIService {
         ),
       );
       _logger.i('API call successful: ${apiCall.name}');
-      _logger.i(response.data);
       return response;
     } on DioError catch (e) {
       _logger.e('API call failed: ${apiCall.name}');

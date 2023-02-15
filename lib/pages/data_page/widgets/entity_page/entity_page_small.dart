@@ -62,7 +62,20 @@ class _EntityPageSmall extends ConsumerWidget {
                     ),
                     PopupMenuItem(
                       child: Text('Import'),
-                      onTap: () {},
+                      onTap: () async {
+                        FilePickerResult? result =
+                            await FilePicker.platform.pickFiles(
+                          type: FileType.custom,
+                          allowedExtensions: ['csv'],
+                        );
+                        if (result == null) return;
+                        final csv =
+                            await CsvService.readCsv(result.files.first);
+                        showDialog(
+                            context: context,
+                            builder: (context) =>
+                                _ImportEntityDialog(csvModel: csv));
+                      },
                     ),
                     PopupMenuItem(
                       child: Text('Export'),
@@ -114,4 +127,3 @@ class _EntityPageSmall extends ConsumerWidget {
     );
   }
 }
-
