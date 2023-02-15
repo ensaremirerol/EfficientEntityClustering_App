@@ -127,7 +127,7 @@ class _ClusterDataTable extends ConsumerWidget {
                                           if (result ?? false) {
                                             ref
                                                 .read(clusterProvider.notifier)
-                                                .deleteCluster(e.cluster_name);
+                                                .deleteCluster(e.cluster_id);
                                           }
                                         },
                                       ),
