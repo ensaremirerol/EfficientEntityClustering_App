@@ -1,7 +1,21 @@
 part of '../../data_page.dart';
 
 class _EntityPageSmall extends ConsumerWidget {
-  const _EntityPageSmall({super.key});
+  const _EntityPageSmall(
+      {super.key,
+      required this.onSearch,
+      required this.onRefresh,
+      required this.onImport,
+      required this.onExport,
+      required this.onAdd,
+      required this.onDeleteSelected});
+
+  final void Function(String? value) onSearch;
+  final void Function() onRefresh;
+  final void Function() onImport;
+  final void Function() onExport;
+  final void Function() onAdd;
+  final void Function() onDeleteSelected;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -20,9 +34,7 @@ class _EntityPageSmall extends ConsumerWidget {
                     width: 300,
                     child: CustomTextField(
                       hintText: 'Search',
-                      onChanged: (value) {
-                        ref.read(entityProvider.notifier).search(value);
-                      },
+                      onChanged: onSearch,
                       prefixIcon: const Icon(Icons.search),
                     )),
                 Expanded(child: SizedBox()),
@@ -30,56 +42,26 @@ class _EntityPageSmall extends ConsumerWidget {
                   itemBuilder: (context) => [
                     PopupMenuItem(
                       child: Text('Refresh'),
-                      onTap: () {
-                        ref.read(entityProvider.notifier).fetchEntities();
-                      },
+                      onTap: onRefresh,
                     ),
                     PopupMenuItem(
                       child: Text('Delete Selected'),
                       enabled: state.selectedEntityIds.isNotEmpty,
-                      onTap: () async {
-                        final bool? result = await showDialog<bool>(
-                            context: context,
-                            builder: (context) => DestructiveAlert(
-                                  title: 'Delete entity',
-                                  content:
-                                      'Are you sure you want to delete ${state.selectedEntityIds.length} entity?',
-                                  cancelText: 'Cancel',
-                                  destructiveText: 'Delete',
-                                ));
-                        if (result ?? false) {
-                          ref.read(entityProvider.notifier).deleteSelected();
-                        }
-                      },
+                      onTap: state.selectedEntityIds.isEmpty
+                          ? null
+                          : onDeleteSelected,
                     ),
                     PopupMenuItem(
                       child: Text('Add entity'),
-                      onTap: () async {
-                        showDialog(
-                            context: context,
-                            builder: (context) => const _AddEntityDialog());
-                      },
+                      onTap: onAdd,
                     ),
                     PopupMenuItem(
                       child: Text('Import'),
-                      onTap: () async {
-                        FilePickerResult? result =
-                            await FilePicker.platform.pickFiles(
-                          type: FileType.custom,
-                          allowedExtensions: ['csv'],
-                        );
-                        if (result == null) return;
-                        final csv =
-                            await CsvService.readCsv(result.files.first);
-                        showDialog(
-                            context: context,
-                            builder: (context) =>
-                                _ImportEntityDialog(csvModel: csv));
-                      },
+                      onTap: onImport,
                     ),
                     PopupMenuItem(
                       child: Text('Export'),
-                      onTap: () {},
+                      onTap: onExport,
                     ),
                   ],
                 ),
@@ -92,36 +74,7 @@ class _EntityPageSmall extends ConsumerWidget {
           ),
           _EntityDataTable(),
           const Divider(indent: 16, endIndent: 16),
-          Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: IntrinsicHeight(
-              child: SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Text('Total: ${state.entityList.length}'),
-                    const VerticalDivider(
-                      width: 16,
-                    ),
-                    Text('Selected: ${state.selectedEntityIds.length}'),
-                    const VerticalDivider(
-                      width: 16,
-                    ),
-                    Text(
-                      'In cluster: ${state.entityList.where((e) => e.in_cluster).length}',
-                    ),
-                    const VerticalDivider(
-                      width: 16,
-                    ),
-                    Text(
-                      'Not in cluster: ${state.entityList.where((e) => !e.in_cluster).length}',
-                    )
-                  ],
-                ),
-              ),
-            ),
-          ),
+          _EntityTableFoot(),
         ],
       ),
     );

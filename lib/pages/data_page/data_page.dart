@@ -15,6 +15,7 @@ part 'widgets/entity_page/entity_page_large.dart';
 part 'widgets/entity_page/entity_page_medium.dart';
 part 'widgets/entity_page/entity_page_small.dart';
 part 'widgets/entity_page/entity_table.dart';
+part 'widgets/entity_page/entity_table_foot.dart';
 part 'widgets/entity_page/add_entity_dialog.dart';
 part 'widgets/entity_page/import_entity_dialog.dart';
 
@@ -24,6 +25,7 @@ part 'widgets/cluster_page/cluster_page_medium.dart';
 part 'widgets/cluster_page/cluster_page_small.dart';
 part 'widgets/cluster_page/add_cluster_dialog.dart';
 part 'widgets/cluster_page/cluster_table.dart';
+part 'widgets/cluster_page/cluster_table_foot.dart';
 
 class DataPage extends ConsumerStatefulWidget {
   const DataPage({super.key});

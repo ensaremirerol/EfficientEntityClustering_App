@@ -18,6 +18,8 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$EntityPageState {
   List<EntityModel> get entityList => throw _privateConstructorUsedError;
   Set<String> get selectedEntityIds => throw _privateConstructorUsedError;
+  int get tablePage => throw _privateConstructorUsedError;
+  int get tableRowsPerPage => throw _privateConstructorUsedError;
   String? get searchQuery => throw _privateConstructorUsedError;
   int? get sortColumnIndex => throw _privateConstructorUsedError;
   bool? get isAscending => throw _privateConstructorUsedError;
@@ -37,6 +39,8 @@ abstract class $EntityPageStateCopyWith<$Res> {
   $Res call(
       {List<EntityModel> entityList,
       Set<String> selectedEntityIds,
+      int tablePage,
+      int tableRowsPerPage,
       String? searchQuery,
       int? sortColumnIndex,
       bool? isAscending,
@@ -58,6 +62,8 @@ class _$EntityPageStateCopyWithImpl<$Res, $Val extends EntityPageState>
   $Res call({
     Object? entityList = null,
     Object? selectedEntityIds = null,
+    Object? tablePage = null,
+    Object? tableRowsPerPage = null,
     Object? searchQuery = freezed,
     Object? sortColumnIndex = freezed,
     Object? isAscending = freezed,
@@ -72,6 +78,14 @@ class _$EntityPageStateCopyWithImpl<$Res, $Val extends EntityPageState>
           ? _value.selectedEntityIds
           : selectedEntityIds // ignore: cast_nullable_to_non_nullable
               as Set<String>,
+      tablePage: null == tablePage
+          ? _value.tablePage
+          : tablePage // ignore: cast_nullable_to_non_nullable
+              as int,
+      tableRowsPerPage: null == tableRowsPerPage
+          ? _value.tableRowsPerPage
+          : tableRowsPerPage // ignore: cast_nullable_to_non_nullable
+              as int,
       searchQuery: freezed == searchQuery
           ? _value.searchQuery
           : searchQuery // ignore: cast_nullable_to_non_nullable
@@ -103,6 +117,8 @@ abstract class _$$_EntityPageStateCopyWith<$Res>
   $Res call(
       {List<EntityModel> entityList,
       Set<String> selectedEntityIds,
+      int tablePage,
+      int tableRowsPerPage,
       String? searchQuery,
       int? sortColumnIndex,
       bool? isAscending,
@@ -122,6 +138,8 @@ class __$$_EntityPageStateCopyWithImpl<$Res>
   $Res call({
     Object? entityList = null,
     Object? selectedEntityIds = null,
+    Object? tablePage = null,
+    Object? tableRowsPerPage = null,
     Object? searchQuery = freezed,
     Object? sortColumnIndex = freezed,
     Object? isAscending = freezed,
@@ -136,6 +154,14 @@ class __$$_EntityPageStateCopyWithImpl<$Res>
           ? _value._selectedEntityIds
           : selectedEntityIds // ignore: cast_nullable_to_non_nullable
               as Set<String>,
+      tablePage: null == tablePage
+          ? _value.tablePage
+          : tablePage // ignore: cast_nullable_to_non_nullable
+              as int,
+      tableRowsPerPage: null == tableRowsPerPage
+          ? _value.tableRowsPerPage
+          : tableRowsPerPage // ignore: cast_nullable_to_non_nullable
+              as int,
       searchQuery: freezed == searchQuery
           ? _value.searchQuery
           : searchQuery // ignore: cast_nullable_to_non_nullable
@@ -162,6 +188,8 @@ class _$_EntityPageState implements _EntityPageState {
   _$_EntityPageState(
       {required final List<EntityModel> entityList,
       required final Set<String> selectedEntityIds,
+      required this.tablePage,
+      required this.tableRowsPerPage,
       required this.searchQuery,
       required this.sortColumnIndex,
       required this.isAscending,
@@ -187,6 +215,10 @@ class _$_EntityPageState implements _EntityPageState {
   }
 
   @override
+  final int tablePage;
+  @override
+  final int tableRowsPerPage;
+  @override
   final String? searchQuery;
   @override
   final int? sortColumnIndex;
@@ -197,7 +229,7 @@ class _$_EntityPageState implements _EntityPageState {
 
   @override
   String toString() {
-    return 'EntityPageState(entityList: $entityList, selectedEntityIds: $selectedEntityIds, searchQuery: $searchQuery, sortColumnIndex: $sortColumnIndex, isAscending: $isAscending, isLoading: $isLoading)';
+    return 'EntityPageState(entityList: $entityList, selectedEntityIds: $selectedEntityIds, tablePage: $tablePage, tableRowsPerPage: $tableRowsPerPage, searchQuery: $searchQuery, sortColumnIndex: $sortColumnIndex, isAscending: $isAscending, isLoading: $isLoading)';
   }
 
   @override
@@ -209,6 +241,10 @@ class _$_EntityPageState implements _EntityPageState {
                 .equals(other._entityList, _entityList) &&
             const DeepCollectionEquality()
                 .equals(other._selectedEntityIds, _selectedEntityIds) &&
+            (identical(other.tablePage, tablePage) ||
+                other.tablePage == tablePage) &&
+            (identical(other.tableRowsPerPage, tableRowsPerPage) ||
+                other.tableRowsPerPage == tableRowsPerPage) &&
             (identical(other.searchQuery, searchQuery) ||
                 other.searchQuery == searchQuery) &&
             (identical(other.sortColumnIndex, sortColumnIndex) ||
@@ -224,6 +260,8 @@ class _$_EntityPageState implements _EntityPageState {
       runtimeType,
       const DeepCollectionEquality().hash(_entityList),
       const DeepCollectionEquality().hash(_selectedEntityIds),
+      tablePage,
+      tableRowsPerPage,
       searchQuery,
       sortColumnIndex,
       isAscending,
@@ -240,6 +278,8 @@ abstract class _EntityPageState implements EntityPageState {
   factory _EntityPageState(
       {required final List<EntityModel> entityList,
       required final Set<String> selectedEntityIds,
+      required final int tablePage,
+      required final int tableRowsPerPage,
       required final String? searchQuery,
       required final int? sortColumnIndex,
       required final bool? isAscending,
@@ -249,6 +289,10 @@ abstract class _EntityPageState implements EntityPageState {
   List<EntityModel> get entityList;
   @override
   Set<String> get selectedEntityIds;
+  @override
+  int get tablePage;
+  @override
+  int get tableRowsPerPage;
   @override
   String? get searchQuery;
   @override

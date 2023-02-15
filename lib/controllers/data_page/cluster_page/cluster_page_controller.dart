@@ -13,6 +13,8 @@ class ClusterPageController extends StateNotifier<ClusterPageState> {
           searchQuery: null,
           sortColumnIndex: null,
           isAscending: null,
+          tablePage: 0,
+          tableRowsPerPage: 10,
           selectedClusterIds: {},
         ));
 
@@ -87,5 +89,15 @@ class ClusterPageController extends StateNotifier<ClusterPageState> {
     final result = await _clusterRepository.addCluster(clusterName);
     state = state.copyWith(clusterList: _clusterRepository.clusters);
     return result;
+  }
+
+  void setPageSize(int pageSize) {
+    final currentFirstRowIndex = state.tablePage * state.tableRowsPerPage;
+    final page = currentFirstRowIndex ~/ pageSize;
+    state = state.copyWith(tableRowsPerPage: pageSize, tablePage: page);
+  }
+
+  void setPage(int page) {
+    state = state.copyWith(tablePage: page);
   }
 }

@@ -31,7 +31,6 @@ class _EntityDataTable extends ConsumerWidget {
                     showCheckboxColumn: true,
                     sortColumnIndex: state.sortColumnIndex,
                     sortAscending: state.isAscending ?? true,
-                    showBottomBorder: true,
                     columns: [
                       DataColumn(
                           label: Text('entity_id'),
@@ -91,6 +90,8 @@ class _EntityDataTable extends ConsumerWidget {
                       DataColumn(label: Text('Delete')),
                     ],
                     rows: state.entityList
+                        .skip(state.tablePage * state.tableRowsPerPage)
+                        .take(state.tableRowsPerPage)
                         .map((e) => DataRow(
                                 selected: state.selectedEntityIds
                                     .contains(e.entity_id),

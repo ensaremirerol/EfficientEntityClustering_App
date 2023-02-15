@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:eec_app/models/data_models/api_entity_in/api_entity_in.dart';
 import 'package:eec_app/models/entity_model/entity_model.dart';
 import 'package:eec_app/services/API_service/api_calls/entity/create_entities.dart';
@@ -5,6 +7,7 @@ import 'package:eec_app/services/API_service/api_calls/entity/create_entity.dart
 import 'package:eec_app/services/API_service/api_calls/entity/delete_entity.dart';
 import 'package:eec_app/services/API_service/api_calls/entity/get_all_entities.dart';
 import 'package:eec_app/services/API_service/api_service.dart';
+import 'package:eec_app/services/csv_service/csv_service.dart';
 import 'package:eec_app/services/snackbar_service/snackbar_service.dart';
 import 'package:eec_app/utils/instance_controller.dart';
 import 'package:logger/logger.dart';
@@ -116,8 +119,7 @@ class EntityRepository {
         InstanceController().getByType<SnackBarService>().showErrorMessage(
             'Error while adding entities:\n${response.data['detail']}');
       }
-    } 
-    on Exception catch (e) {
+    } on Exception catch (e) {
       _logger.e('Error while adding entities');
       _logger.e(e);
       rethrow;

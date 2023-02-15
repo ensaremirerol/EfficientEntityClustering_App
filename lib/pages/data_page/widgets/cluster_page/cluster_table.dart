@@ -31,7 +31,6 @@ class _ClusterDataTable extends ConsumerWidget {
                       showCheckboxColumn: true,
                       sortColumnIndex: state.sortColumnIndex,
                       sortAscending: state.isAscending ?? true,
-                      showBottomBorder: true,
                       columns: [
                         DataColumn(
                             label: Text('cluster_id'),

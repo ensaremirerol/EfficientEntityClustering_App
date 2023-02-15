@@ -8,6 +8,8 @@ class EntityPageState with _$EntityPageState {
   factory EntityPageState({
     required List<EntityModel> entityList,
     required Set<String> selectedEntityIds,
+    required int tablePage,
+    required int tableRowsPerPage,
     required String? searchQuery,
     required int? sortColumnIndex,
     required bool? isAscending,

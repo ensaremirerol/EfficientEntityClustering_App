@@ -16,6 +16,8 @@ class EntityPageController extends StateNotifier<EntityPageState> {
             searchQuery: null,
             sortColumnIndex: null,
             isAscending: null,
+            tablePage: 0,
+            tableRowsPerPage: 10,
             selectedEntityIds: {}));
 
   final Ref ref;
@@ -131,5 +133,15 @@ class EntityPageController extends StateNotifier<EntityPageState> {
 
     state = state.copyWith(entityList: _entityRepository.entities);
     return true;
+  }
+
+  void setPageSize(int pageSize) {
+    final currentFirstRowIndex = state.tablePage * state.tableRowsPerPage;
+    final page = currentFirstRowIndex ~/ pageSize;
+    state = state.copyWith(tableRowsPerPage: pageSize, tablePage: page);
+  }
+
+  void setPage(int page) {
+    state = state.copyWith(tablePage: page);
   }
 }

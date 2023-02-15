@@ -25,4 +25,13 @@ class CsvService {
     final csv = const CsvToListConverter().convert(inputString);
     return CsvModel(headers: csv.first, rows: csv.skip(1).toList());
   }
+
+  static Future<File> exportAsCsv(CsvModel csv) async {
+    final List<List> csvRows = [csv.headers];
+    csvRows.addAll(csv.rows);
+    final String csvString = const ListToCsvConverter().convert(csvRows);
+    final File file = File('export.csv');
+    await file.writeAsString(csvString);
+    return file;
+  }
 }

@@ -18,6 +18,8 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$ClusterPageState {
   List<ClusterModel> get clusterList => throw _privateConstructorUsedError;
   Set<String> get selectedClusterIds => throw _privateConstructorUsedError;
+  int get tablePage => throw _privateConstructorUsedError;
+  int get tableRowsPerPage => throw _privateConstructorUsedError;
   String? get searchQuery => throw _privateConstructorUsedError;
   int? get sortColumnIndex => throw _privateConstructorUsedError;
   bool? get isAscending => throw _privateConstructorUsedError;
@@ -37,6 +39,8 @@ abstract class $ClusterPageStateCopyWith<$Res> {
   $Res call(
       {List<ClusterModel> clusterList,
       Set<String> selectedClusterIds,
+      int tablePage,
+      int tableRowsPerPage,
       String? searchQuery,
       int? sortColumnIndex,
       bool? isAscending,
@@ -58,6 +62,8 @@ class _$ClusterPageStateCopyWithImpl<$Res, $Val extends ClusterPageState>
   $Res call({
     Object? clusterList = null,
     Object? selectedClusterIds = null,
+    Object? tablePage = null,
+    Object? tableRowsPerPage = null,
     Object? searchQuery = freezed,
     Object? sortColumnIndex = freezed,
     Object? isAscending = freezed,
@@ -72,6 +78,14 @@ class _$ClusterPageStateCopyWithImpl<$Res, $Val extends ClusterPageState>
           ? _value.selectedClusterIds
           : selectedClusterIds // ignore: cast_nullable_to_non_nullable
               as Set<String>,
+      tablePage: null == tablePage
+          ? _value.tablePage
+          : tablePage // ignore: cast_nullable_to_non_nullable
+              as int,
+      tableRowsPerPage: null == tableRowsPerPage
+          ? _value.tableRowsPerPage
+          : tableRowsPerPage // ignore: cast_nullable_to_non_nullable
+              as int,
       searchQuery: freezed == searchQuery
           ? _value.searchQuery
           : searchQuery // ignore: cast_nullable_to_non_nullable
@@ -103,6 +117,8 @@ abstract class _$$_ClusterPageStateCopyWith<$Res>
   $Res call(
       {List<ClusterModel> clusterList,
       Set<String> selectedClusterIds,
+      int tablePage,
+      int tableRowsPerPage,
       String? searchQuery,
       int? sortColumnIndex,
       bool? isAscending,
@@ -122,6 +138,8 @@ class __$$_ClusterPageStateCopyWithImpl<$Res>
   $Res call({
     Object? clusterList = null,
     Object? selectedClusterIds = null,
+    Object? tablePage = null,
+    Object? tableRowsPerPage = null,
     Object? searchQuery = freezed,
     Object? sortColumnIndex = freezed,
     Object? isAscending = freezed,
@@ -136,6 +154,14 @@ class __$$_ClusterPageStateCopyWithImpl<$Res>
           ? _value._selectedClusterIds
           : selectedClusterIds // ignore: cast_nullable_to_non_nullable
               as Set<String>,
+      tablePage: null == tablePage
+          ? _value.tablePage
+          : tablePage // ignore: cast_nullable_to_non_nullable
+              as int,
+      tableRowsPerPage: null == tableRowsPerPage
+          ? _value.tableRowsPerPage
+          : tableRowsPerPage // ignore: cast_nullable_to_non_nullable
+              as int,
       searchQuery: freezed == searchQuery
           ? _value.searchQuery
           : searchQuery // ignore: cast_nullable_to_non_nullable
@@ -162,6 +188,8 @@ class _$_ClusterPageState implements _ClusterPageState {
   _$_ClusterPageState(
       {required final List<ClusterModel> clusterList,
       required final Set<String> selectedClusterIds,
+      required this.tablePage,
+      required this.tableRowsPerPage,
       required this.searchQuery,
       required this.sortColumnIndex,
       required this.isAscending,
@@ -187,6 +215,10 @@ class _$_ClusterPageState implements _ClusterPageState {
   }
 
   @override
+  final int tablePage;
+  @override
+  final int tableRowsPerPage;
+  @override
   final String? searchQuery;
   @override
   final int? sortColumnIndex;
@@ -197,7 +229,7 @@ class _$_ClusterPageState implements _ClusterPageState {
 
   @override
   String toString() {
-    return 'ClusterPageState(clusterList: $clusterList, selectedClusterIds: $selectedClusterIds, searchQuery: $searchQuery, sortColumnIndex: $sortColumnIndex, isAscending: $isAscending, isLoading: $isLoading)';
+    return 'ClusterPageState(clusterList: $clusterList, selectedClusterIds: $selectedClusterIds, tablePage: $tablePage, tableRowsPerPage: $tableRowsPerPage, searchQuery: $searchQuery, sortColumnIndex: $sortColumnIndex, isAscending: $isAscending, isLoading: $isLoading)';
   }
 
   @override
@@ -209,6 +241,10 @@ class _$_ClusterPageState implements _ClusterPageState {
                 .equals(other._clusterList, _clusterList) &&
             const DeepCollectionEquality()
                 .equals(other._selectedClusterIds, _selectedClusterIds) &&
+            (identical(other.tablePage, tablePage) ||
+                other.tablePage == tablePage) &&
+            (identical(other.tableRowsPerPage, tableRowsPerPage) ||
+                other.tableRowsPerPage == tableRowsPerPage) &&
             (identical(other.searchQuery, searchQuery) ||
                 other.searchQuery == searchQuery) &&
             (identical(other.sortColumnIndex, sortColumnIndex) ||
@@ -224,6 +260,8 @@ class _$_ClusterPageState implements _ClusterPageState {
       runtimeType,
       const DeepCollectionEquality().hash(_clusterList),
       const DeepCollectionEquality().hash(_selectedClusterIds),
+      tablePage,
+      tableRowsPerPage,
       searchQuery,
       sortColumnIndex,
       isAscending,
@@ -240,6 +278,8 @@ abstract class _ClusterPageState implements ClusterPageState {
   factory _ClusterPageState(
       {required final List<ClusterModel> clusterList,
       required final Set<String> selectedClusterIds,
+      required final int tablePage,
+      required final int tableRowsPerPage,
       required final String? searchQuery,
       required final int? sortColumnIndex,
       required final bool? isAscending,
@@ -249,6 +289,10 @@ abstract class _ClusterPageState implements ClusterPageState {
   List<ClusterModel> get clusterList;
   @override
   Set<String> get selectedClusterIds;
+  @override
+  int get tablePage;
+  @override
+  int get tableRowsPerPage;
   @override
   String? get searchQuery;
   @override

@@ -83,32 +83,11 @@ class _ClusterPageSmall extends ConsumerWidget {
           ),
           _ClusterDataTable(),
           const Divider(indent: 16, endIndent: 16),
-          SizedBox(
-            width: double.infinity,
-            child: Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: IntrinsicHeight(
-                child: SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Text('Total: ${state.clusterList.length}'),
-                      const VerticalDivider(
-                        width: 16,
-                      ),
-                      Text('Selected: ${state.selectedClusterIds.length}'),
-                      const VerticalDivider(
-                        width: 16,
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ),
-          ),
+          _ClusterTableFoot(),
         ],
       ),
     );
   }
 }
+
+

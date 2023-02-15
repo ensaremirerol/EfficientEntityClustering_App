@@ -8,6 +8,8 @@ class ClusterPageState with _$ClusterPageState {
   factory ClusterPageState({
     required List<ClusterModel> clusterList,
     required Set<String> selectedClusterIds,
+    required int tablePage,
+    required int tableRowsPerPage,
     required String? searchQuery,
     required int? sortColumnIndex,
     required bool? isAscending,
