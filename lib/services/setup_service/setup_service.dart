@@ -3,6 +3,7 @@ import 'package:eec_app/repositories/cluster_repository/cluster_repository.dart'
 import 'package:eec_app/repositories/entity_repository/entity_repository.dart';
 import 'package:eec_app/services/API_service/api_calls/test_call.dart';
 import 'package:eec_app/services/API_service/api_service.dart';
+import 'package:eec_app/services/log_service/log_service.dart';
 import 'package:eec_app/services/snackbar_service/snackbar_service.dart';
 import 'package:eec_app/utils/instance_controller.dart';
 import 'package:logger/logger.dart';
@@ -61,6 +62,14 @@ class SetupService {
     await InstanceController().getByType<EntityRepository>().refresh();
 
     await InstanceController().getByType<ClusterRepository>().refresh();
+
+    _logger.i('API configured');
+
+    _logger.i('Configuring WS');
+
+    InstanceController().getByType<LogService>().baseUrl = wsUrl;
+
+    _logger.i('WS configured');
 
     return true;
   }
