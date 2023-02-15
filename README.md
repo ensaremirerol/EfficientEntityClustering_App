@@ -1,16 +1,5 @@
-# eec_app
+# Efficient Entity Clustering App (WIP)
 
-A new Flutter project.
+This app is in work in progress. The goal is to create a app that allows users to upload a CSV file from many different sources and then cluster the entities in the file. The app will then allow the user to download the clustered entities in a CSV file.
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
