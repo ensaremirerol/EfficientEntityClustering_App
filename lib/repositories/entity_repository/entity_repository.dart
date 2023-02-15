@@ -5,6 +5,7 @@ import 'package:eec_app/models/entity_model/entity_model.dart';
 import 'package:eec_app/services/API_service/api_calls/entity/create_entities.dart';
 import 'package:eec_app/services/API_service/api_calls/entity/create_entity.dart';
 import 'package:eec_app/services/API_service/api_calls/entity/delete_entity.dart';
+import 'package:eec_app/services/API_service/api_calls/entity/export_all_entities.dart';
 import 'package:eec_app/services/API_service/api_calls/entity/get_all_entities.dart';
 import 'package:eec_app/services/API_service/api_service.dart';
 import 'package:eec_app/services/csv_service/csv_service.dart';
@@ -121,6 +122,26 @@ class EntityRepository {
       }
     } on Exception catch (e) {
       _logger.e('Error while adding entities');
+      _logger.e(e);
+      rethrow;
+    }
+  }
+
+  Future<String> exportAll() async {
+    try {
+      final response = await apiService.call(const ExportAllEntites(), null);
+      if (response.statusCode == 200) {
+        return response.data!; 
+      } else {
+        _logger.e('Response status code is not 200');
+        _logger.e(response);
+        InstanceController().getByType<SnackBarService>().showErrorMessage(
+            'Error while exporting entities:\n${response.data['detail']}');
+        throw Exception('Response status code is not 200');
+      }
+    }
+    on Exception catch (e) {
+      _logger.e('Error while exporting entities');
       _logger.e(e);
       rethrow;
     }

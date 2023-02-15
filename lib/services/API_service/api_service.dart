@@ -13,7 +13,7 @@ class APIService {
   APIService(BaseOptions options) {
     _dio = Dio(options);
   }
-
+  
   Future<Response> call(IAPICall apiCall, IAPICallArgs? args) async {
     try {
       if ((args != null && apiCall.name != args.name)) {

@@ -1,10 +1,15 @@
+import 'dart:io';
+
 import 'package:eec_app/controllers/data_page/entity_page/entity_page_state.dart';
 import 'package:eec_app/models/entity_model/entity_model.dart';
 import 'package:eec_app/repositories/entity_repository/entity_repository.dart';
 import 'package:eec_app/services/csv_service/csv_service.dart';
 import 'package:eec_app/services/snackbar_service/snackbar_service.dart';
 import 'package:eec_app/utils/instance_controller.dart';
+import 'package:file_picker/file_picker.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:path_provider/path_provider.dart';
 
 class EntityPageController extends StateNotifier<EntityPageState> {
   EntityPageController({
@@ -143,5 +148,37 @@ class EntityPageController extends StateNotifier<EntityPageState> {
 
   void setPage(int page) {
     state = state.copyWith(tablePage: page);
+  }
+
+  Future<void> exportAll() async {
+    String data;
+    try {
+      data = await _entityRepository.exportAll();
+    } catch (e) {
+      InstanceController()
+          .getByType<SnackBarService>()
+          .showErrorMessage(e.toString());
+      rethrow;
+    }
+
+    String? path;
+    if (Platform.isAndroid || Platform.isIOS || kIsWeb) {
+      path = getDownloadsDirectory().toString() + '/entities.csv';
+    } else {
+      path = await FilePicker.platform.saveFile(
+          fileName: 'entities.csv',
+          dialogTitle: 'Export entities',
+          lockParentWindow: true,
+          type: FileType.custom,
+          allowedExtensions: ['csv']);
+    }
+
+    if (path == null) {
+      return;
+    }
+
+    File file = File(path);
+    file = await file.create();
+    file = await file.writeAsString(data);
   }
 }

@@ -81,5 +81,8 @@ class _EntityPageState extends ConsumerState<_EntityPage> {
     }
   }
 
-  void _onExport() {}
+  void _onExport() async {
+     await ref.read(entityProvider.notifier).exportAll();
+    
+  }
 }
