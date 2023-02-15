@@ -27,14 +27,19 @@ class ClusterPageController extends StateNotifier<ClusterPageState> {
   final ClusterRepository _clusterRepository =
       InstanceController().getByType<ClusterRepository>();
 
+  final SnackBarService _snackBarService =
+      InstanceController().getByType<SnackBarService>();
+
   final Ref ref;
 
   void fetchClusters() async {
+    _snackBarService.showInfoMessage('Fetching clusters...');
     await _clusterRepository.refresh();
     state = state.copyWith(
       clusterList: _clusterRepository.clusters,
       isLoading: false,
     );
+    _snackBarService.showSuccessMessage('Clusters fetched', clear: true);
   }
 
   void search(String? value) {
@@ -87,13 +92,18 @@ class ClusterPageController extends StateNotifier<ClusterPageState> {
   }
 
   void deleteCluster(String clusterId) async {
+    _snackBarService.showInfoMessage('Deleting cluster...');
     await _clusterRepository.deleteCluster(clusterId);
     state = state.copyWith(clusterList: _clusterRepository.clusters);
+    _snackBarService.showSuccessMessage('Cluster with id $clusterId deleted',
+        clear: true);
   }
 
   Future<bool> addCluster(clusterName) async {
+    _snackBarService.showInfoMessage('Adding cluster...');
     final result = await _clusterRepository.addCluster(clusterName);
     state = state.copyWith(clusterList: _clusterRepository.clusters);
+    _snackBarService.showSuccessMessage('Cluster added', clear: true);
     return result;
   }
 
@@ -108,6 +118,7 @@ class ClusterPageController extends StateNotifier<ClusterPageState> {
   }
 
   Future<void> exportAll() async {
+    _snackBarService.showInfoMessage('Exporting clusters...');
     String data;
     try {
       data = await _clusterRepository.exportAll();
@@ -137,5 +148,6 @@ class ClusterPageController extends StateNotifier<ClusterPageState> {
     File file = File(path);
     file = await file.create();
     file = await file.writeAsString(data);
+    _snackBarService.showSuccessMessage('Clusters exported', clear: true);
   }
 }

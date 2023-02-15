@@ -1,6 +1,7 @@
 import 'package:eec_app/services/log_service/log_service.dart';
 import 'package:eec_app/utils/instance_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 
@@ -13,9 +14,9 @@ class LogPage extends StatefulWidget {
 
 class _LogPageState extends State<LogPage> {
   @override
-  void initState() {
+  void didChangeDependencies() {
     InstanceController().getByType<LogService>().connect();
-    super.initState();
+    super.didChangeDependencies();
   }
 
   @override
@@ -44,12 +45,14 @@ class _LogPageState extends State<LogPage> {
                         padding: const EdgeInsets.all(16.0),
                         color: Colors.grey[900],
                         child: SingleChildScrollView(
+                          reverse: true,
                           child: SingleChildScrollView(
                             scrollDirection: Axis.horizontal,
                             child: Text(snapshot.data ?? '',
-                                overflow: TextOverflow.clip,
+                                softWrap: true,
                                 style: TextStyle(
                                     fontFamily: 'RobotoMono',
+                                    overflow: TextOverflow.visible,
                                     color: Colors.white)),
                           ),
                         ),

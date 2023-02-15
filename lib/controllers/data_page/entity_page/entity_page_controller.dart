@@ -30,13 +30,18 @@ class EntityPageController extends StateNotifier<EntityPageState> {
   final EntityRepository _entityRepository =
       InstanceController().getByType<EntityRepository>();
 
+  final SnackBarService _snackBarService =
+      InstanceController().getByType<SnackBarService>();
+
   Future<void> fetchEntities() async {
+    _snackBarService.showInfoMessage('Fetching entities...');
     state = state.copyWith(isLoading: true);
     await _entityRepository.refresh();
     state = state.copyWith(
       entityList: _entityRepository.entities,
       isLoading: false,
     );
+    _snackBarService.showSuccessMessage('Entities fetched', clear: true);
   }
 
   void selectAll() {
@@ -100,17 +105,20 @@ class EntityPageController extends StateNotifier<EntityPageState> {
   }
 
   Future<bool> addEntity(String mention, String source, String sourceId) async {
+    _snackBarService.showInfoMessage('Adding entity...');
     try {
       await _entityRepository.addEntity(mention, source, sourceId);
     } catch (e) {
       return false;
     }
     state = state.copyWith(entityList: _entityRepository.entities);
+    _snackBarService.showSuccessMessage('Entity added', clear: true);
     return true;
   }
 
   Future<bool> addEntitiesFromCsv(CsvModel csvModel, String idColumn,
       String mentionColumn, String entitySource) async {
+    _snackBarService.showInfoMessage('Adding entities...');
     try {
       final idIndex = csvModel.headers.indexOf(idColumn);
       final mentionIndex = csvModel.headers.indexOf(mentionColumn);
@@ -137,6 +145,7 @@ class EntityPageController extends StateNotifier<EntityPageState> {
     }
 
     state = state.copyWith(entityList: _entityRepository.entities);
+    _snackBarService.showSuccessMessage('Entities added', clear: true);
     return true;
   }
 
@@ -151,6 +160,7 @@ class EntityPageController extends StateNotifier<EntityPageState> {
   }
 
   Future<void> exportAll() async {
+    _snackBarService.showInfoMessage('Exporting entities...');
     String data;
     try {
       data = await _entityRepository.exportAll();
@@ -180,5 +190,6 @@ class EntityPageController extends StateNotifier<EntityPageState> {
     File file = File(path);
     file = await file.create();
     file = await file.writeAsString(data);
+    _snackBarService.showSuccessMessage('Entities exported', clear: true);
   }
 }
