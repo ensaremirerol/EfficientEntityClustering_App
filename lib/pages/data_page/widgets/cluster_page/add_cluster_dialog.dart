@@ -8,7 +8,7 @@ class _AddClusterDialog extends StatelessWidget {
     return Dialog.fullscreen(
       child: Scaffold(
         appBar: AppBar(
-          title: const Text('Add cluster'),
+          title: const Text('add_cluster').tr(),
           leading: IconButton(
             icon: const Icon(Icons.close),
             onPressed: () => Navigator.of(context).pop(),
@@ -21,8 +21,9 @@ class _AddClusterDialog extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const SizedBox(height: 20),
-              Text('Add cluster',
-                  style: Theme.of(context).textTheme.displaySmall),
+              Text('add_cluster',
+                      style: Theme.of(context).textTheme.displaySmall)
+                  .tr(),
               const Divider(),
               const SizedBox(height: 20),
               _AddClusterForm(),

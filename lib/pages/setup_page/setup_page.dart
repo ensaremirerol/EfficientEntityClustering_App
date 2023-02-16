@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:eec_app/services/setup_service/setup_service.dart';
 import 'package:eec_app/utils/instance_controller.dart';
 import 'package:eec_app/widgets/custom_text_field/custom_text_field.dart';
@@ -43,7 +44,7 @@ class _SetupPageState extends State<SetupPage> {
                 mainAxisSize: MainAxisSize.min,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text('Setup Page'),
+                  Text('setup_page', style: Theme.of(context).textTheme.displaySmall).tr(),
                   Divider(),
                   const SizedBox(height: 20),
                   Form(
@@ -54,7 +55,7 @@ class _SetupPageState extends State<SetupPage> {
                           hintText: 'URL',
                           validator: (value) {
                             if (value == null || value.isEmpty) {
-                              return 'Please enter a value';
+                              return 'enter_text_warning'.tr();
                             }
                             return null;
                           },
@@ -65,7 +66,7 @@ class _SetupPageState extends State<SetupPage> {
                           hintText: 'WS URL',
                           validator: (value) {
                             if (value == null || value.isEmpty) {
-                              return 'Please enter a value';
+                              return 'enter_text_warning'.tr();
                             }
                             return null;
                           },
@@ -83,7 +84,7 @@ class _SetupPageState extends State<SetupPage> {
                               }
                             }
                           },
-                          child: Text('Submit'),
+                          child: Text('submit').tr(),
                         )
                       ]))
                 ],

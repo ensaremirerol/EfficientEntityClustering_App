@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:eec_app/controllers/labeling_page/labeling_page_controller.dart';
 import 'package:eec_app/controllers/labeling_page/labeling_page_state.dart';
 import 'package:eec_app/widgets/custom_text_field/custom_text_field.dart';

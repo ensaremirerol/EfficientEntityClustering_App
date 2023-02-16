@@ -34,7 +34,12 @@ class _ClusterTableFoot extends ConsumerWidget {
                                 .setPage(state.tablePage - 1);
                           },
                     icon: const Icon(Icons.chevron_left)),
-                Text('Page: ${state.tablePage + 1}'),
+                Text('page').tr(namedArgs: {
+                  'page': (state.tablePage + 1).toString(),
+                  'total_pages':
+                      (state.clusterList.length ~/ state.tableRowsPerPage + 1)
+                          .toString(),
+                }),
                 IconButton(
                     onPressed: state.tablePage ==
                             state.clusterList.length ~/ state.tableRowsPerPage
@@ -58,13 +63,26 @@ class _ClusterTableFoot extends ConsumerWidget {
                 const VerticalDivider(
                   width: 16,
                 ),
-                Text('Total: ${state.clusterList.length}'),
+                Text('total_count').tr(
+                  namedArgs: {
+                    'total_count': state.clusterList.length.toString(),
+                  },
+                ),
                 const VerticalDivider(
                   width: 16,
                 ),
-                Text('Selected: ${state.selectedClusterIds.length}'),
+                Text('selected_count').tr(
+                  namedArgs: {
+                    'selected_count':
+                        state.selectedClusterIds.length.toString(),
+                  },
+                ),
                 const VerticalDivider(
                   width: 16,
+                ),
+                Text('page_size').tr(),
+                const SizedBox(
+                  width: 8,
                 ),
                 DropdownButton<int>(
                     value: state.tableRowsPerPage,

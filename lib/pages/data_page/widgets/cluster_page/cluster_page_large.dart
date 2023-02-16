@@ -33,7 +33,7 @@ class _ClusterPageLarge extends ConsumerWidget {
                 SizedBox(
                     width: 300,
                     child: CustomTextField(
-                      hintText: 'Search',
+                      hintText: 'search'.tr(),
                       onChanged: onSearch,
                       prefixIcon: const Icon(Icons.search),
                     )),
@@ -41,27 +41,27 @@ class _ClusterPageLarge extends ConsumerWidget {
                 TextButton.icon(
                   onPressed: onRefresh,
                   icon: const Icon(Icons.refresh),
-                  label: const Text('Refresh'),
+                  label: const Text('refresh').tr(),
                 ),
                 TextButton.icon(
                   onPressed: state.selectedClusterIds.isEmpty
                       ? null
                       : onDeleteSelected,
                   icon: const Icon(Icons.delete),
-                  label: const Text('Delete'),
+                  label: const Text('delete').tr(),
                 ),
                 TextButton.icon(
                     onPressed: onAdd,
                     icon: const Icon(Icons.add),
-                    label: const Text('Add')),
+                    label: const Text('add').tr()),
                 TextButton.icon(
                     onPressed: onImport,
                     icon: const Icon(Icons.document_scanner),
-                    label: const Text('Import')),
+                    label: const Text('import').tr()),
                 TextButton.icon(
                     onPressed: onExport,
                     icon: const Icon(Icons.download),
-                    label: const Text('Export')),
+                    label: const Text('export').tr()),
               ],
             ),
           ),
@@ -77,5 +77,3 @@ class _ClusterPageLarge extends ConsumerWidget {
     );
   }
 }
-
-

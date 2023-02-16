@@ -35,6 +35,8 @@ class App extends ConsumerWidget {
           .getByType<SnackBarService>()
           .scaffoldMessengerKey,
       routerConfig: router,
+      localizationsDelegates: context.localizationDelegates,
+      supportedLocales: context.supportedLocales,
       title: 'Eec App',
       theme: ThemeData(
         useMaterial3: true,

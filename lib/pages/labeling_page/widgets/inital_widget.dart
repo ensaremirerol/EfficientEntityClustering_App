@@ -9,13 +9,13 @@ class _InitalWidget extends ConsumerWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          const Text('Start labeling by pressing the button below'),
+          const Text('start_labeling').tr(),
           const SizedBox(height: 20),
           ElevatedButton(
               onPressed: () {
                 ref.read(labelingProvider.notifier).getNewEntity();
               },
-              child: const Text('Get new entity'))
+              child: const Text('get_next_entity').tr()),
         ],
       ),
     );

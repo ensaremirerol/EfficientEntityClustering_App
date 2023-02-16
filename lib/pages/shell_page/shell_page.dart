@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:eec_app/widgets/responsive_builder/responsive_builder.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -9,21 +10,27 @@ part './widgets/shell_page_small.dart';
 part './widgets/shell_page_large.dart';
 part './data/navigation_item.dart';
 
-const navigationItems = [
+final navigationItems = [
   NavigationItem(
-      title: 'Dashboard', index: 0, icon: Icons.dashboard, route: '/dashboard'),
+      title: 'dashboard'.tr(),
+      index: 0,
+      icon: Icons.dashboard,
+      route: '/dashboard'),
   NavigationItem(
-      title: 'Labeling', index: 1, icon: Icons.checklist, route: '/labeling'),
+      title: 'labeling'.tr(),
+      index: 1,
+      icon: Icons.checklist,
+      route: '/labeling'),
   NavigationItem(
-      title: 'Data', index: 2, icon: Icons.data_array, route: '/data'),
+      title: 'data'.tr(), index: 2, icon: Icons.data_array, route: '/data'),
   NavigationItem(
-    title: 'Logs',
+    title: 'logs'.tr(),
     index: 3,
     icon: Icons.list,
     route: '/logs',
   ),
   NavigationItem(
-    title: 'Settings',
+    title: 'settings'.tr(),
     index: 4,
     icon: Icons.settings,
     route: '/settings',

@@ -61,11 +61,16 @@ class _ClusterPageState extends ConsumerState<_ClusterPage> {
     final bool? result = await showDialog<bool>(
         context: context,
         builder: (context) => DestructiveAlert(
-              title: 'Delete cluster',
-              content:
-                  'Are you sure you want to delete ${ref.read(clusterProvider).selectedClusterIds.length} cluster?',
-              cancelText: 'Cancel',
-              destructiveText: 'Delete',
+              title: 'delete_cluster'.tr(),
+              content: 'delete_clusters_confirm'.tr(namedArgs: {
+                'count': ref
+                    .watch(clusterProvider)
+                    .selectedClusterIds
+                    .length
+                    .toString(),
+              }),
+              cancelText: 'cancel'.tr(),
+              destructiveText: 'delete'.tr(),
             ));
     if (result ?? false) {
       ref.read(clusterProvider.notifier).deleteSelected();

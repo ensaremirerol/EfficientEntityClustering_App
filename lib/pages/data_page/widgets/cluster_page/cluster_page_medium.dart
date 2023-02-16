@@ -33,7 +33,7 @@ class _ClusterPageMedium extends ConsumerWidget {
                 SizedBox(
                     width: 300,
                     child: CustomTextField(
-                      hintText: 'Search',
+                      hintText: 'search'.tr(),
                       onChanged: onSearch,
                       prefixIcon: const Icon(Icons.search),
                     )),
@@ -41,26 +41,26 @@ class _ClusterPageMedium extends ConsumerWidget {
                 TextButton.icon(
                   onPressed: onRefresh,
                   icon: const Icon(Icons.refresh),
-                  label: const Text('Refresh'),
+                  label: const Text('refresh').tr(),
                 ),
                 PopupMenuButton(
                     itemBuilder: (context) => [
                           PopupMenuItem(
-                            child: Text('Delete selected'),
+                            child: const Text('delete_selected').tr(),
                             enabled: state.selectedClusterIds.isNotEmpty,
                               onTap: onDeleteSelected,
                           ),
                           PopupMenuItem(
-                            child: Text('Add'),
+                            child: const Text('add').tr(),
                             onTap: onAdd,
                           ),
                           PopupMenuItem(
-                            child: Text('Import'),
+                            child: const Text('import').tr(),
                             onTap: onImport,
                             value: 'import',
                           ),
                           PopupMenuItem(
-                            child: Text('Export'),
+                            child: const Text('export').tr(),
                             onTap: onExport,
                             value: 'export',
                           ),

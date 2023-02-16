@@ -33,7 +33,7 @@ class _EntityPageSmall extends ConsumerWidget {
                 SizedBox(
                     width: 300,
                     child: CustomTextField(
-                      hintText: 'Search',
+                      hintText: 'search'.tr(),
                       onChanged: onSearch,
                       prefixIcon: const Icon(Icons.search),
                     )),
@@ -41,26 +41,26 @@ class _EntityPageSmall extends ConsumerWidget {
                 PopupMenuButton(
                   itemBuilder: (context) => [
                     PopupMenuItem(
-                      child: Text('Refresh'),
+                      child: Text('refresh').tr(),
                       onTap: onRefresh,
                     ),
                     PopupMenuItem(
-                      child: Text('Delete Selected'),
+                      child: Text('delete_selected').tr(),
                       enabled: state.selectedEntityIds.isNotEmpty,
                       onTap: state.selectedEntityIds.isEmpty
                           ? null
                           : onDeleteSelected,
                     ),
                     PopupMenuItem(
-                      child: Text('Add entity'),
+                      child: Text('add_entity').tr(),
                       onTap: onAdd,
                     ),
                     PopupMenuItem(
-                      child: Text('Import'),
+                      child: Text('import').tr(),
                       onTap: onImport,
                     ),
                     PopupMenuItem(
-                      child: Text('Export'),
+                      child: Text('export').tr(),
                       onTap: onExport,
                     ),
                   ],

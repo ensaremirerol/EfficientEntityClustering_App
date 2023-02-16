@@ -43,12 +43,12 @@ class __ClusterPaneState extends ConsumerState<_ClusterPane>
           children: [
             TabBar(
               controller: _tabController,
-              tabs: const [
+              tabs: [
                 Tab(
-                  text: 'Possible Clusters',
+                  text: 'possible_clusters'.tr(),
                 ),
                 Tab(
-                  text: 'Search/Create Cluster',
+                  text: 'search_create_cluster'.tr(),
                 ),
               ],
             ),
@@ -61,8 +61,8 @@ class __ClusterPaneState extends ConsumerState<_ClusterPane>
                   Padding(
                     padding: const EdgeInsets.all(16.0),
                     child: state.possibleClusterIds?.isEmpty ?? true
-                        ? const Center(
-                            child: Text('No possible clusters found'),
+                        ? Center(
+                            child: Text('no_possible_clusters').tr(),
                           )
                         : ListView.builder(
                             padding: const EdgeInsets.all(8),
@@ -88,7 +88,7 @@ class __ClusterPaneState extends ConsumerState<_ClusterPane>
                           children: [
                             Expanded(
                               child: CustomTextField(
-                                hintText: 'Search for cluster',
+                                hintText: 'search_clusters'.tr(),
                                 controller: _searchController,
                                 onChanged: (value) {
                                   ref
@@ -104,13 +104,13 @@ class __ClusterPaneState extends ConsumerState<_ClusterPane>
                                       .read(labelingProvider.notifier)
                                       .createCluster(state.searchQuery!);
                                 },
-                                child: const Text('Create Cluster')),
+                                child: const Text('create_cluster').tr()),
                           ],
                         ),
                         Expanded(
                           child: state.clusterSearchResults.isEmpty
-                              ? const Center(
-                                  child: Text('No clusters found'),
+                              ? Center(
+                                  child: Text('no_clusters_found').tr(),
                                 )
                               : ListView(
                                   padding: const EdgeInsets.all(8),

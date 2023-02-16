@@ -17,7 +17,7 @@ class _ClusterDataTable extends ConsumerWidget {
           scrollDirection: Axis.vertical,
           child: state.clusterList.isEmpty
               ? Center(
-                  child: Text('No data'),
+                  child: Text('no_data').tr(),
                 )
               : SelectionArea(
                   child: DataTable(
@@ -33,7 +33,7 @@ class _ClusterDataTable extends ConsumerWidget {
                       sortAscending: state.isAscending ?? true,
                       columns: [
                         DataColumn(
-                            label: Text('cluster_id'),
+                            label: Text('cluster_id').tr(),
                             onSort: (columnIndex, ascending) {
                               if (ascending) {
                                 ref.read(clusterProvider.notifier).sortBy(
@@ -50,7 +50,7 @@ class _ClusterDataTable extends ConsumerWidget {
                               }
                             }),
                         DataColumn(
-                            label: Text('cluster_name'),
+                            label: Text('cluster_name').tr(),
                             onSort: (columnIndex, ascending) {
                               if (ascending) {
                                 ref.read(clusterProvider.notifier).sortBy(
@@ -67,7 +67,7 @@ class _ClusterDataTable extends ConsumerWidget {
                               }
                             }),
                         DataColumn(
-                            label: Text('entity_count'),
+                            label: Text('entity_count').tr(),
                             onSort: (columnIndex, ascending) {
                               if (ascending) {
                                 ref.read(clusterProvider.notifier).sortBy(
@@ -83,7 +83,7 @@ class _ClusterDataTable extends ConsumerWidget {
                                         .compareTo(e2.entity_ids.length));
                               }
                             }),
-                        DataColumn(label: Text('Delete')),
+                        DataColumn(label: Text('delete').tr()),
                       ],
                       rows: state.clusterList
                           .map((e) => DataRow(
@@ -117,12 +117,15 @@ class _ClusterDataTable extends ConsumerWidget {
                                                   context: context,
                                                   builder: (context) =>
                                                       DestructiveAlert(
-                                                        title: 'Delete cluster',
+                                                        title: 'delete_cluster'
+                                                            .tr(),
                                                         content:
-                                                            'Are you sure you want to delete this cluster?',
-                                                        cancelText: 'Cancel',
+                                                            'delete_cluster_content'
+                                                                .tr(),
+                                                        cancelText:
+                                                            'cancel'.tr(),
                                                         destructiveText:
-                                                            'Delete',
+                                                            'delete'.tr(),
                                                       ));
                                           if (result ?? false) {
                                             ref

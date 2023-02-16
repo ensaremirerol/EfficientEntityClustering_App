@@ -70,11 +70,18 @@ class _EntityPageState extends ConsumerState<_EntityPage> {
     final bool? result = await showDialog<bool>(
         context: context,
         builder: (context) => DestructiveAlert(
-              title: 'Delete entity',
-              content:
-                  'Are you sure you want to delete ${ref.read(entityProvider).selectedEntityIds.length} entity?',
-              cancelText: 'Cancel',
-              destructiveText: 'Delete',
+              title: 'delete_entity'.tr(),
+              content: 'delete_entities_confirm'.tr(
+                namedArgs: {
+                  'count': ref
+                      .read(entityProvider)
+                      .selectedEntityIds
+                      .length
+                      .toString()
+                },
+              ),
+              cancelText: 'cancel'.tr(),
+              destructiveText: 'delete'.tr(),
             ));
     if (result ?? false) {
       ref.read(entityProvider.notifier).deleteSelected();
@@ -82,7 +89,6 @@ class _EntityPageState extends ConsumerState<_EntityPage> {
   }
 
   void _onExport() async {
-     await ref.read(entityProvider.notifier).exportAll();
-    
+    await ref.read(entityProvider.notifier).exportAll();
   }
 }

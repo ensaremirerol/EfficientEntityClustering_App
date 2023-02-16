@@ -13,7 +13,7 @@ class _EntityCard extends StatelessWidget {
         padding: const EdgeInsets.all(8.0),
         child: Column(
           children: [
-            Text('Entity Mention',
+            Text('entity_mention'.tr(),
                 style: Theme.of(context).textTheme.bodyMedium),
             const Divider(
               indent: 20,
@@ -28,8 +28,12 @@ class _EntityCard extends StatelessWidget {
               indent: 20,
               endIndent: 20,
             ),
-            Text('Entity ID : $id',
-                style: Theme.of(context).textTheme.bodySmall),
+            Text('entity_id_arg', style: Theme.of(context).textTheme.bodySmall)
+                .tr(
+              namedArgs: {
+                'entity_id': id,
+              }
+            ),
           ],
         ),
       ),

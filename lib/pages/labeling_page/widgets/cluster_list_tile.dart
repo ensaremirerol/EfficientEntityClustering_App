@@ -19,7 +19,11 @@ class _ClusterListTile extends StatelessWidget {
         padding: const EdgeInsets.all(8.0),
         child: ListTile(
             title: Text('$clusterName'),
-            subtitle: Text('Cluster ID: $clusterId'),
+            subtitle: Text('cluster_id_arg').tr(
+              namedArgs: {
+                'cluster_id': clusterId,
+              },
+            ),
             trailing: IconButton(
               icon: const Icon(Icons.add, color: Colors.green),
               onPressed: onPressed,

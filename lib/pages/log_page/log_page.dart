@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:eec_app/services/log_service/log_service.dart';
 import 'package:eec_app/utils/instance_controller.dart';
 import 'package:flutter/material.dart';
@@ -34,7 +35,7 @@ class _LogPageState extends State<LogPage> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const SizedBox(height: 20),
-            Text('Log Page', style: Theme.of(context).textTheme.displaySmall),
+            Text('log_page', style: Theme.of(context).textTheme.displaySmall).tr(),
             Divider(),
             const SizedBox(height: 20),
             Expanded(

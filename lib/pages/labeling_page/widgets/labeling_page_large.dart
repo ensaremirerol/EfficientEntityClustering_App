@@ -12,8 +12,8 @@ class _LabelingPageLarge extends ConsumerWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const SizedBox(height: 20),
-          Text('Labeling Page',
-              style: Theme.of(context).textTheme.displaySmall),
+          Text('labeling_page',
+              style: Theme.of(context).textTheme.displaySmall).tr(),
           const Divider(),
           const SizedBox(height: 20),
           Expanded(

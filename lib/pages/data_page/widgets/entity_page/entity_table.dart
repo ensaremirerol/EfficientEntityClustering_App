@@ -17,7 +17,7 @@ class _EntityDataTable extends ConsumerWidget {
         scrollDirection: Axis.vertical,
         child: state.entityList.isEmpty
             ? Center(
-                child: Text('No data'),
+                child: Text('no_data').tr(),
               )
             : SelectionArea(
                 child: DataTable(
@@ -33,7 +33,7 @@ class _EntityDataTable extends ConsumerWidget {
                     sortAscending: state.isAscending ?? true,
                     columns: [
                       DataColumn(
-                          label: Text('entity_id'),
+                          label: Text('entity_id').tr(),
                           onSort: (columnIndex, ascending) {
                             if (ascending) {
                               ref.read(entityProvider.notifier).sortBy(
@@ -50,7 +50,7 @@ class _EntityDataTable extends ConsumerWidget {
                             }
                           }),
                       DataColumn(
-                          label: Text('mention'),
+                          label: Text('entity_mention').tr(),
                           onSort: (columnIndex, ascending) {
                             if (ascending) {
                               ref.read(entityProvider.notifier).sortBy(
@@ -65,7 +65,7 @@ class _EntityDataTable extends ConsumerWidget {
                             }
                           }),
                       DataColumn(
-                          label: Text('entity_source'),
+                          label: Text('entity_source').tr(),
                           onSort: (columnIndex, ascending) {
                             if (ascending) {
                               ref.read(entityProvider.notifier).sortBy(
@@ -82,12 +82,12 @@ class _EntityDataTable extends ConsumerWidget {
                             }
                           }),
                       DataColumn(
-                        label: Text('entity_source_id'),
+                        label: Text('entity_source_id').tr(),
                       ),
-                      DataColumn(label: Text('in_cluster')),
-                      DataColumn(label: Text('cluster_id')),
-                      DataColumn(label: Text('has_mention_vector')),
-                      DataColumn(label: Text('Delete')),
+                      DataColumn(label: Text('entity_in_cluster').tr()),
+                      DataColumn(label: Text('cluster_id').tr()),
+                      DataColumn(label: Text('entity_has_mention_vector').tr()),
+                      DataColumn(label: Text('delete').tr()),
                     ],
                     rows: state.entityList
                         .skip(state.tablePage * state.tableRowsPerPage)
@@ -111,12 +111,14 @@ class _EntityDataTable extends ConsumerWidget {
                                   DataCell(Text(e.mention)),
                                   DataCell(Text(e.entity_source)),
                                   DataCell(Text(e.entity_source_id)),
-                                  DataCell(Text(e.in_cluster ? 'yes' : 'no')),
+                                  DataCell(Text(
+                                      e.in_cluster ? 'yes'.tr() : 'no'.tr())),
                                   DataCell(
                                     Text(e.cluster_id),
                                   ),
-                                  DataCell(Text(
-                                      e.has_mention_vector ? 'yes' : 'no')),
+                                  DataCell(Text(e.has_mention_vector
+                                      ? 'yes'.tr()
+                                      : 'no'.tr())),
                                   DataCell(
                                     IconButton(
                                       icon: const Icon(
@@ -129,11 +131,14 @@ class _EntityDataTable extends ConsumerWidget {
                                                 context: context,
                                                 builder: (context) =>
                                                     DestructiveAlert(
-                                                      title: 'Delete entity',
+                                                      title:
+                                                          'delete_entity'.tr(),
                                                       content:
-                                                          'Are you sure you want to delete this entity?',
-                                                      cancelText: 'Cancel',
-                                                      destructiveText: 'Delete',
+                                                          'delete_entity_confirm'
+                                                              .tr(),
+                                                      cancelText: 'cancel'.tr(),
+                                                      destructiveText:
+                                                          'delete'.tr(),
                                                     ));
                                         if (result ?? false) {
                                           ref

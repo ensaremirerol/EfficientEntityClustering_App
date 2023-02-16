@@ -34,7 +34,12 @@ class _EntityTableFoot extends ConsumerWidget {
                                 .setPage(state.tablePage - 1);
                           },
                     icon: const Icon(Icons.chevron_left)),
-                Text('Page: ${state.tablePage + 1}'),
+                Text('page').tr(namedArgs: {
+                  'page': (state.tablePage + 1).toString(),
+                  'total_pages':
+                      (state.entityList.length ~/ state.tableRowsPerPage + 1)
+                          .toString(),
+                }),
                 IconButton(
                     onPressed: state.tablePage ==
                             state.entityList.length ~/ state.tableRowsPerPage
@@ -58,15 +63,23 @@ class _EntityTableFoot extends ConsumerWidget {
                 const VerticalDivider(
                   width: 16,
                 ),
-                Text('Total: ${state.entityList.length}'),
+                Text('total_count').tr(
+                  namedArgs: {
+                    'total_count': state.entityList.length.toString(),
+                  },
+                ),
                 const VerticalDivider(
                   width: 16,
                 ),
-                Text('Selected: ${state.selectedEntityIds.length}'),
+                Text('selected_count').tr(
+                  namedArgs: {
+                    'selected_count': state.selectedEntityIds.length.toString(),
+                  },
+                ),
                 const VerticalDivider(
                   width: 16,
                 ),
-                Text('Page size: '),
+                Text('page_size').tr(),
                 const SizedBox(
                   width: 8,
                 ),

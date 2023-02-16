@@ -1,5 +1,4 @@
-import 'dart:io';
-
+import 'package:easy_localization/easy_localization.dart';
 import 'package:eec_app/controllers/data_page/cluster_page/cluster_page_controller.dart';
 import 'package:eec_app/controllers/data_page/cluster_page/cluster_page_state.dart';
 import 'package:eec_app/controllers/data_page/entity_page/entity_page_controller.dart';
@@ -61,12 +60,12 @@ class _DataPageState extends ConsumerState<DataPage>
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const SizedBox(height: 20),
-          Text('Data tables', style: Theme.of(context).textTheme.displaySmall),
+          Text('data_tables', style: Theme.of(context).textTheme.displaySmall).tr(),
           const Divider(),
           const SizedBox(height: 20),
           TabBar(controller: _tabController, tabs: [
-            Tab(text: 'Entity'),
-            Tab(text: 'Cluster'),
+            Tab(text: 'entity'.tr()),
+            Tab(text: 'cluster'.tr()),
             //Tab(text: 'Cluster'),
           ]),
           const SizedBox(height: 20),

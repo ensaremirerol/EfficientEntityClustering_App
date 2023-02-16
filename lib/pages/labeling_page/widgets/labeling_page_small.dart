@@ -7,19 +7,20 @@ class _LabelingPageSmall extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(labelingProvider);
     return Padding(
-      padding: const EdgeInsets.all(32.0),
+      padding: const EdgeInsets.all(16.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const SizedBox(height: 20),
-          Text('Labeling Page',
-              style: Theme.of(context).textTheme.displaySmall),
+          Text('labeling_page', style: Theme.of(context).textTheme.displaySmall)
+              .tr(),
           const Divider(),
           const SizedBox(height: 20),
           Expanded(
               child: state.currentEntityId == null
                   ? _InitalWidget()
                   : SingleChildScrollView(
+                      padding: const EdgeInsets.all(16.0),
                       primary: true,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.center,

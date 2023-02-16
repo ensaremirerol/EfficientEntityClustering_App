@@ -8,7 +8,7 @@ class _AddEntityDialog extends StatelessWidget {
     return Dialog.fullscreen(
       child: Scaffold(
         appBar: AppBar(
-          title: const Text('Add entity'),
+          title: const Text('add_entity').tr(),
           leading: IconButton(
             icon: const Icon(Icons.close),
             onPressed: () => Navigator.of(context).pop(),
@@ -21,8 +21,9 @@ class _AddEntityDialog extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const SizedBox(height: 20),
-              Text('Add entity',
-                  style: Theme.of(context).textTheme.displaySmall),
+              Text('add_entity',
+                      style: Theme.of(context).textTheme.displaySmall)
+                  .tr(),
               const Divider(),
               const SizedBox(height: 20),
               _AddEntityForm(),
@@ -64,10 +65,10 @@ class _AddEntityFormState extends ConsumerState<_AddEntityForm> {
           children: [
             CustomTextField.formField(
               controller: _entityMentionController,
-              hintText: 'Entity mention',
+              hintText: 'entity_mention'.tr(),
               validator: (value) {
                 if (value == null || value.isEmpty) {
-                  return 'Please enter some text';
+                  return 'enter_text_warning'.tr();
                 }
                 return null;
               },
@@ -75,10 +76,10 @@ class _AddEntityFormState extends ConsumerState<_AddEntityForm> {
             const SizedBox(height: 20),
             CustomTextField.formField(
               controller: _entitySourceController,
-              hintText: 'Entity Source',
+              hintText: 'entity_source'.tr(),
               validator: (value) {
                 if (value == null || value.isEmpty) {
-                  return 'Please enter some text';
+                  return 'enter_text_warning'.tr();
                 }
                 return null;
               },
@@ -86,10 +87,10 @@ class _AddEntityFormState extends ConsumerState<_AddEntityForm> {
             const SizedBox(height: 20),
             CustomTextField.formField(
               controller: _entitySourceIdController,
-              hintText: 'Entity Source ID',
+              hintText: 'entity_source_id'.tr(),
               validator: (value) {
                 if (value == null || value.isEmpty) {
-                  return 'Please enter some text';
+                  return 'enter_text_warning'.tr();
                 }
                 return null;
               },
@@ -100,8 +101,9 @@ class _AddEntityFormState extends ConsumerState<_AddEntityForm> {
               children: [
                 TextButton(
                   onPressed: () => Navigator.of(context).pop(),
-                  child: const Text('Cancel',
-                      style: TextStyle(color: Colors.black54)),
+                  child: const Text('cancel',
+                          style: TextStyle(color: Colors.black54))
+                      .tr(),
                 ),
                 const SizedBox(width: 20),
                 ElevatedButton(
@@ -116,7 +118,7 @@ class _AddEntityFormState extends ConsumerState<_AddEntityForm> {
                       if (result) Navigator.of(context).pop();
                     }
                   },
-                  child: const Text('Add'),
+                  child: const Text('add').tr(),
                 ),
               ],
             ),

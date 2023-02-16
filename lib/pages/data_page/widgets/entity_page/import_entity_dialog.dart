@@ -10,7 +10,7 @@ class _ImportEntityDialog extends ConsumerWidget {
     return Dialog.fullscreen(
       child: Scaffold(
         appBar: AppBar(
-          title: const Text('Import entity'),
+          title: const Text('import_entities').tr(),
           leading: IconButton(
             icon: const Icon(Icons.close),
             onPressed: () => Navigator.of(context).pop(),
@@ -23,12 +23,14 @@ class _ImportEntityDialog extends ConsumerWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const SizedBox(height: 20),
-              Text('Import from csv',
-                  style: Theme.of(context).textTheme.displaySmall),
+              Text('import_from_csv',
+                      style: Theme.of(context).textTheme.displaySmall)
+                  .tr(),
               const Divider(),
               const SizedBox(height: 20),
               Text('warning_duplicate_entity',
-                  style: Theme.of(context).textTheme.titleLarge),
+                      style: Theme.of(context).textTheme.titleLarge)
+                  .tr(),
               const SizedBox(height: 20),
               _ImportEntityForm(
                 csvModel: csvModel,
@@ -70,12 +72,12 @@ class _ImportEntityFormState extends ConsumerState<_ImportEntityForm> {
               value: idColumn,
               validator: (value) {
                 if (value == null || value.isEmpty) {
-                  return 'Please select a value';
+                  return 'enter_text_warning'.tr();
                 }
                 return null;
               },
-              decoration: const InputDecoration(
-                  labelText: 'Id column', border: OutlineInputBorder()),
+              decoration: InputDecoration(
+                  labelText: 'id_column'.tr(), border: OutlineInputBorder()),
               onChanged: (value) {
                 setState(() {
                   idColumn = value!;
@@ -94,12 +96,13 @@ class _ImportEntityFormState extends ConsumerState<_ImportEntityForm> {
               value: mentionColumn,
               validator: (value) {
                 if (value == null || value.isEmpty) {
-                  return 'Please select a value';
+                  return 'enter_text_warning'.tr();
                 }
                 return null;
               },
-              decoration: const InputDecoration(
-                  labelText: 'Mention column', border: OutlineInputBorder()),
+              decoration: InputDecoration(
+                  labelText: 'mention_column'.tr(),
+                  border: OutlineInputBorder()),
               onChanged: (value) {
                 setState(() {
                   mentionColumn = value!;
@@ -115,11 +118,12 @@ class _ImportEntityFormState extends ConsumerState<_ImportEntityForm> {
             const SizedBox(height: 20),
             TextFormField(
               controller: _entitySourceController,
-              decoration: const InputDecoration(
-                  labelText: 'Entity source', border: OutlineInputBorder()),
+              decoration: InputDecoration(
+                  labelText: 'entity_source'.tr(),
+                  border: OutlineInputBorder()),
               validator: (value) {
                 if (value == null || value.isEmpty) {
-                  return 'Please enter a value';
+                  return 'enter_text_warning'.tr();
                 }
                 return null;
               },
@@ -130,8 +134,9 @@ class _ImportEntityFormState extends ConsumerState<_ImportEntityForm> {
               children: [
                 TextButton(
                   onPressed: () => Navigator.of(context).pop(),
-                  child: const Text('Cancel',
-                      style: TextStyle(color: Colors.black54)),
+                  child: const Text('cancel',
+                          style: TextStyle(color: Colors.black54))
+                      .tr(),
                 ),
                 const SizedBox(width: 20),
                 ElevatedButton(
@@ -144,7 +149,7 @@ class _ImportEntityFormState extends ConsumerState<_ImportEntityForm> {
                       if (result) Navigator.of(context).pop();
                     }
                   },
-                  child: const Text('Add'),
+                  child: const Text('add').tr(),
                 ),
               ],
             ),
