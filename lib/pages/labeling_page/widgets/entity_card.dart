@@ -15,13 +15,19 @@ class _EntityCard extends StatelessWidget {
           children: [
             Text('Entity Mention',
                 style: Theme.of(context).textTheme.bodyMedium),
-            const Divider(),
+            const Divider(
+              indent: 20,
+              endIndent: 20,
+            ),
             Text(
               mention,
               style: Theme.of(context).textTheme.labelLarge,
               textAlign: TextAlign.center,
             ),
-            const Divider(),
+            const Divider(
+              indent: 20,
+              endIndent: 20,
+            ),
             Text('Entity ID : $id',
                 style: Theme.of(context).textTheme.bodySmall),
           ],

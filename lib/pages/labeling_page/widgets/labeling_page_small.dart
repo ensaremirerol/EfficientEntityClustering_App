@@ -7,7 +7,7 @@ class _LabelingPageSmall extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(labelingProvider);
     return Padding(
-      padding: const EdgeInsets.all(16.0),
+      padding: const EdgeInsets.all(32.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -31,7 +31,8 @@ class _LabelingPageSmall extends ConsumerWidget {
                           const Icon(Icons.arrow_downward),
                           const SizedBox(height: 20),
                           _ClusterPane(
-                            height: 500,
+                            height: max(
+                                500, MediaQuery.of(context).size.height * 0.6),
                           ),
                         ],
                       ),

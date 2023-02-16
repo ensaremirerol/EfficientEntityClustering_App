@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:eec_app/controllers/labeling_page/labeling_page_controller.dart';
 import 'package:eec_app/controllers/labeling_page/labeling_page_state.dart';
 import 'package:eec_app/widgets/custom_text_field/custom_text_field.dart';
@@ -31,6 +33,6 @@ class _LabelingPageState extends ConsumerState<LabelingPage> {
     return ResponsiveBuilder(
         key: Key(state.currentEntityId ?? 'labeling_page'),
         smallScreen: _LabelingPageSmall(),
-        largeScreen: _LabelingPageLarge());
+        largeScreen: _LabelingPageSmall());
   }
 }
