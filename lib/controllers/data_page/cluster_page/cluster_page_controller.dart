@@ -142,6 +142,7 @@ class ClusterPageController extends StateNotifier<ClusterPageState> {
     }
 
     if (path == null) {
+      _snackBarService.showErrorMessage('Export cancelled', clear: true);
       return;
     }
 

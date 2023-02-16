@@ -10,11 +10,24 @@ part './widgets/shell_page_large.dart';
 part './data/navigation_item.dart';
 
 const navigationItems = [
-  NavigationItem(title: 'Dashboard',index: 0, icon: Icons.dashboard, route: '/dashboard'),
-  NavigationItem(title: 'Labelling',index: 1, icon: Icons.checklist, route: '/labelling'),
-  NavigationItem(title: 'Data',index: 2, icon: Icons.data_array, route: '/data'),
-  NavigationItem(title: 'Logs',index: 3, icon: Icons.list, route: '/logs', ),
-  NavigationItem(title: 'Settings',index: 4, icon: Icons.settings, route: '/settings', ),
+  NavigationItem(
+      title: 'Dashboard', index: 0, icon: Icons.dashboard, route: '/dashboard'),
+  NavigationItem(
+      title: 'Labeling', index: 1, icon: Icons.checklist, route: '/labeling'),
+  NavigationItem(
+      title: 'Data', index: 2, icon: Icons.data_array, route: '/data'),
+  NavigationItem(
+    title: 'Logs',
+    index: 3,
+    icon: Icons.list,
+    route: '/logs',
+  ),
+  NavigationItem(
+    title: 'Settings',
+    index: 4,
+    icon: Icons.settings,
+    route: '/settings',
+  ),
 ];
 
 final shellPageNumberProvider = StateProvider<int>((ref) => 0);

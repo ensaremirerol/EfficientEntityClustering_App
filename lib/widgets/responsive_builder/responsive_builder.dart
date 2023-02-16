@@ -21,9 +21,10 @@ class ResponsiveBuilder extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return LayoutBuilder(
       builder: (context, constraints) {
-        if (constraints.maxWidth < smallScreenBreakpoint) {
+        final _deviceSize = MediaQuery.of(context).size;
+        if (_deviceSize.width < smallScreenBreakpoint) {
           return smallScreen;
-        } else if (constraints.maxWidth < mediumScreenBreakpoint) {
+        } else if (_deviceSize.width < mediumScreenBreakpoint) {
           return mediumScreen ?? smallScreen;
         } else {
           return largeScreen ?? mediumScreen ?? smallScreen;

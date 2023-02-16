@@ -28,6 +28,7 @@ class __ShellPageLargeState extends ConsumerState<_ShellPageLarge> {
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           NavigationRail(
+              elevation: 4,
               extended: _isExtended,
               minExtendedWidth: 250,
               minWidth: 75,

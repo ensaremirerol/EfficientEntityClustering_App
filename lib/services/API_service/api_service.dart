@@ -13,7 +13,7 @@ class APIService {
   APIService(BaseOptions options) {
     _dio = Dio(options);
   }
-  
+
   Future<Response> call(IAPICall apiCall, IAPICallArgs? args) async {
     try {
       if ((args != null && apiCall.name != args.name)) {
@@ -32,6 +32,7 @@ class APIService {
       final Response response = await _dio.request(
         args?.pathFormat(apiCall.path) ?? apiCall.path,
         data: jsonEncode(args?.getData()),
+        queryParameters: args?.getQuery(),
         options: Options(
           method: apiCall.method,
         ),

@@ -3,6 +3,7 @@ import 'package:eec_app/repositories/cluster_repository/cluster_repository.dart'
 import 'package:eec_app/repositories/entity_repository/entity_repository.dart';
 import 'package:eec_app/services/API_service/api_calls/test_call.dart';
 import 'package:eec_app/services/API_service/api_service.dart';
+import 'package:eec_app/services/labeling_service/labeling_service.dart';
 import 'package:eec_app/services/log_service/log_service.dart';
 import 'package:eec_app/services/snackbar_service/snackbar_service.dart';
 import 'package:eec_app/utils/instance_controller.dart';
@@ -58,6 +59,8 @@ class SetupService {
     InstanceController().addInstance(EntityRepository, EntityRepository());
 
     InstanceController().addInstance(ClusterRepository, ClusterRepository());
+
+    InstanceController().addInstance(LabelingService, LabelingService());
 
     await InstanceController().getByType<EntityRepository>().refresh();
 

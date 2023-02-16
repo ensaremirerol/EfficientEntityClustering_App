@@ -184,6 +184,7 @@ class EntityPageController extends StateNotifier<EntityPageState> {
     }
 
     if (path == null) {
+      _snackBarService.showErrorMessage('Export cancelled', clear: true);
       return;
     }
 

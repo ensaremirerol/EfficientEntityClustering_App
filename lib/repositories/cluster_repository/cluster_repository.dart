@@ -1,4 +1,5 @@
 import 'package:eec_app/models/cluster_model/cluster_model.dart';
+import 'package:eec_app/services/API_service/api_calls/cluster/add_entity_to_cluster.dart';
 import 'package:eec_app/services/API_service/api_calls/cluster/create_cluster.dart';
 import 'package:eec_app/services/API_service/api_calls/cluster/delete_cluster.dart';
 import 'package:eec_app/services/API_service/api_calls/cluster/export_all_clusters.dart';
@@ -100,6 +101,28 @@ class ClusterRepository {
       }
     } on Exception catch (e) {
       _logger.e('Error while exporting entities');
+      _logger.e(e);
+      rethrow;
+    }
+  }
+
+  Future addEntityToCluster(String entityId, String clusterId) async {
+    try {
+      final response = await apiService.call(const AddEntityToCluster(),
+          AddEntityToClusterArgs(id: clusterId, entityId: entityId));
+      if ((response.statusCode ?? 0) == 200) {
+        final cluster = ClusterModel.fromJson(response.data!);
+        _clusters.removeWhere((element) => element.cluster_id == clusterId);
+        _clusters.add(cluster);
+      } else {
+        _logger.e('Response status code is not 200');
+        _logger.e(response);
+        InstanceController().getByType<SnackBarService>().showErrorMessage(
+            'Error while adding entity to cluster:\n${response.data['detail']}');
+        throw Exception('Response status code is not 200');
+      }
+    } on Exception catch (e) {
+      _logger.e('Error while adding entity to cluster');
       _logger.e(e);
       rethrow;
     }

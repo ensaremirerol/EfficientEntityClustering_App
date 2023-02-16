@@ -28,39 +28,45 @@ class _LogPageState extends State<LogPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-          child: Column(
-        children: [
-          Text('Log Page', style: Theme.of(context).textTheme.displaySmall),
-          Divider(),
-          const SizedBox(height: 20),
-          Expanded(
-              child: StreamBuilder(
-                  stream: InstanceController().getByType<LogService>().stream,
-                  builder: (context, snapshot) {
-                    return Card(
-                      child: Container(
-                        width: double.infinity,
-                        height: double.infinity,
-                        padding: const EdgeInsets.all(16.0),
-                        color: Colors.grey[900],
-                        child: SingleChildScrollView(
-                          reverse: true,
-                          child: SingleChildScrollView(
-                            scrollDirection: Axis.horizontal,
-                            child: Text(snapshot.data ?? '',
-                                softWrap: true,
-                                style: TextStyle(
-                                    fontFamily: 'RobotoMono',
-                                    overflow: TextOverflow.visible,
-                                    color: Colors.white)),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const SizedBox(height: 20),
+            Text('Log Page', style: Theme.of(context).textTheme.displaySmall),
+            Divider(),
+            const SizedBox(height: 20),
+            Expanded(
+                child: StreamBuilder(
+                    stream: InstanceController().getByType<LogService>().stream,
+                    builder: (context, snapshot) {
+                      return Card(
+                        child: SelectionArea(
+                          child: Container(
+                            width: double.infinity,
+                            height: double.infinity,
+                            padding: const EdgeInsets.all(16.0),
+                            color: Colors.grey[900],
+                            child: SingleChildScrollView(
+                              reverse: true,
+                              child: SingleChildScrollView(
+                                scrollDirection: Axis.horizontal,
+                                child: Text(snapshot.data ?? '',
+                                    softWrap: true,
+                                    style: TextStyle(
+                                        fontFamily: 'RobotoMono',
+                                        overflow: TextOverflow.visible,
+                                        color: Colors.white)),
+                              ),
+                            ),
                           ),
                         ),
-                      ),
-                    );
-                  })),
-        ],
-      )),
+                      );
+                    })),
+          ],
+        ),
+      ),
     );
   }
 }

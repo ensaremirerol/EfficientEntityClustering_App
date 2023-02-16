@@ -20,15 +20,15 @@ class SnackBarService {
           borderRadius: BorderRadius.circular(10),
         ),
         behavior: SnackBarBehavior.floating,
-        margin: EdgeInsets.only(
-          bottom:
-              MediaQuery.of(_scaffoldMessengerKey.currentContext!).size.height -
-                  75,
-          right: 8,
-          left:
-              MediaQuery.of(_scaffoldMessengerKey.currentContext!).size.width /
-                  2,
-        ),
+        // margin: EdgeInsets.only(
+        //   bottom:
+        //       MediaQuery.of(_scaffoldMessengerKey.currentContext!).size.height -
+        //           75,
+        //   right: 8,
+        //   left:
+        //       MediaQuery.of(_scaffoldMessengerKey.currentContext!).size.width /
+        //           2,
+        // ),
         duration: const Duration(seconds: 3),
         elevation: 10,
         showCloseIcon: true,
@@ -49,15 +49,15 @@ class SnackBarService {
           borderRadius: BorderRadius.circular(10),
         ),
         behavior: SnackBarBehavior.floating,
-        margin: EdgeInsets.only(
-          bottom:
-              MediaQuery.of(_scaffoldMessengerKey.currentContext!).size.height -
-                  75,
-          right: 8,
-          left:
-              MediaQuery.of(_scaffoldMessengerKey.currentContext!).size.width /
-                  2,
-        ),
+        // margin: EdgeInsets.only(
+        //   bottom:
+        //       MediaQuery.of(_scaffoldMessengerKey.currentContext!).size.height -
+        //           75,
+        //   right: 8,
+        //   left:
+        //       MediaQuery.of(_scaffoldMessengerKey.currentContext!).size.width /
+        //           2,
+        // ),
         duration: const Duration(seconds: 3),
         elevation: 10,
         showCloseIcon: true,
@@ -78,15 +78,15 @@ class SnackBarService {
           borderRadius: BorderRadius.circular(10),
         ),
         behavior: SnackBarBehavior.floating,
-        margin: EdgeInsets.only(
-          bottom:
-              MediaQuery.of(_scaffoldMessengerKey.currentContext!).size.height -
-                  75,
-          right: 8,
-          left:
-              MediaQuery.of(_scaffoldMessengerKey.currentContext!).size.width /
-                  2,
-        ),
+        // margin: EdgeInsets.only(
+        //   bottom:
+        //       MediaQuery.of(_scaffoldMessengerKey.currentContext!).size.height -
+        //           75,
+        //   right: 8,
+        //   left:
+        //       MediaQuery.of(_scaffoldMessengerKey.currentContext!).size.width /
+        //           2,
+        // ),
         duration: const Duration(seconds: 3),
         elevation: 10,
         showCloseIcon: true,
