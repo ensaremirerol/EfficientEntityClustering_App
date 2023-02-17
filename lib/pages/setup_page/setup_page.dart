@@ -4,6 +4,7 @@ import 'package:eec_app/utils/instance_controller.dart';
 import 'package:eec_app/widgets/custom_text_field/custom_text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:locale_emoji_flutter/locale_emoji_flutter.dart';
 
 class SetupPage extends StatefulWidget {
   const SetupPage({super.key});
@@ -34,6 +35,30 @@ class _SetupPageState extends State<SetupPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text('setup_page').tr(),
+        actions: [
+          DropdownButton<Locale>(
+            value: context.locale,
+            items: context.supportedLocales.map((Locale locale) {
+              return DropdownMenuItem(
+                value: locale,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(locale.languageCode).tr(),
+                    Text(locale.flagEmoji ?? ''),
+                  ],
+                ),
+              );
+            }).toList(),
+            onChanged: (Locale? value) {
+              if (value == null) return;
+              context.setLocale(value);
+            },
+          )
+        ],
+      ),
       body: Center(
         child: Padding(
           padding: const EdgeInsets.all(32.0),
@@ -44,7 +69,9 @@ class _SetupPageState extends State<SetupPage> {
                 mainAxisSize: MainAxisSize.min,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text('setup_page', style: Theme.of(context).textTheme.displaySmall).tr(),
+                  Text('setup_page',
+                          style: Theme.of(context).textTheme.displaySmall)
+                      .tr(),
                   Divider(),
                   const SizedBox(height: 20),
                   Form(

@@ -39,7 +39,7 @@ class _ShellPageSmall extends ConsumerWidget {
                               .selectedLabelTextStyle
                           : Theme.of(context)
                               .navigationRailTheme
-                              .unselectedLabelTextStyle),
+                              .unselectedLabelTextStyle).tr(),
                   leading: Theme(
                       data: Theme.of(context).copyWith(
                           iconTheme: isSelected

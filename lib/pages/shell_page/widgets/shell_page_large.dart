@@ -42,7 +42,7 @@ class __ShellPageLargeState extends ConsumerState<_ShellPageLarge> {
               ),
               destinations: navigationItems
                   .map((item) => NavigationRailDestination(
-                      icon: Icon(item.icon), label: Text(item.title)))
+                      icon: Icon(item.icon), label: Text(item.title).tr()))
                   .toList(),
               selectedIndex: ref.watch(shellPageNumberProvider),
               onDestinationSelected: (index) {

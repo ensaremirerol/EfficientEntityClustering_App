@@ -12,25 +12,19 @@ part './data/navigation_item.dart';
 
 final navigationItems = [
   NavigationItem(
-      title: 'dashboard'.tr(),
-      index: 0,
-      icon: Icons.dashboard,
-      route: '/dashboard'),
+      title: 'dashboard', index: 0, icon: Icons.dashboard, route: '/dashboard'),
   NavigationItem(
-      title: 'labeling'.tr(),
-      index: 1,
-      icon: Icons.checklist,
-      route: '/labeling'),
+      title: 'labeling', index: 1, icon: Icons.checklist, route: '/labeling'),
   NavigationItem(
-      title: 'data'.tr(), index: 2, icon: Icons.data_array, route: '/data'),
+      title: 'data', index: 2, icon: Icons.data_array, route: '/data'),
   NavigationItem(
-    title: 'logs'.tr(),
+    title: 'logs',
     index: 3,
     icon: Icons.list,
     route: '/logs',
   ),
   NavigationItem(
-    title: 'settings'.tr(),
+    title: 'settings',
     index: 4,
     icon: Icons.settings,
     route: '/settings',

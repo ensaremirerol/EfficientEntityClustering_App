@@ -9,6 +9,7 @@ import 'package:file_picker/file_picker.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:share_plus/share_plus.dart';
 
 class ClusterPageController extends StateNotifier<ClusterPageState> {
   ClusterPageController({required this.ref})
@@ -131,15 +132,18 @@ class ClusterPageController extends StateNotifier<ClusterPageState> {
 
     String? path;
     if (Platform.isAndroid || Platform.isIOS || kIsWeb) {
-      path = getDownloadsDirectory().toString() + '/clusters.csv';
-    } else {
-      path = await FilePicker.platform.saveFile(
-          fileName: 'clusters.csv',
-          dialogTitle: 'Export entities',
-          lockParentWindow: true,
-          type: FileType.custom,
-          allowedExtensions: ['csv']);
+      final file = File('${(await getTemporaryDirectory()).path}/clusters.csv');
+      await file.writeAsString(data);
+      final xfile = XFile(file.path);
+      Share.shareXFiles([xfile], text: 'Clusters');
+      return;
     }
+    path = await FilePicker.platform.saveFile(
+        fileName: 'clusters.csv',
+        dialogTitle: 'Export entities',
+        lockParentWindow: true,
+        type: FileType.custom,
+        allowedExtensions: ['csv']);
 
     if (path == null) {
       _snackBarService.showErrorMessage('Export cancelled', clear: true);

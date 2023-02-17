@@ -30,14 +30,12 @@ class _ClusterPageSmall extends ConsumerWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                SizedBox(
-                    width: 300,
+                Expanded(
                     child: CustomTextField(
-                      hintText: 'search'.tr(),
-                      onChanged: onSearch,
-                      prefixIcon: const Icon(Icons.search),
-                    )),
-                const Expanded(child: SizedBox()),
+                  hintText: 'search'.tr(),
+                  onChanged: onSearch,
+                  prefixIcon: const Icon(Icons.search),
+                )),
                 PopupMenuButton(
                     itemBuilder: (context) => [
                           PopupMenuItem(

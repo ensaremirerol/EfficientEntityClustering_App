@@ -63,30 +63,20 @@ class SettingsPage extends ConsumerWidget {
                 title: 'language'.tr(),
                 subtitle: 'language_desc'.tr(),
                 leading: const Icon(Icons.language),
-                trailing: DropdownButton(
+                trailing: DropdownButton<Locale>(
                   value: context.locale,
-                  items: [
-                    DropdownMenuItem(
-                      value: const Locale('en', 'US'),
+                  items: context.supportedLocales.map((Locale locale) {
+                    return DropdownMenuItem(
+                      value: locale,
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text('english').tr(),
-                          Text(const Locale('en', 'US').flagEmoji ?? ''),
+                          Text(locale.languageCode).tr(),
+                          Text(locale.flagEmoji ?? ''),
                         ],
                       ),
-                    ),
-                    DropdownMenuItem(
-                      value: const Locale('tr', 'TR'),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text('turkish').tr(),
-                          Text(const Locale('tr', 'TR').flagEmoji ?? ''),
-                        ],
-                      ),
-                    ),
-                  ],
+                    );
+                  }).toList(),
                   onChanged: (Locale? value) {
                     if (value == null) return;
                     context.setLocale(value);
