@@ -2,6 +2,7 @@ import 'package:eec_app/pages/dashboard/dashboard.dart';
 import 'package:eec_app/pages/data_page/data_page.dart';
 import 'package:eec_app/pages/labeling_page/labeling_page.dart';
 import 'package:eec_app/pages/log_page/log_page.dart';
+import 'package:eec_app/pages/settings_page/settings_page.dart';
 import 'package:eec_app/pages/setup_page/setup_page.dart';
 import 'package:eec_app/pages/shell_page/shell_page.dart';
 import 'package:eec_app/services/setup_service/setup_service.dart';
@@ -63,6 +64,11 @@ final router = GoRouter(
               name: 'logs',
               pageBuilder: (context, state) =>
                   _noTransitionBuilder(state, const LogPage())),
+          GoRoute(
+              path: '/settings',
+              name: 'settings',
+              pageBuilder: (context, state) =>
+                  _noTransitionBuilder(state, const SettingsPage())),
         ],
       )
     ]);

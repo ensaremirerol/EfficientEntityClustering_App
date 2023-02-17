@@ -2,9 +2,6 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:eec_app/services/log_service/log_service.dart';
 import 'package:eec_app/utils/instance_controller.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 
 class LogPage extends StatefulWidget {
   const LogPage({super.key});

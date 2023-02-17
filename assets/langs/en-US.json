@@ -1,4 +1,11 @@
 {
+    "restart_app": "Restart app",
+    "restart_app_desc": "Restarts the app and allows you to change the configuration settings.",
+    "restart_app_confirm": "Are you sure you want to restart the app?",
+    "language": "Language",
+    "language_desc": "Select the language of the app.",
+    "turkish": "Turkish",
+    "english": "English",
     "cancel": "Cancel",
     "delete": "Delete",
     "delete_selected": "Delete selected",
@@ -61,6 +68,8 @@
     "labeling_page": "Labeling page",
     "log_page": "Log page",
     "setup_page": "Setup page",
-    "warning_duplicate_entity": "Make sure that the entity ID is unique in source and also in the system.",
-    "enter_text_warning": "Please enter some text!"
+    "warning_duplicate_entity": "Make sure that the source entity IDs are unique in source and also in the system.",
+    "enter_text_warning": "Please enter some text!",
+    "dark_mode": "Dark mode",
+    "dark_mode_desc": "Switches the app to dark mode."
 }
