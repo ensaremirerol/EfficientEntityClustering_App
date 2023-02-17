@@ -69,7 +69,7 @@ class __ClusterPaneState extends ConsumerState<_ClusterPane>
                             primary: false,
                             itemCount: state.possibleClusterIds!.length,
                             itemBuilder: (context, index) {
-                              return _ClusterListTile(
+                              return ClusterListTile(
                                   clusterName:
                                       state.possibleClusterNames![index],
                                   clusterId: state.possibleClusterIds![index],
@@ -116,7 +116,7 @@ class __ClusterPaneState extends ConsumerState<_ClusterPane>
                                   padding: const EdgeInsets.all(8),
                                   primary: false,
                                   children: state.clusterSearchResults
-                                      .map((e) => _ClusterListTile(
+                                      .map((e) => ClusterListTile(
                                           clusterName: e.cluster_name,
                                           clusterId: e.cluster_id,
                                           onPressed: () {

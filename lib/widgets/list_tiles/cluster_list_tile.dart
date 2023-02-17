@@ -1,7 +1,8 @@
-part of '../labeling_page.dart';
+import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/material.dart';
 
-class _ClusterListTile extends StatelessWidget {
-  const _ClusterListTile(
+class ClusterListTile extends StatelessWidget {
+  const ClusterListTile(
       {super.key,
       required this.clusterName,
       required this.clusterId,

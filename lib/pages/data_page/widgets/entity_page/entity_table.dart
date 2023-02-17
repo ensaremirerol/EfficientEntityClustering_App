@@ -113,9 +113,17 @@ class _EntityDataTable extends ConsumerWidget {
                                   DataCell(Text(e.entity_source_id)),
                                   DataCell(Text(
                                       e.in_cluster ? 'yes'.tr() : 'no'.tr())),
-                                  DataCell(
-                                    Text(e.cluster_id),
-                                  ),
+                                  DataCell(Text(e.cluster_id), onTap: () async {
+                                    await showDialog(
+                                      context: context,
+                                      builder: (context) => _EditClusterDialog(
+                                          entityId: e.entity_id,
+                                          clusterId: e.cluster_id),
+                                    );
+                                    ref
+                                        .read(entityProvider.notifier)
+                                        .fetchEntities();
+                                  }),
                                   DataCell(Text(e.has_mention_vector
                                       ? 'yes'.tr()
                                       : 'no'.tr())),
