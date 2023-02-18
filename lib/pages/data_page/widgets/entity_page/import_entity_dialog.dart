@@ -1,7 +1,7 @@
 part of '../../data_page.dart';
 
 class _ImportEntityDialog extends ConsumerWidget {
-  const _ImportEntityDialog({super.key, required this.csvModel});
+  const _ImportEntityDialog({required this.csvModel});
 
   final CsvModel csvModel;
 
@@ -19,7 +19,6 @@ class _ImportEntityDialog extends ConsumerWidget {
         body: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const SizedBox(height: 20),
@@ -44,7 +43,7 @@ class _ImportEntityDialog extends ConsumerWidget {
 }
 
 class _ImportEntityForm extends ConsumerStatefulWidget {
-  _ImportEntityForm({super.key, required this.csvModel});
+  _ImportEntityForm({required this.csvModel});
   final CsvModel csvModel;
   @override
   _ImportEntityFormState createState() => _ImportEntityFormState();
@@ -77,7 +76,7 @@ class _ImportEntityFormState extends ConsumerState<_ImportEntityForm> {
                 return null;
               },
               decoration: InputDecoration(
-                  labelText: 'id_column'.tr(), border: OutlineInputBorder()),
+                  labelText: 'id_column'.tr(), border: const OutlineInputBorder()),
               onChanged: (value) {
                 setState(() {
                   idColumn = value!;
@@ -102,7 +101,7 @@ class _ImportEntityFormState extends ConsumerState<_ImportEntityForm> {
               },
               decoration: InputDecoration(
                   labelText: 'mention_column'.tr(),
-                  border: OutlineInputBorder()),
+                  border: const OutlineInputBorder()),
               onChanged: (value) {
                 setState(() {
                   mentionColumn = value!;
@@ -120,7 +119,7 @@ class _ImportEntityFormState extends ConsumerState<_ImportEntityForm> {
               controller: _entitySourceController,
               decoration: InputDecoration(
                   labelText: 'entity_source'.tr(),
-                  border: OutlineInputBorder()),
+                  border: const OutlineInputBorder()),
               validator: (value) {
                 if (value == null || value.isEmpty) {
                   return 'enter_text_warning'.tr();

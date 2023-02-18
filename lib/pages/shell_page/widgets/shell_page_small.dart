@@ -9,23 +9,22 @@ class _ShellPageSmall extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Eec App'),
+        title: const Text('Eec App'),
       ),
       drawer: Drawer(
         child: ListView(
           children: [
             DrawerHeader(
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text('Eec App'),
-                  Spacer(),
+                  const Text('Eec App'),
+                  const Spacer(),
                   IconButton(
                       onPressed: () {
                         Navigator.pop(context);
                       },
-                      icon: Icon(Icons.arrow_back))
+                      icon: const Icon(Icons.arrow_back))
                 ],
               ),
             ),

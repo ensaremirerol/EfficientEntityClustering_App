@@ -1,9 +1,7 @@
 part of '../../data_page.dart';
 
 class _ClusterTableFoot extends ConsumerWidget {
-  const _ClusterTableFoot({
-    super.key,
-  });
+  const _ClusterTableFoot();
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -16,7 +14,6 @@ class _ClusterTableFoot extends ConsumerWidget {
           child: SingleChildScrollView(
             scrollDirection: Axis.horizontal,
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 IconButton(
                     onPressed: state.tablePage == 0
@@ -34,7 +31,7 @@ class _ClusterTableFoot extends ConsumerWidget {
                                 .setPage(state.tablePage - 1);
                           },
                     icon: const Icon(Icons.chevron_left)),
-                Text('page').tr(namedArgs: {
+                const Text('page').tr(namedArgs: {
                   'page': (state.tablePage + 1).toString(),
                   'total_pages':
                       (state.clusterList.length ~/ state.tableRowsPerPage + 1)
@@ -63,7 +60,7 @@ class _ClusterTableFoot extends ConsumerWidget {
                 const VerticalDivider(
                   width: 16,
                 ),
-                Text('total_count').tr(
+                const Text('total_count').tr(
                   namedArgs: {
                     'total_count': state.clusterList.length.toString(),
                   },
@@ -71,7 +68,7 @@ class _ClusterTableFoot extends ConsumerWidget {
                 const VerticalDivider(
                   width: 16,
                 ),
-                Text('selected_count').tr(
+                const Text('selected_count').tr(
                   namedArgs: {
                     'selected_count':
                         state.selectedClusterIds.length.toString(),
@@ -80,7 +77,7 @@ class _ClusterTableFoot extends ConsumerWidget {
                 const VerticalDivider(
                   width: 16,
                 ),
-                Text('page_size').tr(),
+                const Text('page_size').tr(),
                 const SizedBox(
                   width: 8,
                 ),

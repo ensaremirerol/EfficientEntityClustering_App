@@ -2,8 +2,7 @@ part of '../../data_page.dart';
 
 class _ClusterPageSmall extends ConsumerWidget {
   const _ClusterPageSmall(
-      {super.key,
-      required this.onSearch,
+      {required this.onSearch,
       required this.onRefresh,
       required this.onImport,
       required this.onAdd,
@@ -28,7 +27,6 @@ class _ClusterPageSmall extends ConsumerWidget {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Expanded(
                     child: CustomTextField(
@@ -57,7 +55,7 @@ class _ClusterPageSmall extends ConsumerWidget {
                             value: 'import',
                           ),
                           PopupMenuItem(
-                            child: Text('Export'),
+                            child: const Text('Export'),
                             onTap: onExport,
                             value: 'export',
                           ),
@@ -69,9 +67,9 @@ class _ClusterPageSmall extends ConsumerWidget {
             indent: 16,
             endIndent: 16,
           ),
-          _ClusterDataTable(),
+          const _ClusterDataTable(),
           const Divider(indent: 16, endIndent: 16),
-          _ClusterTableFoot(),
+          const _ClusterTableFoot(),
         ],
       ),
     );

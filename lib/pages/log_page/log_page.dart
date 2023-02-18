@@ -33,7 +33,7 @@ class _LogPageState extends State<LogPage> {
           children: [
             const SizedBox(height: 20),
             Text('log_page', style: Theme.of(context).textTheme.displaySmall).tr(),
-            Divider(),
+            const Divider(),
             const SizedBox(height: 20),
             Expanded(
                 child: StreamBuilder(
@@ -52,7 +52,7 @@ class _LogPageState extends State<LogPage> {
                                 scrollDirection: Axis.horizontal,
                                 child: Text(snapshot.data ?? '',
                                     softWrap: true,
-                                    style: TextStyle(
+                                    style: const TextStyle(
                                         fontFamily: 'RobotoMono',
                                         overflow: TextOverflow.visible,
                                         color: Colors.white)),

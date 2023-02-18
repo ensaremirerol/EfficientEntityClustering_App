@@ -22,7 +22,7 @@ class _DashboardSmall extends ConsumerWidget {
 }
 
 class _DashboardCard extends StatelessWidget {
-  const _DashboardCard({super.key, required this.child});
+  const _DashboardCard({required this.child});
 
   final Widget child;
 
@@ -33,7 +33,7 @@ class _DashboardCard extends StatelessWidget {
         borderRadius: BorderRadius.all(Radius.circular(20)),
       ),
       child: Padding(
-        padding: EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(16.0),
         child: child,
       ),
     );

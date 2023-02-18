@@ -2,8 +2,7 @@ part of '../../data_page.dart';
 
 class _ClusterPageMedium extends ConsumerWidget {
   const _ClusterPageMedium(
-      {super.key,
-      required this.onSearch,
+      {required this.onSearch,
       required this.onRefresh,
       required this.onImport,
       required this.onAdd,
@@ -28,7 +27,6 @@ class _ClusterPageMedium extends ConsumerWidget {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 SizedBox(
                     width: 300,
@@ -72,9 +70,9 @@ class _ClusterPageMedium extends ConsumerWidget {
             indent: 16,
             endIndent: 16,
           ),
-          _ClusterDataTable(),
+          const _ClusterDataTable(),
           const Divider(indent: 16, endIndent: 16),
-          _ClusterTableFoot()
+          const _ClusterTableFoot()
         ],
       ),
     );

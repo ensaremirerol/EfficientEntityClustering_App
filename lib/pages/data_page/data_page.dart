@@ -79,8 +79,8 @@ class _DataPageState extends ConsumerState<DataPage>
               physics: const NeverScrollableScrollPhysics(),
               controller: _tabController,
               children: [
-                _EntityPage(),
-                _ClusterPage()
+                const _EntityPage(),
+                const _ClusterPage()
                 // _ClusterPage(),
               ],
             ),

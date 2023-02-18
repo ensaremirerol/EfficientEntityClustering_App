@@ -31,7 +31,7 @@ void main() async {
         supportedLocales: const [Locale('en', 'US'), Locale('tr', 'TR')],
         fallbackLocale: const Locale('en', 'US'),
         useFallbackTranslations: true,
-        child: App(),
+        child: const App(),
       ),
     ),
   ));

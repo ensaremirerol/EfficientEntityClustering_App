@@ -17,6 +17,6 @@ class CreateClusterArgs extends IAPICallArgs {
 
   @override
   Map<String, dynamic> getData() {
-    return {"cluster_id": "0", "cluster_name": clusterName};
+    return {'cluster_id': '0', 'cluster_name': clusterName};
   }
 }

@@ -1,7 +1,7 @@
 part of '../labeling_page.dart';
 
 class _LabelingPageLarge extends ConsumerWidget {
-  const _LabelingPageLarge({super.key});
+  const _LabelingPageLarge();
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -18,9 +18,8 @@ class _LabelingPageLarge extends ConsumerWidget {
           const SizedBox(height: 20),
           Expanded(
               child: state.currentEntityId == null
-                  ? _InitalWidget()
+                  ? const _InitalWidget()
                   : Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         SizedBox(
                           width: 500,

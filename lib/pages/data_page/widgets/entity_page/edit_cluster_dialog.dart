@@ -7,7 +7,7 @@ final _clusterSearchProvider =
 
 class _EditClusterDialog extends ConsumerWidget {
   const _EditClusterDialog(
-      {super.key, required this.entityId, required this.clusterId});
+      {required this.entityId, required this.clusterId});
   final String entityId;
   final String clusterId;
   @override
@@ -25,7 +25,6 @@ class _EditClusterDialog extends ConsumerWidget {
         body: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const SizedBox(height: 20),
@@ -53,7 +52,7 @@ class _EditClusterDialog extends ConsumerWidget {
 
 class _ChangeClusterForm extends ConsumerWidget {
   const _ChangeClusterForm(
-      {super.key, required this.entityId, required this.clusterId});
+      {required this.entityId, required this.clusterId});
   final String entityId;
   final String clusterId;
   @override

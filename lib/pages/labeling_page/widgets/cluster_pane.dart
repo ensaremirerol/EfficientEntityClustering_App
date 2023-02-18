@@ -1,7 +1,7 @@
 part of '../labeling_page.dart';
 
 class _ClusterPane extends ConsumerStatefulWidget {
-  const _ClusterPane({super.key, required this.height});
+  const _ClusterPane({required this.height});
 
   final double height;
 
@@ -62,7 +62,7 @@ class __ClusterPaneState extends ConsumerState<_ClusterPane>
                     padding: const EdgeInsets.all(16.0),
                     child: state.possibleClusterIds?.isEmpty ?? true
                         ? Center(
-                            child: Text('no_possible_clusters').tr(),
+                            child: const Text('no_possible_clusters').tr(),
                           )
                         : ListView.builder(
                             padding: const EdgeInsets.all(8),
@@ -110,7 +110,7 @@ class __ClusterPaneState extends ConsumerState<_ClusterPane>
                         Expanded(
                           child: state.clusterSearchResults.isEmpty
                               ? Center(
-                                  child: Text('no_clusters_found').tr(),
+                                  child: const Text('no_clusters_found').tr(),
                                 )
                               : ListView(
                                   padding: const EdgeInsets.all(8),

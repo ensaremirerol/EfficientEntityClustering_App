@@ -1,9 +1,7 @@
 part of '../../data_page.dart';
 
 class _ClusterDataTable extends ConsumerWidget {
-  const _ClusterDataTable({
-    super.key,
-  });
+  const _ClusterDataTable();
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -14,10 +12,9 @@ class _ClusterDataTable extends ConsumerWidget {
         scrollDirection: Axis.horizontal,
         child: SingleChildScrollView(
           primary: true,
-          scrollDirection: Axis.vertical,
           child: state.clusterList.isEmpty
               ? Center(
-                  child: Text('no_data').tr(),
+                  child: const Text('no_data').tr(),
                 )
               : SelectionArea(
                   child: DataTable(
@@ -28,12 +25,11 @@ class _ClusterDataTable extends ConsumerWidget {
                           ref.read(clusterProvider.notifier).deselectAll();
                         }
                       },
-                      showCheckboxColumn: true,
                       sortColumnIndex: state.sortColumnIndex,
                       sortAscending: state.isAscending ?? true,
                       columns: [
                         DataColumn(
-                            label: Text('cluster_id').tr(),
+                            label: const Text('cluster_id').tr(),
                             onSort: (columnIndex, ascending) {
                               if (ascending) {
                                 ref.read(clusterProvider.notifier).sortBy(
@@ -50,7 +46,7 @@ class _ClusterDataTable extends ConsumerWidget {
                               }
                             }),
                         DataColumn(
-                            label: Text('cluster_name').tr(),
+                            label: const Text('cluster_name').tr(),
                             onSort: (columnIndex, ascending) {
                               if (ascending) {
                                 ref.read(clusterProvider.notifier).sortBy(
@@ -67,7 +63,7 @@ class _ClusterDataTable extends ConsumerWidget {
                               }
                             }),
                         DataColumn(
-                            label: Text('entity_count').tr(),
+                            label: const Text('entity_count').tr(),
                             onSort: (columnIndex, ascending) {
                               if (ascending) {
                                 ref.read(clusterProvider.notifier).sortBy(
@@ -83,7 +79,7 @@ class _ClusterDataTable extends ConsumerWidget {
                                         .compareTo(e2.entity_ids.length));
                               }
                             }),
-                        DataColumn(label: Text('delete').tr()),
+                        DataColumn(label: const Text('delete').tr()),
                       ],
                       rows: state.clusterList
                           .map((e) => DataRow(

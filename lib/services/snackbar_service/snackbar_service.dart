@@ -13,7 +13,7 @@ class SnackBarService {
     }
     _scaffoldMessengerKey.currentState!.showSnackBar(
       SnackBar(
-        animation: AlwaysStoppedAnimation(1),
+        animation: const AlwaysStoppedAnimation(1),
         content: Text(message),
         backgroundColor: Colors.red,
         shape: RoundedRectangleBorder(
@@ -42,7 +42,7 @@ class SnackBarService {
     }
     _scaffoldMessengerKey.currentState!.showSnackBar(
       SnackBar(
-        animation: AlwaysStoppedAnimation(1),
+        animation: const AlwaysStoppedAnimation(1),
         content: Text(message),
         backgroundColor: Colors.green,
         shape: RoundedRectangleBorder(
@@ -71,7 +71,7 @@ class SnackBarService {
     }
     _scaffoldMessengerKey.currentState!.showSnackBar(
       SnackBar(
-        animation: AlwaysStoppedAnimation(1),
+        animation: const AlwaysStoppedAnimation(1),
         content: Text(message),
         backgroundColor: Colors.blue,
         shape: RoundedRectangleBorder(

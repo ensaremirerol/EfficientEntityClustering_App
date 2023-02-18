@@ -20,7 +20,7 @@ class ClusterListTile extends StatelessWidget {
         padding: const EdgeInsets.all(8.0),
         child: ListTile(
             title: Text('$clusterName'),
-            subtitle: Text('cluster_id_arg').tr(
+            subtitle: const Text('cluster_id_arg').tr(
               namedArgs: {
                 'cluster_id': clusterId,
               },

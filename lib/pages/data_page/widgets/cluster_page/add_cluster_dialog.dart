@@ -1,7 +1,7 @@
 part of '../../data_page.dart';
 
 class _AddClusterDialog extends StatelessWidget {
-  const _AddClusterDialog({super.key});
+  const _AddClusterDialog();
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +17,6 @@ class _AddClusterDialog extends StatelessWidget {
         body: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const SizedBox(height: 20),
@@ -36,7 +35,7 @@ class _AddClusterDialog extends StatelessWidget {
 }
 
 class _AddClusterForm extends ConsumerStatefulWidget {
-  _AddClusterForm({super.key});
+  _AddClusterForm();
 
   @override
   _AddClusterFormState createState() => _AddClusterFormState();

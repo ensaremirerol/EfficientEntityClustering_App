@@ -1,5 +1,4 @@
 import 'package:eec_app/models/cluster_model/cluster_model.dart';
-import 'package:eec_app/models/entity_model/entity_model.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'labeling_page_state.freezed.dart';

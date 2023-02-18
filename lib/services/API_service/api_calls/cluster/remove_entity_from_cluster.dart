@@ -21,7 +21,7 @@ class RemoveEntityFromClusterArgs extends IAPICallArgs {
 
   @override
   Map<String, dynamic> getQuery() {
-    return {"entity_id": entityId};
+    return {'entity_id': entityId};
   }
 
   @override

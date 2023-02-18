@@ -35,10 +35,10 @@ class CustomTextField extends StatelessWidget {
       return TextField(
         decoration: InputDecoration(
           hintText: hintText,
-          border: OutlineInputBorder(
+          border: const OutlineInputBorder(
             borderSide: BorderSide(color: Colors.grey, width: 3),
           ),
-          disabledBorder: OutlineInputBorder(),
+          disabledBorder: const OutlineInputBorder(),
           prefixIcon: prefixIcon,
         ),
         onChanged: onChanged,
@@ -52,10 +52,10 @@ class CustomTextField extends StatelessWidget {
       onChanged: onChanged,
       decoration: InputDecoration(
         hintText: hintText,
-        border: OutlineInputBorder(
+        border: const OutlineInputBorder(
           borderSide: BorderSide(color: Colors.grey, width: 3),
         ),
-        disabledBorder: OutlineInputBorder(),
+        disabledBorder: const OutlineInputBorder(),
         prefixIcon: prefixIcon,
       ),
     );

@@ -1,7 +1,7 @@
 part of '../labeling_page.dart';
 
 class _LabelingPageSmall extends ConsumerWidget {
-  const _LabelingPageSmall({super.key});
+  const _LabelingPageSmall();
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -18,12 +18,11 @@ class _LabelingPageSmall extends ConsumerWidget {
           const SizedBox(height: 20),
           Expanded(
               child: state.currentEntityId == null
-                  ? _InitalWidget()
+                  ? const _InitalWidget()
                   : SingleChildScrollView(
                       padding: const EdgeInsets.all(16.0),
                       primary: true,
                       child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           _EntityCard(
                               mention: state.currentEntityMention!,

@@ -33,7 +33,7 @@ class _LabelingPageState extends ConsumerState<LabelingPage> {
     final state = ref.watch(labelingProvider);
     return ResponsiveBuilder(
         key: Key(state.currentEntityId ?? 'labeling_page'),
-        smallScreen: _LabelingPageSmall(),
-        largeScreen: _LabelingPageSmall());
+        smallScreen: const _LabelingPageSmall(),
+        largeScreen: const _LabelingPageSmall());
   }
 }

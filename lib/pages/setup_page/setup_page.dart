@@ -36,7 +36,7 @@ class _SetupPageState extends State<SetupPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('setup_page').tr(),
+        title: const Text('setup_page').tr(),
         actions: [
           DropdownButton<Locale>(
             value: context.locale,
@@ -72,7 +72,7 @@ class _SetupPageState extends State<SetupPage> {
                   Text('setup_page',
                           style: Theme.of(context).textTheme.displaySmall)
                       .tr(),
-                  Divider(),
+                  const Divider(),
                   const SizedBox(height: 20),
                   Form(
                       key: _formKey,
@@ -111,7 +111,7 @@ class _SetupPageState extends State<SetupPage> {
                               }
                             }
                           },
-                          child: Text('submit').tr(),
+                          child: const Text('submit').tr(),
                         )
                       ]))
                 ],

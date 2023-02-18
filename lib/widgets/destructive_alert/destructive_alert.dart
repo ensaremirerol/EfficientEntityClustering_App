@@ -31,7 +31,7 @@ class DestructiveAlert extends StatelessWidget {
             },
             child: Text(
               destructiveText,
-              style: TextStyle(color: Colors.red),
+              style: const TextStyle(color: Colors.red),
             )),
       ],
     );

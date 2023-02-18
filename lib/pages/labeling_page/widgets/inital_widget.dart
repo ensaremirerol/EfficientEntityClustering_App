@@ -1,7 +1,7 @@
 part of '../labeling_page.dart';
 
 class _InitalWidget extends ConsumerWidget {
-  const _InitalWidget({super.key});
+  const _InitalWidget();
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

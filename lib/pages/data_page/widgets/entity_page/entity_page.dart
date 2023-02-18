@@ -5,7 +5,7 @@ final entityProvider =
         (ref) => EntityPageController(ref: ref));
 
 class _EntityPage extends ConsumerStatefulWidget {
-  const _EntityPage({super.key});
+  const _EntityPage();
 
   @override
   _EntityPageState createState() => _EntityPageState();

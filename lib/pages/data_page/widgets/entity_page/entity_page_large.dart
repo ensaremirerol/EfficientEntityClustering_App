@@ -2,8 +2,7 @@ part of '../../data_page.dart';
 
 class _EntityPageLarge extends ConsumerWidget {
   const _EntityPageLarge(
-      {super.key,
-      required this.onSearch,
+      {required this.onSearch,
       required this.onRefresh,
       required this.onImport,
       required this.onExport,
@@ -28,7 +27,6 @@ class _EntityPageLarge extends ConsumerWidget {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 SizedBox(
                     width: 300,
@@ -68,9 +66,9 @@ class _EntityPageLarge extends ConsumerWidget {
             indent: 16,
             endIndent: 16,
           ),
-          _EntityDataTable(),
+          const _EntityDataTable(),
           const Divider(indent: 16, endIndent: 16),
-          _EntityTableFoot(),
+          const _EntityTableFoot(),
         ],
       ),
     );

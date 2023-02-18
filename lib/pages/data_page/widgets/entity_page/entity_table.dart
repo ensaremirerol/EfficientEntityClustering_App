@@ -1,9 +1,7 @@
 part of '../../data_page.dart';
 
 class _EntityDataTable extends ConsumerWidget {
-  const _EntityDataTable({
-    super.key,
-  });
+  const _EntityDataTable();
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -14,10 +12,9 @@ class _EntityDataTable extends ConsumerWidget {
       scrollDirection: Axis.horizontal,
       child: SingleChildScrollView(
         primary: true,
-        scrollDirection: Axis.vertical,
         child: state.entityList.isEmpty
             ? Center(
-                child: Text('no_data').tr(),
+                child: const Text('no_data').tr(),
               )
             : SelectionArea(
                 child: DataTable(
@@ -28,12 +25,11 @@ class _EntityDataTable extends ConsumerWidget {
                         ref.read(entityProvider.notifier).deselectAll();
                       }
                     },
-                    showCheckboxColumn: true,
                     sortColumnIndex: state.sortColumnIndex,
                     sortAscending: state.isAscending ?? true,
                     columns: [
                       DataColumn(
-                          label: Text('entity_id').tr(),
+                          label: const Text('entity_id').tr(),
                           onSort: (columnIndex, ascending) {
                             if (ascending) {
                               ref.read(entityProvider.notifier).sortBy(
@@ -50,7 +46,7 @@ class _EntityDataTable extends ConsumerWidget {
                             }
                           }),
                       DataColumn(
-                          label: Text('entity_mention').tr(),
+                          label: const Text('entity_mention').tr(),
                           onSort: (columnIndex, ascending) {
                             if (ascending) {
                               ref.read(entityProvider.notifier).sortBy(
@@ -65,7 +61,7 @@ class _EntityDataTable extends ConsumerWidget {
                             }
                           }),
                       DataColumn(
-                          label: Text('entity_source').tr(),
+                          label: const Text('entity_source').tr(),
                           onSort: (columnIndex, ascending) {
                             if (ascending) {
                               ref.read(entityProvider.notifier).sortBy(
@@ -82,12 +78,12 @@ class _EntityDataTable extends ConsumerWidget {
                             }
                           }),
                       DataColumn(
-                        label: Text('entity_source_id').tr(),
+                        label: const Text('entity_source_id').tr(),
                       ),
-                      DataColumn(label: Text('entity_in_cluster').tr()),
-                      DataColumn(label: Text('cluster_id').tr()),
-                      DataColumn(label: Text('entity_has_mention_vector').tr()),
-                      DataColumn(label: Text('delete').tr()),
+                      DataColumn(label: const Text('entity_in_cluster').tr()),
+                      DataColumn(label: const Text('cluster_id').tr()),
+                      DataColumn(label: const Text('entity_has_mention_vector').tr()),
+                      DataColumn(label: const Text('delete').tr()),
                     ],
                     rows: state.entityList
                         .skip(state.tablePage * state.tableRowsPerPage)

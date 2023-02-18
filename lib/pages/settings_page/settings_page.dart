@@ -22,7 +22,7 @@ class SettingsPage extends ConsumerWidget {
           const SizedBox(height: 20),
           Text('settings', style: Theme.of(context).textTheme.displaySmall)
               .tr(),
-          Divider(),
+          const Divider(),
           const SizedBox(height: 20),
           Expanded(
               child: ListView(
@@ -36,19 +36,19 @@ class SettingsPage extends ConsumerWidget {
                     context: context,
                     builder: (context) {
                       return AlertDialog(
-                        title: Text('restart_app'),
-                        content: Text('restart_app_confirm').tr(),
+                        title: const Text('restart_app'),
+                        content: const Text('restart_app_confirm').tr(),
                         actions: [
                           TextButton(
                               onPressed: () {
                                 Navigator.of(context).pop(false);
                               },
-                              child: Text('cancel').tr()),
+                              child: const Text('cancel').tr()),
                           TextButton(
                               onPressed: () {
                                 Navigator.of(context).pop(true);
                               },
-                              child: Text('yes').tr()),
+                              child: const Text('yes').tr()),
                         ],
                       );
                     },
@@ -111,7 +111,6 @@ class SettingsPage extends ConsumerWidget {
 
 class _SettingsTile extends StatelessWidget {
   const _SettingsTile({
-    super.key,
     required this.title,
     required this.subtitle,
     this.leading,

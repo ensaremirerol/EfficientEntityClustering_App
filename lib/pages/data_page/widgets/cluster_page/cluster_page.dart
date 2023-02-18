@@ -5,7 +5,7 @@ final clusterProvider =
         (ref) => ClusterPageController(ref: ref));
 
 class _ClusterPage extends ConsumerStatefulWidget {
-  const _ClusterPage({super.key});
+  const _ClusterPage();
 
   @override
   _ClusterPageState createState() => _ClusterPageState();

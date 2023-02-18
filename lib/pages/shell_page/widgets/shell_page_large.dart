@@ -25,7 +25,6 @@ class __ShellPageLargeState extends ConsumerState<_ShellPageLarge> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Row(
-        mainAxisAlignment: MainAxisAlignment.start,
         children: [
           NavigationRail(
               elevation: 4,
@@ -72,7 +71,7 @@ class _MenuButton extends ConsumerWidget {
         return Container(
           padding: EdgeInsets.only(right: lerpDouble(0, 175, animation.value)!),
           child: IconButton(
-            icon: Icon(Icons.menu),
+            icon: const Icon(Icons.menu),
             onPressed: onPressed,
           ),
         );

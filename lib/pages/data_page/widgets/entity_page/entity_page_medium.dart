@@ -2,8 +2,7 @@ part of '../../data_page.dart';
 
 class _EntityPageMedium extends ConsumerWidget {
   const _EntityPageMedium(
-      {super.key,
-      required this.onSearch,
+      {required this.onSearch,
       required this.onRefresh,
       required this.onImport,
       required this.onExport,
@@ -28,7 +27,6 @@ class _EntityPageMedium extends ConsumerWidget {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 SizedBox(
                     width: 300,
@@ -37,7 +35,7 @@ class _EntityPageMedium extends ConsumerWidget {
                       onChanged: onSearch,
                       prefixIcon: const Icon(Icons.search),
                     )),
-                Expanded(child: SizedBox()),
+                const Expanded(child: SizedBox()),
                 TextButton.icon(
                   onPressed: onRefresh,
                   icon: const Icon(Icons.refresh),
@@ -46,22 +44,22 @@ class _EntityPageMedium extends ConsumerWidget {
                 PopupMenuButton(
                   itemBuilder: (context) => [
                     PopupMenuItem(
-                      child: Text('delete_selected').tr(),
+                      child: const Text('delete_selected').tr(),
                       enabled: state.selectedEntityIds.isNotEmpty,
                       onTap: state.selectedEntityIds.isEmpty
                           ? null
                           : onDeleteSelected,
                     ),
                     PopupMenuItem(
-                      child: Text('add_entity').tr(),
+                      child: const Text('add_entity').tr(),
                       onTap: onAdd,
                     ),
                     PopupMenuItem(
-                      child: Text('import').tr(),
+                      child: const Text('import').tr(),
                       onTap: onImport,
                     ),
                     PopupMenuItem(
-                      child: Text('export').tr(),
+                      child: const Text('export').tr(),
                       onTap: onExport,
                     ),
                   ],
@@ -73,9 +71,9 @@ class _EntityPageMedium extends ConsumerWidget {
             indent: 16,
             endIndent: 16,
           ),
-          _EntityDataTable(),
+          const _EntityDataTable(),
           const Divider(indent: 16, endIndent: 16),
-          _EntityTableFoot(),
+          const _EntityTableFoot(),
         ],
       ),
     );

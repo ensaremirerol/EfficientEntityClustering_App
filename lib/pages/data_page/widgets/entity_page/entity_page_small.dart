@@ -2,8 +2,7 @@ part of '../../data_page.dart';
 
 class _EntityPageSmall extends ConsumerWidget {
   const _EntityPageSmall(
-      {super.key,
-      required this.onSearch,
+      {required this.onSearch,
       required this.onRefresh,
       required this.onImport,
       required this.onExport,
@@ -28,7 +27,6 @@ class _EntityPageSmall extends ConsumerWidget {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Expanded(
                     child: CustomTextField(
@@ -39,26 +37,26 @@ class _EntityPageSmall extends ConsumerWidget {
                 PopupMenuButton(
                   itemBuilder: (context) => [
                     PopupMenuItem(
-                      child: Text('refresh').tr(),
+                      child: const Text('refresh').tr(),
                       onTap: onRefresh,
                     ),
                     PopupMenuItem(
-                      child: Text('delete_selected').tr(),
+                      child: const Text('delete_selected').tr(),
                       enabled: state.selectedEntityIds.isNotEmpty,
                       onTap: state.selectedEntityIds.isEmpty
                           ? null
                           : onDeleteSelected,
                     ),
                     PopupMenuItem(
-                      child: Text('add_entity').tr(),
+                      child: const Text('add_entity').tr(),
                       onTap: onAdd,
                     ),
                     PopupMenuItem(
-                      child: Text('import').tr(),
+                      child: const Text('import').tr(),
                       onTap: onImport,
                     ),
                     PopupMenuItem(
-                      child: Text('export').tr(),
+                      child: const Text('export').tr(),
                       onTap: onExport,
                     ),
                   ],
@@ -70,9 +68,9 @@ class _EntityPageSmall extends ConsumerWidget {
             indent: 16,
             endIndent: 16,
           ),
-          _EntityDataTable(),
+          const _EntityDataTable(),
           const Divider(indent: 16, endIndent: 16),
-          _EntityTableFoot(),
+          const _EntityTableFoot(),
         ],
       ),
     );

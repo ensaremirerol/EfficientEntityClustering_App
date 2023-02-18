@@ -1,7 +1,7 @@
 part of '../../data_page.dart';
 
 class _AddEntityDialog extends StatelessWidget {
-  const _AddEntityDialog({super.key});
+  const _AddEntityDialog();
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +17,6 @@ class _AddEntityDialog extends StatelessWidget {
         body: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const SizedBox(height: 20),
@@ -36,7 +35,7 @@ class _AddEntityDialog extends StatelessWidget {
 }
 
 class _AddEntityForm extends ConsumerStatefulWidget {
-  _AddEntityForm({super.key});
+  _AddEntityForm();
 
   @override
   _AddEntityFormState createState() => _AddEntityFormState();

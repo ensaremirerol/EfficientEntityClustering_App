@@ -1,7 +1,7 @@
 part of '../labeling_page.dart';
 
 class _EntityCard extends StatelessWidget {
-  const _EntityCard({super.key, required this.mention, required this.id});
+  const _EntityCard({required this.mention, required this.id});
 
   final String mention;
   final String id;

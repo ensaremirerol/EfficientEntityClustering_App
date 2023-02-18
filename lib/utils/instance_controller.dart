@@ -14,7 +14,7 @@ class InstanceController {
 
   void addInstance(dynamic key, Object instance) {
     _instances[key] = instance;
-    _logger.i("Instance added: $key");
+    _logger.i('Instance added: $key');
   }
 
   operator [](dynamic key) => _instances[key];
@@ -29,16 +29,16 @@ class InstanceController {
 
   void removeByKey(dynamic key) {
     _instances.remove(key);
-    _logger.i("Instance removed: $key");
+    _logger.i('Instance removed: $key');
   }
 
   void removeByType<T>() {
     _instances.remove(T);
-    _logger.i("Instance removed: $T");
+    _logger.i('Instance removed: $T');
   }
 
   void removeAll() {
     _instances.clear();
-    _logger.i("All instances removed");
+    _logger.i('All instances removed');
   }
 }
