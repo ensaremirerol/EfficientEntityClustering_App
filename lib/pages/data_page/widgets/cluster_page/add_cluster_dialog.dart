@@ -25,7 +25,7 @@ class _AddClusterDialog extends StatelessWidget {
                   .tr(),
               const Divider(),
               const SizedBox(height: 20),
-              _AddClusterForm(),
+              const _AddClusterForm(),
             ],
           ),
         ),
@@ -35,7 +35,7 @@ class _AddClusterDialog extends StatelessWidget {
 }
 
 class _AddClusterForm extends ConsumerStatefulWidget {
-  _AddClusterForm();
+  const _AddClusterForm();
 
   @override
   _AddClusterFormState createState() => _AddClusterFormState();

@@ -43,7 +43,7 @@ class _ImportEntityDialog extends ConsumerWidget {
 }
 
 class _ImportEntityForm extends ConsumerStatefulWidget {
-  _ImportEntityForm({required this.csvModel});
+  const _ImportEntityForm({required this.csvModel});
   final CsvModel csvModel;
   @override
   _ImportEntityFormState createState() => _ImportEntityFormState();

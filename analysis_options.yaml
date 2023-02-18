@@ -34,6 +34,10 @@ linter:
         avoid_print: true
         avoid_redundant_argument_values: true
         avoid_unused_constructor_parameters: false
+        prefer_final_fields: true
+        prefer_final_locals: true
+        prefer_final_in_for_each: true
+        prefer_const_constructors_in_immutables: true
 
         # formatting
         lines_longer_than_80_chars: false

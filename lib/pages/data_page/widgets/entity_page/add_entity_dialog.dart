@@ -25,7 +25,7 @@ class _AddEntityDialog extends StatelessWidget {
                   .tr(),
               const Divider(),
               const SizedBox(height: 20),
-              _AddEntityForm(),
+              const _AddEntityForm(),
             ],
           ),
         ),
@@ -35,7 +35,7 @@ class _AddEntityDialog extends StatelessWidget {
 }
 
 class _AddEntityForm extends ConsumerStatefulWidget {
-  _AddEntityForm();
+  const _AddEntityForm();
 
   @override
   _AddEntityFormState createState() => _AddEntityFormState();

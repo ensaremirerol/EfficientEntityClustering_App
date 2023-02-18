@@ -15,7 +15,7 @@ class SetupService {
   String? _baseUrl;
   String? _wsUrl;
 
-  Logger _logger = Logger();
+  final Logger _logger = Logger();
 
   bool get isConfigured => _baseUrl != null && _wsUrl != null;
 
