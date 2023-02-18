@@ -73,5 +73,10 @@
     "warning_duplicate_entity": "Varlık kaynağındaki ID lerin hem kaynakta hem de sistemde benzersiz olması gerekir!",
     "enter_text_warning": "Lütfen bir metin girin!",
     "dark_mode": "Karanlık mod",
-    "dark_mode_desc": "Uygulamanın renk şemasını karanlık mod olarak ayarlar."
+    "dark_mode_desc": "Uygulamanın renk şemasını karanlık mod olarak ayarlar.",
+    "refreshing_data": "Veriler yenileniyor...",
+    "refreshing_data_success": "Veriler başarıyla yenilendi.",
+    "count_total": "{count} / {total}",
+    "labeled_entities": "Etiketlenmiş varlıklar",
+    "percent_symbol": "%{percent}"
 }

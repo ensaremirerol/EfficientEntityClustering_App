@@ -73,5 +73,10 @@
     "warning_duplicate_entity": "Make sure that the source entity IDs are unique in source and also in the system.",
     "enter_text_warning": "Please enter some text!",
     "dark_mode": "Dark mode",
-    "dark_mode_desc": "Switches the app to dark mode."
+    "dark_mode_desc": "Switches the app to dark mode.",
+    "refreshing_data": "Refreshing data...",
+    "refreshing_data_success": "Data refreshed successfully!",
+    "count_total": "{count} / {total}",
+    "labeled_entities": "Labeled Entities",
+    "percent_symbol": "{percent}%"
 }
