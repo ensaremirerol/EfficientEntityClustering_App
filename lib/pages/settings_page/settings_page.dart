@@ -36,7 +36,7 @@ class SettingsPage extends ConsumerWidget {
                     context: context,
                     builder: (context) {
                       return AlertDialog(
-                        title: const Text('restart_app'),
+                        title: const Text('restart_app').tr(),
                         content: const Text('restart_app_confirm').tr(),
                         actions: [
                           TextButton(

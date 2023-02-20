@@ -21,6 +21,11 @@ class __ClusterPaneState extends ConsumerState<_ClusterPane>
   }
 
   @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+  }
+
+  @override
   void dispose() {
     _tabController.dispose();
     _searchController.dispose();
@@ -30,6 +35,7 @@ class __ClusterPaneState extends ConsumerState<_ClusterPane>
   @override
   Widget build(BuildContext context) {
     final state = ref.watch(labelingProvider);
+
     ref.listen<String?>(
       labelingProvider.select((value) => value.searchQuery),
       (previous, next) {
@@ -84,6 +90,30 @@ class __ClusterPaneState extends ConsumerState<_ClusterPane>
                     padding: const EdgeInsets.all(16.0),
                     child: Column(
                       children: [
+                        Row(
+                            children: state.currentEntityMention!
+                                .split(' ')
+                                .map((e) => Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: InkWell(
+                                        onTap: () {
+                                          final String newText;
+                                          if (state.searchQuery?.isEmpty ??
+                                              true) {
+                                            newText = e;
+                                          } else {
+                                            newText = '${state.searchQuery} $e';
+                                          }
+                                          ref
+                                              .read(labelingProvider.notifier)
+                                              .searchClusters(newText);
+                                        },
+                                        child: Chip(
+                                          label: Text(e),
+                                        ),
+                                      ),
+                                    ))
+                                .toList()),
                         Row(
                           children: [
                             Expanded(

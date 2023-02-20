@@ -28,6 +28,19 @@ class _LabelingPageSmall extends ConsumerWidget {
                               mention: state.currentEntityMention!,
                               id: state.currentEntityId!),
                           const SizedBox(height: 20),
+                          Align(
+                            alignment: Alignment.centerRight,
+                            child: ElevatedButton(
+                              onPressed: () {
+                                ref
+                                    .read(labelingProvider.notifier)
+                                    .getNewEntity();
+                              },
+                              child: const Text(
+                                'get_next_entity',
+                              ).tr(),
+                            ),
+                          ),
                           const Icon(Icons.arrow_downward),
                           const SizedBox(height: 20),
                           _ClusterPane(

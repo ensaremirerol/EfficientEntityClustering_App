@@ -116,7 +116,7 @@ class _ClusterDataTable extends ConsumerWidget {
                                                         title: 'delete_cluster'
                                                             .tr(),
                                                         content:
-                                                            'delete_cluster_content'
+                                                            'delete_cluster_confirm'
                                                                 .tr(),
                                                         cancelText:
                                                             'cancel'.tr(),

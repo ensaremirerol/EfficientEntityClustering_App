@@ -33,6 +33,7 @@ class CustomTextField extends StatelessWidget {
   Widget build(BuildContext context) {
     if (!isFormField) {
       return TextField(
+        controller: controller,
         decoration: InputDecoration(
           hintText: hintText,
           border: const OutlineInputBorder(
