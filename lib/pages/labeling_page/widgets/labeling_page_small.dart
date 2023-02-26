@@ -19,9 +19,8 @@ class _LabelingPageSmall extends ConsumerWidget {
           Expanded(
               child: state.currentEntityId == null
                   ? const _InitalWidget()
-                  : SingleChildScrollView(
+                  : Padding(
                       padding: const EdgeInsets.all(16.0),
-                      primary: true,
                       child: Column(
                         children: [
                           _EntityCard(
@@ -43,9 +42,10 @@ class _LabelingPageSmall extends ConsumerWidget {
                           ),
                           const Icon(Icons.arrow_downward),
                           const SizedBox(height: 20),
-                          _ClusterPane(
-                            height: max(
-                                500, MediaQuery.of(context).size.height * 0.6),
+                          Expanded(
+                            child: _ClusterPane(
+                              
+                            ),
                           ),
                         ],
                       ),

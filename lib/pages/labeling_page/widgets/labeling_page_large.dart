@@ -12,8 +12,8 @@ class _LabelingPageLarge extends ConsumerWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const SizedBox(height: 20),
-          Text('labeling_page',
-              style: Theme.of(context).textTheme.displaySmall).tr(),
+          Text('labeling_page', style: Theme.of(context).textTheme.displaySmall)
+              .tr(),
           const Divider(),
           const SizedBox(height: 20),
           Expanded(
@@ -34,9 +34,7 @@ class _LabelingPageLarge extends ConsumerWidget {
                         const SizedBox(width: 20),
                         Expanded(child:
                             LayoutBuilder(builder: (context, constraints) {
-                          return _ClusterPane(
-                            height: constraints.maxHeight * 0.75,
-                          );
+                          return _ClusterPane();
                         })),
                       ],
                     ))

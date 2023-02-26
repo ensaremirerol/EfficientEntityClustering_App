@@ -1,10 +1,7 @@
 part of '../labeling_page.dart';
 
 class _ClusterPane extends ConsumerStatefulWidget {
-  const _ClusterPane({required this.height});
-
-  final double height;
-
+  const _ClusterPane();
   @override
   ConsumerState<ConsumerStatefulWidget> createState() => __ClusterPaneState();
 }
@@ -58,9 +55,7 @@ class __ClusterPaneState extends ConsumerState<_ClusterPane>
                 ),
               ],
             ),
-            SizedBox(
-              height: widget.height,
-              width: double.infinity,
+            Expanded(
               child: TabBarView(
                 controller: _tabController,
                 children: [
@@ -83,8 +78,7 @@ class __ClusterPaneState extends ConsumerState<_ClusterPane>
                                     _onAddToClusterPressed(
                                         state.possibleClusterIds![index]);
                                   });
-                            },
-                          ),
+                            }),
                   ),
                   Padding(
                     padding: const EdgeInsets.all(16.0),
