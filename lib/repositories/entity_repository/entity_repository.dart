@@ -1,8 +1,8 @@
-
 import 'package:eec_app/models/data_models/api_entity_in/api_entity_in.dart';
 import 'package:eec_app/models/entity_model/entity_model.dart';
 import 'package:eec_app/services/API_service/api_calls/entity/create_entities.dart';
 import 'package:eec_app/services/API_service/api_calls/entity/create_entity.dart';
+import 'package:eec_app/services/API_service/api_calls/entity/delete_entities.dart';
 import 'package:eec_app/services/API_service/api_calls/entity/delete_entity.dart';
 import 'package:eec_app/services/API_service/api_calls/entity/export_all_entities.dart';
 import 'package:eec_app/services/API_service/api_calls/entity/get_all_entities.dart';
@@ -61,7 +61,23 @@ class EntityRepository {
 
   Future<void> deleteEntities(Set<String> selectedEntityIds) async {
     _logger.i('Deleting entities with ids $selectedEntityIds');
-    await Future.forEach(selectedEntityIds, (element) => deleteEntity(element));
+    try {
+      final response = await apiService.call(const DeleteEntities(),
+          DeleteEntitiesArgs(ids: selectedEntityIds.toList(growable: false)));
+      if ((response.statusCode ?? 0) ~/ 100 == 2) {
+        _entities.removeWhere(
+            (element) => selectedEntityIds.contains(element.entity_id));
+      } else {
+        _logger.e('Response status code is not 200');
+        _logger.e(response);
+        InstanceController().getByType<SnackBarService>().showErrorMessage(
+            'Error while deleting entities with ids ${selectedEntityIds}:\n${response.data['detail']}');
+        throw Exception('Response status code is not 200');
+      }
+    } catch (e) {
+      _logger.e('Error while deleting entities with ids $selectedEntityIds');
+      _logger.e(e);
+    }
   }
 
   Future<void> addEntity(String mention, String source, String sourceId) async {
@@ -129,7 +145,7 @@ class EntityRepository {
     try {
       final response = await apiService.call(const ExportAllEntites(), null);
       if (response.statusCode == 200) {
-        return response.data!; 
+        return response.data!;
       } else {
         _logger.e('Response status code is not 200');
         _logger.e(response);
@@ -137,8 +153,7 @@ class EntityRepository {
             'Error while exporting entities:\n${response.data['detail']}');
         throw Exception('Response status code is not 200');
       }
-    }
-    on Exception catch (e) {
+    } on Exception catch (e) {
       _logger.e('Error while exporting entities');
       _logger.e(e);
       rethrow;

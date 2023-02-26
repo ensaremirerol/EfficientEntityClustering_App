@@ -2,6 +2,7 @@ import 'package:eec_app/models/cluster_model/cluster_model.dart';
 import 'package:eec_app/services/API_service/api_calls/cluster/add_entity_to_cluster.dart';
 import 'package:eec_app/services/API_service/api_calls/cluster/create_cluster.dart';
 import 'package:eec_app/services/API_service/api_calls/cluster/delete_cluster.dart';
+import 'package:eec_app/services/API_service/api_calls/cluster/delete_clusters.dart';
 import 'package:eec_app/services/API_service/api_calls/cluster/export_all_clusters.dart';
 import 'package:eec_app/services/API_service/api_calls/cluster/get_all_clusters.dart';
 import 'package:eec_app/services/API_service/api_calls/cluster/remove_entity_from_cluster.dart';
@@ -62,8 +63,24 @@ class ClusterRepository {
 
   Future<void> deleteClusters(Set<String> selectedClusterIds) async {
     _logger.i('Deleting clusters');
-    await Future.forEach(
-        selectedClusterIds, (element) => deleteCluster(element));
+    try {
+      final response = await apiService.call(const DeleteClusters(),
+          DeleteClustersArgs(ids: selectedClusterIds.toList(growable: false)));
+
+      if ((response.statusCode ?? 0) ~/ 100 == 2) {
+        _clusters.removeWhere(
+            (element) => selectedClusterIds.contains(element.cluster_id));
+      } else {
+        _logger.e('Response status code is not 200');
+        _logger.e(response);
+        InstanceController().getByType<SnackBarService>().showErrorMessage(
+            'Error while deleting entities:\n${response.data['detail']}');
+        throw Exception('Response status code is not 200');
+      }
+    } on Exception catch (e) {
+      _logger.e('Error while deleting clusters');
+      _logger.e(e);
+    }
   }
 
   Future<bool> addCluster(String clusterName) async {
