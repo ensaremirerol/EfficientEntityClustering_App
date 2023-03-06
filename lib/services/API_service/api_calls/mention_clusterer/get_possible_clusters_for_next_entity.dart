@@ -4,7 +4,7 @@ class GetPossibleClustersForNextEntity extends IAPICall {
   const GetPossibleClustersForNextEntity()
       : super(
             name: 'GetPossibleClustersForNextEntity',
-            path: '/mention_clustering/',
+            path: '/mention/',
             method: 'GET',
             requiresArgs: false);
 }

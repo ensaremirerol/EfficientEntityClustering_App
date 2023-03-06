@@ -6,7 +6,7 @@ class UpdateEntity extends IAPICall {
   const UpdateEntity()
       : super(
             name: 'UpdateEntity',
-            path: '/entities/update-entity/',
+            path: '/entities/entity/{id}/update',
             method: 'POST',
             requiresArgs: true);
 }

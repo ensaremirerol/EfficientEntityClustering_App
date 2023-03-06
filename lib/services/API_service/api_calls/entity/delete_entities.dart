@@ -5,7 +5,7 @@ class DeleteEntities extends IAPICall {
   const DeleteEntities()
       : super(
             name: 'DeleteEntities',
-            path: '/entities/delete-entities',
+            path: '/entities/delete',
             method: 'DELETE',
             requiresArgs: true);
 }

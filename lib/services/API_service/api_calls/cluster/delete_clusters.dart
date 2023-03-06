@@ -5,7 +5,7 @@ class DeleteClusters extends IAPICall {
   const DeleteClusters()
       : super(
             name: 'DeleteClusters',
-            path: '/clusters/cluster/delete',
+            path: '/clusters/delete',
             method: 'DELETE',
             requiresArgs: true);
 }

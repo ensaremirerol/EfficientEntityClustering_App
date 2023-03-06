@@ -6,7 +6,7 @@ class CreateEntity extends IAPICall {
   const CreateEntity()
       : super(
             name: 'CreateEntity',
-            path: '/entities/create-entity',
+            path: '/entities/entity/create',
             method: 'POST',
             requiresArgs: true);
 }
