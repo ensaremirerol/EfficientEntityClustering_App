@@ -24,7 +24,7 @@ mixin _$EntityModel {
   String get mention => throw _privateConstructorUsedError;
   String get entity_source => throw _privateConstructorUsedError;
   String get entity_source_id => throw _privateConstructorUsedError;
-  bool get in_cluster => throw _privateConstructorUsedError;
+  bool get has_cluster => throw _privateConstructorUsedError;
   String get cluster_id => throw _privateConstructorUsedError;
   bool get has_mention_vector => throw _privateConstructorUsedError;
 
@@ -45,7 +45,7 @@ abstract class $EntityModelCopyWith<$Res> {
       String mention,
       String entity_source,
       String entity_source_id,
-      bool in_cluster,
+      bool has_cluster,
       String cluster_id,
       bool has_mention_vector});
 }
@@ -67,7 +67,7 @@ class _$EntityModelCopyWithImpl<$Res, $Val extends EntityModel>
     Object? mention = null,
     Object? entity_source = null,
     Object? entity_source_id = null,
-    Object? in_cluster = null,
+    Object? has_cluster = null,
     Object? cluster_id = null,
     Object? has_mention_vector = null,
   }) {
@@ -88,9 +88,9 @@ class _$EntityModelCopyWithImpl<$Res, $Val extends EntityModel>
           ? _value.entity_source_id
           : entity_source_id // ignore: cast_nullable_to_non_nullable
               as String,
-      in_cluster: null == in_cluster
-          ? _value.in_cluster
-          : in_cluster // ignore: cast_nullable_to_non_nullable
+      has_cluster: null == has_cluster
+          ? _value.has_cluster
+          : has_cluster // ignore: cast_nullable_to_non_nullable
               as bool,
       cluster_id: null == cluster_id
           ? _value.cluster_id
@@ -117,7 +117,7 @@ abstract class _$$_EntityModelCopyWith<$Res>
       String mention,
       String entity_source,
       String entity_source_id,
-      bool in_cluster,
+      bool has_cluster,
       String cluster_id,
       bool has_mention_vector});
 }
@@ -137,7 +137,7 @@ class __$$_EntityModelCopyWithImpl<$Res>
     Object? mention = null,
     Object? entity_source = null,
     Object? entity_source_id = null,
-    Object? in_cluster = null,
+    Object? has_cluster = null,
     Object? cluster_id = null,
     Object? has_mention_vector = null,
   }) {
@@ -158,9 +158,9 @@ class __$$_EntityModelCopyWithImpl<$Res>
           ? _value.entity_source_id
           : entity_source_id // ignore: cast_nullable_to_non_nullable
               as String,
-      in_cluster: null == in_cluster
-          ? _value.in_cluster
-          : in_cluster // ignore: cast_nullable_to_non_nullable
+      has_cluster: null == has_cluster
+          ? _value.has_cluster
+          : has_cluster // ignore: cast_nullable_to_non_nullable
               as bool,
       cluster_id: null == cluster_id
           ? _value.cluster_id
@@ -182,7 +182,7 @@ class _$_EntityModel implements _EntityModel {
       required this.mention,
       required this.entity_source,
       required this.entity_source_id,
-      required this.in_cluster,
+      required this.has_cluster,
       required this.cluster_id,
       required this.has_mention_vector});
 
@@ -198,7 +198,7 @@ class _$_EntityModel implements _EntityModel {
   @override
   final String entity_source_id;
   @override
-  final bool in_cluster;
+  final bool has_cluster;
   @override
   final String cluster_id;
   @override
@@ -206,7 +206,7 @@ class _$_EntityModel implements _EntityModel {
 
   @override
   String toString() {
-    return 'EntityModel(entity_id: $entity_id, mention: $mention, entity_source: $entity_source, entity_source_id: $entity_source_id, in_cluster: $in_cluster, cluster_id: $cluster_id, has_mention_vector: $has_mention_vector)';
+    return 'EntityModel(entity_id: $entity_id, mention: $mention, entity_source: $entity_source, entity_source_id: $entity_source_id, has_cluster: $has_cluster, cluster_id: $cluster_id, has_mention_vector: $has_mention_vector)';
   }
 
   @override
@@ -221,8 +221,8 @@ class _$_EntityModel implements _EntityModel {
                 other.entity_source == entity_source) &&
             (identical(other.entity_source_id, entity_source_id) ||
                 other.entity_source_id == entity_source_id) &&
-            (identical(other.in_cluster, in_cluster) ||
-                other.in_cluster == in_cluster) &&
+            (identical(other.has_cluster, has_cluster) ||
+                other.has_cluster == has_cluster) &&
             (identical(other.cluster_id, cluster_id) ||
                 other.cluster_id == cluster_id) &&
             (identical(other.has_mention_vector, has_mention_vector) ||
@@ -237,7 +237,7 @@ class _$_EntityModel implements _EntityModel {
       mention,
       entity_source,
       entity_source_id,
-      in_cluster,
+      has_cluster,
       cluster_id,
       has_mention_vector);
 
@@ -261,7 +261,7 @@ abstract class _EntityModel implements EntityModel {
       required final String mention,
       required final String entity_source,
       required final String entity_source_id,
-      required final bool in_cluster,
+      required final bool has_cluster,
       required final String cluster_id,
       required final bool has_mention_vector}) = _$_EntityModel;
 
@@ -277,7 +277,7 @@ abstract class _EntityModel implements EntityModel {
   @override
   String get entity_source_id;
   @override
-  bool get in_cluster;
+  bool get has_cluster;
   @override
   String get cluster_id;
   @override

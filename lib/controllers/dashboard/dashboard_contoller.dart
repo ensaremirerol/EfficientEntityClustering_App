@@ -16,12 +16,12 @@ class DashboardController extends StateNotifier<DashboardState> {
           totalLabledEnities: InstanceController()
               .getByType<EntityRepository>()
               .entities
-              .where((element) => element.in_cluster)
+              .where((element) => element.has_cluster)
               .length,
           totalEnities: InstanceController()
               .getByType<EntityRepository>()
               .entities
-              .where((element) => !element.in_cluster)
+              .where((element) => !element.has_cluster)
               .length,
         ));
 
@@ -39,10 +39,10 @@ class DashboardController extends StateNotifier<DashboardState> {
     state = DashboardState(
       totalClusters: _clusterRepository.clusters.length,
       totalLabledEnities: _entityRepository.entities
-          .where((element) => element.in_cluster)
+          .where((element) => element.has_cluster)
           .length,
       totalEnities: _entityRepository.entities
-          .where((element) => !element.in_cluster)
+          .where((element) => !element.has_cluster)
           .length,
     );
 

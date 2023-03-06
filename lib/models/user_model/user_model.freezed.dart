@@ -22,7 +22,7 @@ UserModel _$UserModelFromJson(Map<String, dynamic> json) {
 mixin _$UserModel {
   String get user_id => throw _privateConstructorUsedError;
   String get username => throw _privateConstructorUsedError;
-  String get scopes => throw _privateConstructorUsedError;
+  List<String> get scopes => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -35,7 +35,7 @@ abstract class $UserModelCopyWith<$Res> {
   factory $UserModelCopyWith(UserModel value, $Res Function(UserModel) then) =
       _$UserModelCopyWithImpl<$Res, UserModel>;
   @useResult
-  $Res call({String user_id, String username, String scopes});
+  $Res call({String user_id, String username, List<String> scopes});
 }
 
 /// @nodoc
@@ -67,7 +67,7 @@ class _$UserModelCopyWithImpl<$Res, $Val extends UserModel>
       scopes: null == scopes
           ? _value.scopes
           : scopes // ignore: cast_nullable_to_non_nullable
-              as String,
+              as List<String>,
     ) as $Val);
   }
 }
@@ -79,7 +79,7 @@ abstract class _$$_UserModelCopyWith<$Res> implements $UserModelCopyWith<$Res> {
       __$$_UserModelCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String user_id, String username, String scopes});
+  $Res call({String user_id, String username, List<String> scopes});
 }
 
 /// @nodoc
@@ -107,9 +107,9 @@ class __$$_UserModelCopyWithImpl<$Res>
           : username // ignore: cast_nullable_to_non_nullable
               as String,
       scopes: null == scopes
-          ? _value.scopes
+          ? _value._scopes
           : scopes // ignore: cast_nullable_to_non_nullable
-              as String,
+              as List<String>,
     ));
   }
 }
@@ -118,7 +118,10 @@ class __$$_UserModelCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_UserModel implements _UserModel {
   _$_UserModel(
-      {required this.user_id, required this.username, required this.scopes});
+      {required this.user_id,
+      required this.username,
+      required final List<String> scopes})
+      : _scopes = scopes;
 
   factory _$_UserModel.fromJson(Map<String, dynamic> json) =>
       _$$_UserModelFromJson(json);
@@ -127,8 +130,13 @@ class _$_UserModel implements _UserModel {
   final String user_id;
   @override
   final String username;
+  final List<String> _scopes;
   @override
-  final String scopes;
+  List<String> get scopes {
+    if (_scopes is EqualUnmodifiableListView) return _scopes;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_scopes);
+  }
 
   @override
   String toString() {
@@ -143,12 +151,13 @@ class _$_UserModel implements _UserModel {
             (identical(other.user_id, user_id) || other.user_id == user_id) &&
             (identical(other.username, username) ||
                 other.username == username) &&
-            (identical(other.scopes, scopes) || other.scopes == scopes));
+            const DeepCollectionEquality().equals(other._scopes, _scopes));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, user_id, username, scopes);
+  int get hashCode => Object.hash(runtimeType, user_id, username,
+      const DeepCollectionEquality().hash(_scopes));
 
   @JsonKey(ignore: true)
   @override
@@ -168,7 +177,7 @@ abstract class _UserModel implements UserModel {
   factory _UserModel(
       {required final String user_id,
       required final String username,
-      required final String scopes}) = _$_UserModel;
+      required final List<String> scopes}) = _$_UserModel;
 
   factory _UserModel.fromJson(Map<String, dynamic> json) =
       _$_UserModel.fromJson;
@@ -178,7 +187,7 @@ abstract class _UserModel implements UserModel {
   @override
   String get username;
   @override
-  String get scopes;
+  List<String> get scopes;
   @override
   @JsonKey(ignore: true)
   _$$_UserModelCopyWith<_$_UserModel> get copyWith =>

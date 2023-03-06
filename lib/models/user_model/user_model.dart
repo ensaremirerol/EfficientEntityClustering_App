@@ -8,7 +8,7 @@ class UserModel with _$UserModel {
   factory UserModel({
     required String user_id,
     required String username,
-    required String scopes,
+    required List<String> scopes,
   }) = _UserModel;
 
   factory UserModel.fromJson(Map<String, dynamic> json) =>

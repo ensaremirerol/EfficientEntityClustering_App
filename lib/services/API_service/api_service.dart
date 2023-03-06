@@ -12,17 +12,19 @@ class APIService {
 
   final Logger _logger = Logger();
 
-  APIService(BaseOptions options) {
+  final String authPath;
+
+  APIService(BaseOptions options, {required this.authPath}) {
     _dio = Dio(options);
   }
 
-  Future<void> getToken(String username, String password, String path) async {
+  Future<void> getToken(String username, String password) async {
     try {
       _logger.i('Getting token');
-      final Response response = await _dio.post('$path',
+      final Response response = await _dio.post(authPath,
           data: FormData.fromMap({'username': username, 'password': password}));
       _dio.options.headers['Authorization'] =
-          'Bearer ${response.data['token']}';
+          'Bearer ${response.data['access_token']}';
       _logger.i('Token received');
     } on DioError catch (e) {
       _logger.e('Failed to get token');

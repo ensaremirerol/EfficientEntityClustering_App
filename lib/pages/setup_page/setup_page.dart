@@ -17,11 +17,15 @@ class _SetupPageState extends State<SetupPage> {
   final _formKey = GlobalKey<FormState>();
   final _urlController = TextEditingController();
   final _wsUrlController = TextEditingController();
+  final _usernameController = TextEditingController();
+  final _passwordController = TextEditingController();
 
   @override
   void dispose() {
     _urlController.dispose();
     _wsUrlController.dispose();
+    _usernameController.dispose();
+    _passwordController.dispose();
     super.dispose();
   }
 
@@ -67,56 +71,84 @@ class _SetupPageState extends State<SetupPage> {
           child: Card(
             child: Padding(
               padding: const EdgeInsets.all(16.0),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text('setup_page',
-                          style: Theme.of(context).textTheme.displaySmall)
-                      .tr(),
-                  const Divider(),
-                  const SizedBox(height: 20),
-                  Form(
-                      key: _formKey,
-                      child: Column(children: [
-                        CustomTextField.formField(
-                          controller: _urlController,
-                          hintText: 'URL',
-                          validator: (value) {
-                            if (value == null || value.isEmpty) {
-                              return 'enter_text_warning'.tr();
-                            }
-                            return null;
-                          },
-                        ),
-                        const SizedBox(height: 20),
-                        CustomTextField.formField(
-                          controller: _wsUrlController,
-                          hintText: 'WS URL',
-                          validator: (value) {
-                            if (value == null || value.isEmpty) {
-                              return 'enter_text_warning'.tr();
-                            }
-                            return null;
-                          },
-                        ),
-                        const SizedBox(height: 20),
-                        ElevatedButton(
-                          onPressed: () async {
-                            if (_formKey.currentState!.validate()) {
-                              final bool result = await InstanceController()
-                                  .getByType<SetupService>()
-                                  .configure(_urlController.text,
-                                      _wsUrlController.text);
-                              if (result) {
-                                GoRouter.of(context).go('/');
+              child: SingleChildScrollView(
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text('setup_page',
+                            style: Theme.of(context).textTheme.displaySmall)
+                        .tr(),
+                    const Divider(),
+                    const SizedBox(height: 20),
+                    Form(
+                        key: _formKey,
+                        child: Column(children: [
+                          CustomTextField.formField(
+                            controller: _urlController,
+                            hintText: 'URL',
+                            validator: (value) {
+                              if (value == null || value.isEmpty) {
+                                return 'enter_text_warning'.tr();
                               }
-                            }
-                          },
-                          child: const Text('submit').tr(),
-                        )
-                      ]))
-                ],
+                              return null;
+                            },
+                          ),
+                          const SizedBox(height: 20),
+                          CustomTextField.formField(
+                            controller: _wsUrlController,
+                            hintText: 'WS URL',
+                            validator: (value) {
+                              if (value == null || value.isEmpty) {
+                                return 'enter_text_warning'.tr();
+                              }
+                              return null;
+                            },
+                          ),
+                          const SizedBox(height: 20),
+                          CustomTextField.formField(
+                            controller: _usernameController,
+                            hintText: 'username',
+                            validator: (value) {
+                              if (value == null || value.isEmpty) {
+                                return 'enter_text_warning'.tr();
+                              }
+                              return null;
+                            },
+                          ),
+                          const SizedBox(height: 20),
+                          CustomTextField.formField(
+                            controller: _passwordController,
+                            hintText: 'password',
+                            obscureText: true,
+                            validator: (value) {
+                              if (value == null || value.isEmpty) {
+                                return 'enter_text_warning'.tr();
+                              }
+                              return null;
+                            },
+                          ),
+                          const SizedBox(height: 20),
+                          ElevatedButton(
+                            onPressed: () async {
+                              if (_formKey.currentState!.validate()) {
+                                final bool result = await InstanceController()
+                                    .getByType<SetupService>()
+                                    .configure(
+                                        _urlController.text,
+                                        _wsUrlController.text,
+                                        _usernameController.text,
+                                        _passwordController.text);
+                                if (result) {
+                                  GoRouter.of(context).go('/');
+                                }
+                              }
+                            },
+                            child: const Text('submit').tr(),
+                          )
+                        ]))
+                  ],
+                ),
               ),
             ),
           ),

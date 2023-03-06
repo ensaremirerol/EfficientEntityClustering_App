@@ -82,7 +82,8 @@ class _EntityDataTable extends ConsumerWidget {
                       ),
                       DataColumn(label: const Text('entity_in_cluster').tr()),
                       DataColumn(label: const Text('cluster_id').tr()),
-                      DataColumn(label: const Text('entity_has_mention_vector').tr()),
+                      DataColumn(
+                          label: const Text('entity_has_mention_vector').tr()),
                       DataColumn(label: const Text('delete').tr()),
                     ],
                     rows: state.entityList
@@ -108,7 +109,7 @@ class _EntityDataTable extends ConsumerWidget {
                                   DataCell(Text(e.entity_source)),
                                   DataCell(Text(e.entity_source_id)),
                                   DataCell(Text(
-                                      e.in_cluster ? 'yes'.tr() : 'no'.tr())),
+                                      e.has_cluster ? 'yes'.tr() : 'no'.tr())),
                                   DataCell(Text(e.cluster_id), onTap: () async {
                                     await showDialog(
                                       context: context,

@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:eec_app/repositories/cluster_repository/cluster_repository.dart';
 import 'package:eec_app/repositories/entity_repository/entity_repository.dart';
+import 'package:eec_app/repositories/user_repository/user_repository.dart';
 import 'package:eec_app/services/API_service/api_calls/test_call.dart';
 import 'package:eec_app/services/API_service/api_service.dart';
 import 'package:eec_app/services/labeling_service/labeling_service.dart';
@@ -22,7 +23,8 @@ class SetupService {
   String get baseUrl => _baseUrl!;
   String get wsUrl => _wsUrl!;
 
-  Future<bool> configure(String baseUrl, String wsUrl) async {
+  Future<bool> configure(
+      String baseUrl, String wsUrl, String username, String password) async {
     _logger.i('Configuring API');
 
     _baseUrl = baseUrl;
@@ -32,6 +34,7 @@ class SetupService {
       BaseOptions(
         baseUrl: baseUrl,
       ),
+      authPath: '/auth/login',
     );
 
     try {
@@ -47,14 +50,18 @@ class SetupService {
       reset();
       return false;
     }
+    try {
+      await apiService.getToken(username, password);
+    } catch (e) {
+      _logger.e('Failed to authenticate');
+      _logger.e(e);
+      InstanceController().getByType<SnackBarService>().showErrorMessage(
+          'Failed to authenticate. Please check your credentials and try again.');
+      reset();
+      return false;
+    }
 
-    InstanceController().addInstance(
-        APIService,
-        APIService(
-          BaseOptions(
-            baseUrl: baseUrl,
-          ),
-        ));
+    InstanceController().addInstance(APIService, apiService);
 
     InstanceController().addInstance(EntityRepository, EntityRepository());
 
@@ -62,9 +69,15 @@ class SetupService {
 
     InstanceController().addInstance(LabelingService, LabelingService());
 
+    InstanceController().addInstance(UserRepository, UserRepository());
+
     await InstanceController().getByType<EntityRepository>().refresh();
 
     await InstanceController().getByType<ClusterRepository>().refresh();
+
+    await InstanceController().getByType<UserRepository>().getCurrentUser();
+
+    await InstanceController().getByType<UserRepository>().refresh();
 
     _logger.i('API configured');
 
@@ -79,6 +92,11 @@ class SetupService {
 
   void reset() {
     _baseUrl = null;
+    InstanceController().removeByKey(APIService);
+    InstanceController().removeByKey(EntityRepository);
+    InstanceController().removeByKey(ClusterRepository);
+    InstanceController().removeByKey(LabelingService);
+    InstanceController().removeByKey(UserRepository);
     _wsUrl = null;
   }
 }

@@ -6,20 +6,22 @@ class CustomTextField extends StatelessWidget {
       this.controller,
       this.hintText,
       this.prefixIcon,
+      this.obscureText,
       this.onChanged})
       : initialValue = null,
         validator = null,
         isFormField = false;
 
-  const CustomTextField.formField({
-    super.key,
-    this.initialValue,
-    this.controller,
-    this.hintText,
-    this.prefixIcon,
-    this.validator,
-    this.onChanged,
-  }) : isFormField = true;
+  const CustomTextField.formField(
+      {super.key,
+      this.initialValue,
+      this.controller,
+      this.hintText,
+      this.prefixIcon,
+      this.validator,
+      this.onChanged,
+      this.obscureText})
+      : isFormField = true;
 
   final String? initialValue;
   final String? hintText;
@@ -28,12 +30,14 @@ class CustomTextField extends StatelessWidget {
   final String? Function(String?)? validator;
   final void Function(String?)? onChanged;
   final bool isFormField;
+  final bool? obscureText;
 
   @override
   Widget build(BuildContext context) {
     if (!isFormField) {
       return TextField(
         controller: controller,
+        obscureText: obscureText ?? false,
         decoration: InputDecoration(
           hintText: hintText,
           border: const OutlineInputBorder(
@@ -51,6 +55,7 @@ class CustomTextField extends StatelessWidget {
       initialValue: initialValue,
       validator: validator,
       onChanged: onChanged,
+      obscureText: obscureText ?? false,
       decoration: InputDecoration(
         hintText: hintText,
         border: const OutlineInputBorder(

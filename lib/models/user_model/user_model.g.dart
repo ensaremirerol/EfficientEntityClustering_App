@@ -9,7 +9,8 @@ part of 'user_model.dart';
 _$_UserModel _$$_UserModelFromJson(Map<String, dynamic> json) => _$_UserModel(
       user_id: json['user_id'] as String,
       username: json['username'] as String,
-      scopes: json['scopes'] as String,
+      scopes:
+          (json['scopes'] as List<dynamic>).map((e) => e as String).toList(),
     );
 
 Map<String, dynamic> _$$_UserModelToJson(_$_UserModel instance) =>
