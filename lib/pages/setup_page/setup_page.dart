@@ -27,8 +27,10 @@ class _SetupPageState extends State<SetupPage> {
 
   @override
   void initState() {
-    _urlController.text = 'http://0.0.0.0:8000';
-    _wsUrlController.text = 'ws://0.0.0.0:8000';
+    _urlController.text = const String.fromEnvironment('SERVER_URL',
+        defaultValue: 'http://eec.localhost:80/api/v1');
+    _wsUrlController.text = const String.fromEnvironment('WS_SERVER_URL',
+        defaultValue: 'ws://eec.localhost:80');
     super.initState();
   }
 

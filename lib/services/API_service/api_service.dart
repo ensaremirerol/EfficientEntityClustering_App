@@ -3,6 +3,8 @@ import 'dart:convert';
 import 'package:dio/dio.dart';
 import 'package:eec_app/services/API_service/interfaces/i_api_call.dart';
 import 'package:eec_app/services/API_service/interfaces/i_api_call_args.dart';
+import 'package:eec_app/services/snackbar_service/snackbar_service.dart';
+import 'package:eec_app/utils/instance_controller.dart';
 import 'package:logger/logger.dart';
 
 class APIService {
@@ -12,6 +14,22 @@ class APIService {
 
   APIService(BaseOptions options) {
     _dio = Dio(options);
+  }
+
+  Future<void> getToken(String username, String password, String path) async {
+    try {
+      _logger.i('Getting token');
+      final Response response = await _dio.post('$path',
+          data: FormData.fromMap({'username': username, 'password': password}));
+      _dio.options.headers['Authorization'] =
+          'Bearer ${response.data['token']}';
+      _logger.i('Token received');
+    } on DioError catch (e) {
+      _logger.e('Failed to get token');
+      _logger.e(e);
+      InstanceController().getByType<SnackBarService>().showErrorMessage(
+          'Failed to authenticate. Please check your credentials and try again.');
+    }
   }
 
   Future<Response> call(IAPICall apiCall, IAPICallArgs? args) async {

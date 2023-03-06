@@ -1,10 +1,10 @@
 import 'package:eec_app/services/API_service/interfaces/i_api_call.dart';
 
-class TestCall extends IAPICall {
-  const TestCall()
+class GetCurrentUser extends IAPICall {
+  const GetCurrentUser()
       : super(
-            name: 'TestCall',
-            path: '/auth/',
+            name: 'GetCurrentUser',
+            path: '/users/me',
             method: 'GET',
             requiresArgs: false);
 }

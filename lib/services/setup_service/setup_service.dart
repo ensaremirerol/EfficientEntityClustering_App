@@ -28,7 +28,7 @@ class SetupService {
     _baseUrl = baseUrl;
     _wsUrl = wsUrl;
 
-    APIService apiService = APIService(
+    final APIService apiService = APIService(
       BaseOptions(
         baseUrl: baseUrl,
       ),
