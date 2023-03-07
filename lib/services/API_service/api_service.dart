@@ -16,6 +16,13 @@ class APIService {
 
   APIService(BaseOptions options, {required this.authPath}) {
     _dio = Dio(options);
+    _dio.interceptors.add(LogInterceptor(
+      request: true,
+      requestBody: true,
+      requestHeader: true,
+      responseHeader: true,
+      responseBody: true,
+    ));
   }
 
   Future<void> getToken(String username, String password) async {

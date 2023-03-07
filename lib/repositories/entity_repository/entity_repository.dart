@@ -31,6 +31,14 @@ class EntityRepository {
       } else {
         _logger.e('Response data is null');
         _logger.e(response);
+        if (response.data != null) {
+          InstanceController().getByType<SnackBarService>().showErrorMessage(
+              'Error while refreshing EntityRepository:\n${response.data['detail']}');
+        } else {
+          InstanceController()
+              .getByType<SnackBarService>()
+              .showErrorMessage('Error while refreshing EntityRepository');
+        }
         throw Exception('Response data is null');
       }
     } on Exception catch (e) {
@@ -49,8 +57,13 @@ class EntityRepository {
       } else {
         _logger.e('Response status code is not 200');
         _logger.e(response);
-        InstanceController().getByType<SnackBarService>().showErrorMessage(
-            'Error while deleting entity with id ${entityId}:\n${response.data['detail']}');
+        if (response.data['detail'] != null) {
+          InstanceController().getByType<SnackBarService>().showErrorMessage(
+              'Error while deleting entity with id $entityId:\n${response.data['detail']}');
+        } else {
+          InstanceController().getByType<SnackBarService>().showErrorMessage(
+              'Error while deleting entity with id $entityId');
+        }
         throw Exception('Response status code is not 200');
       }
     } on Exception catch (e) {
@@ -70,8 +83,13 @@ class EntityRepository {
       } else {
         _logger.e('Response status code is not 200');
         _logger.e(response);
-        InstanceController().getByType<SnackBarService>().showErrorMessage(
-            'Error while deleting entities with ids ${selectedEntityIds}:\n${response.data['detail']}');
+        if (response.data['detail'] != null) {
+          InstanceController().getByType<SnackBarService>().showErrorMessage(
+              'Error while deleting entities with ids $selectedEntityIds:\n${response.data['detail']}');
+        } else {
+          InstanceController().getByType<SnackBarService>().showErrorMessage(
+              'Error while deleting entities with ids $selectedEntityIds');
+        }
         throw Exception('Response status code is not 200');
       }
     } catch (e) {
@@ -97,8 +115,13 @@ class EntityRepository {
       } else {
         _logger.e('Response status code is not 200');
         _logger.e(response);
-        InstanceController().getByType<SnackBarService>().showErrorMessage(
-            'Error while adding entity with mention ${mention}:\n${response.data['detail']}');
+        if (response.data['detail'] != null) {
+          InstanceController().getByType<SnackBarService>().showErrorMessage(
+              'Error while adding entity with mention $mention:\n${response.data['detail']}');
+        } else {
+          InstanceController().getByType<SnackBarService>().showErrorMessage(
+              'Error while adding entity with mention $mention');
+        }
         throw Exception('Response status code is not 200');
       }
     } on Exception catch (e) {
@@ -131,8 +154,14 @@ class EntityRepository {
       } else {
         _logger.e('Response status code is not 200');
         _logger.e(response);
-        InstanceController().getByType<SnackBarService>().showErrorMessage(
-            'Error while adding entities:\n${response.data['detail']}');
+        if (response.data['detail'] != null) {
+          InstanceController().getByType<SnackBarService>().showErrorMessage(
+              'Error while adding entities:\n${response.data['detail']}');
+        } else {
+          InstanceController()
+              .getByType<SnackBarService>()
+              .showErrorMessage('Error while adding entities}');
+        }
       }
     } on Exception catch (e) {
       _logger.e('Error while adding entities');
@@ -149,8 +178,14 @@ class EntityRepository {
       } else {
         _logger.e('Response status code is not 200');
         _logger.e(response);
-        InstanceController().getByType<SnackBarService>().showErrorMessage(
-            'Error while exporting entities:\n${response.data['detail']}');
+        if (response.data['detail'] != null) {
+          InstanceController().getByType<SnackBarService>().showErrorMessage(
+              'Error while exporting entities:\n${response.data['detail']}');
+        } else {
+          InstanceController()
+              .getByType<SnackBarService>()
+              .showErrorMessage('Error while exporting entities');
+        }
         throw Exception('Response status code is not 200');
       }
     } on Exception catch (e) {

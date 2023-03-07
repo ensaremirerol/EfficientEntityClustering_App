@@ -6,7 +6,7 @@ class UpdateScopes extends IAPICall {
       : super(
             name: 'UpdateScopes',
             path: '/users/user/{id}/update/scopes',
-            method: 'POST',
+            method: 'PUT',
             requiresArgs: true);
 }
 

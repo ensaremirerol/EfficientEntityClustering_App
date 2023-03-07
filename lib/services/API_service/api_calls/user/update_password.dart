@@ -6,7 +6,7 @@ class UpdatePassword extends IAPICall {
       : super(
             name: 'UpdatePassword',
             path: '/users/user/{id}/update/password',
-            method: 'POST',
+            method: 'PUT',
             requiresArgs: true);
 }
 
@@ -24,7 +24,7 @@ class UpdatePasswordArgs extends IAPICallArgs {
   @override
   Map<String, dynamic> getData() {
     return {
-      'oldPassword': oldPassword,
+      'old_password': oldPassword,
       'password': newPassword,
     };
   }

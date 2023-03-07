@@ -5,6 +5,7 @@ import 'package:eec_app/pages/log_page/log_page.dart';
 import 'package:eec_app/pages/settings_page/settings_page.dart';
 import 'package:eec_app/pages/setup_page/setup_page.dart';
 import 'package:eec_app/pages/shell_page/shell_page.dart';
+import 'package:eec_app/pages/user_page/user_page.dart';
 import 'package:eec_app/services/setup_service/setup_service.dart';
 import 'package:eec_app/utils/instance_controller.dart';
 import 'package:flutter/material.dart';
@@ -49,6 +50,26 @@ final router = GoRouter(
               name: 'dashboard',
               pageBuilder: (context, state) =>
                   _noTransitionBuilder(state, const Dashboard())),
+          GoRoute(
+              path: '/user',
+              name: 'user',
+              routes: [
+                GoRoute(
+                    path: 'admin',
+                    name: 'admin_panel',
+                    pageBuilder: (context, state) {
+                      return _noTransitionBuilder(
+                          state,
+                          Scaffold(
+                              appBar: AppBar(
+                                title: const Text('Admin Panel'),
+                              ),
+                              body: const Text('admin_panel')));
+                    }),
+              ],
+              pageBuilder: (context, state) {
+                return _noTransitionBuilder(state, const UserPage());
+              }),
           GoRoute(
               path: '/labeling',
               name: 'labeling',

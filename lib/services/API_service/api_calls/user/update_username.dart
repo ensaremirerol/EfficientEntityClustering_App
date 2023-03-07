@@ -6,7 +6,7 @@ class UpdateUsername extends IAPICall {
       : super(
             name: 'UpdateUsername',
             path: '/users/user/{id}/update/username',
-            method: 'POST',
+            method: 'PUT',
             requiresArgs: true);
 }
 

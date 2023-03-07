@@ -85,29 +85,30 @@ class __ClusterPaneState extends ConsumerState<_ClusterPane>
                     child: Column(
                       children: [
                         Row(
-                            children: state.currentEntityMention!
-                                .split(' ')
-                                .map((e) => Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: InkWell(
-                                        onTap: () {
-                                          final String newText;
-                                          if (state.searchQuery?.isEmpty ??
-                                              true) {
-                                            newText = e;
-                                          } else {
-                                            newText = '${state.searchQuery} $e';
-                                          }
-                                          ref
-                                              .read(labelingProvider.notifier)
-                                              .searchClusters(newText);
-                                        },
-                                        child: Chip(
-                                          label: Text(e),
-                                        ),
+                          children: state.currentEntityMention!
+                              .split(' ')
+                              .map((e) => Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: InkWell(
+                                      onTap: () {
+                                        final String newText;
+                                        if (state.searchQuery?.isEmpty ??
+                                            true) {
+                                          newText = e;
+                                        } else {
+                                          newText = '${state.searchQuery} $e';
+                                        }
+                                        ref
+                                            .read(labelingProvider.notifier)
+                                            .searchClusters(newText);
+                                      },
+                                      child: Chip(
+                                        label: Text(e),
                                       ),
-                                    ))
-                                .toList()),
+                                    ),
+                                  ))
+                              .toList(),
+                        ),
                         Row(
                           children: [
                             Expanded(
@@ -121,6 +122,26 @@ class __ClusterPaneState extends ConsumerState<_ClusterPane>
                                 },
                               ),
                             ),
+                            const SizedBox(width: 20),
+                            InkWell(
+                                onLongPress: () => ref
+                                    .read(labelingProvider.notifier)
+                                    .searchClusters(''),
+                                onTap: () {
+                                  final textList =
+                                      state.searchQuery?.split(' ').toList() ??
+                                          [];
+                                  if (textList.isEmpty) return;
+                                  ref
+                                      .read(labelingProvider.notifier)
+                                      .searchClusters(textList
+                                          .sublist(0, textList.length - 1)
+                                          .join(' '));
+                                },
+                                child: Icon(
+                                  Icons.backspace,
+                                  color: Theme.of(context).primaryColor,
+                                )),
                             const SizedBox(width: 20),
                             ElevatedButton(
                                 onPressed: () {

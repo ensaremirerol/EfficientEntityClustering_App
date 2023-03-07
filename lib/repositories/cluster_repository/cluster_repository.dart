@@ -31,8 +31,13 @@ class ClusterRepository {
       } else {
         _logger.e('Response data is null');
         _logger.e(response);
-        InstanceController().getByType<SnackBarService>().showErrorMessage(
-            'Error while fetching clusters:\n${response.data['detail']}');
+        if (response.data != null) {
+          InstanceController().getByType<SnackBarService>().showErrorMessage(
+              'Error while refreshing ClusterRepository:\n${response.data['detail']}');
+        } else {
+          InstanceController().getByType<SnackBarService>().showErrorMessage(
+              'Error while refreshing ClusterRepository:\n${response.data}');
+        }
         throw Exception('Response data is null');
       }
     } on Exception catch (e) {
@@ -51,8 +56,13 @@ class ClusterRepository {
       } else {
         _logger.e('Response status code is not 200');
         _logger.e(response);
-        InstanceController().getByType<SnackBarService>().showErrorMessage(
-            'Error while deleting entity with id ${clusterId}:\n${response.data['detail']}');
+        if (response.data != null) {
+          InstanceController().getByType<SnackBarService>().showErrorMessage(
+              'Error while deleting entity with id ${clusterId}:\n${response.data['detail']}');
+        } else {
+          InstanceController().getByType<SnackBarService>().showErrorMessage(
+              'Error while deleting entity with id ${clusterId}');
+        }
         throw Exception('Response status code is not 200');
       }
     } on Exception catch (e) {
@@ -73,8 +83,13 @@ class ClusterRepository {
       } else {
         _logger.e('Response status code is not 200');
         _logger.e(response);
-        InstanceController().getByType<SnackBarService>().showErrorMessage(
-            'Error while deleting entities:\n${response.data['detail']}');
+        if (response.data != null) {
+          InstanceController().getByType<SnackBarService>().showErrorMessage(
+              'Error while deleting entities:\n${response.data['detail']}');
+        } else {
+          InstanceController().getByType<SnackBarService>().showErrorMessage(
+              'Error while deleting entities');
+        }
         throw Exception('Response status code is not 200');
       }
     } on Exception catch (e) {
@@ -94,8 +109,13 @@ class ClusterRepository {
       } else {
         _logger.e('Response status code is not 200');
         _logger.e(response);
-        InstanceController().getByType<SnackBarService>().showErrorMessage(
-            'Error while adding cluster:\n${response.data['detail']}');
+        if (response.data != null) {
+          InstanceController().getByType<SnackBarService>().showErrorMessage(
+              'Error while adding cluster:\n${response.data['detail']}');
+        } else {
+          InstanceController().getByType<SnackBarService>().showErrorMessage(
+              'Error while adding cluster');
+        }
         throw Exception('Response status code is not 200');
       }
     } on Exception catch (e) {
@@ -113,8 +133,13 @@ class ClusterRepository {
       } else {
         _logger.e('Response status code is not 200');
         _logger.e(response);
-        InstanceController().getByType<SnackBarService>().showErrorMessage(
-            'Error while exporting entities:\n${response.data['detail']}');
+        if (response.data != null) {
+          InstanceController().getByType<SnackBarService>().showErrorMessage(
+              'Error while exporting entities:\n${response.data['detail']}');
+        } else {
+          InstanceController().getByType<SnackBarService>().showErrorMessage(
+              'Error while exporting entities');
+        }
         throw Exception('Response status code is not 200');
       }
     } on Exception catch (e) {
@@ -135,8 +160,13 @@ class ClusterRepository {
       } else {
         _logger.e('Response status code is not 200');
         _logger.e(response);
-        InstanceController().getByType<SnackBarService>().showErrorMessage(
-            'Error while adding entity to cluster:\n${response.data['detail']}');
+        if (response.data != null) {
+          InstanceController().getByType<SnackBarService>().showErrorMessage(
+              'Error while adding entity to cluster:\n${response.data['detail']}');
+        } else {
+          InstanceController().getByType<SnackBarService>().showErrorMessage(
+              'Error while adding entity to cluster');
+        }
         throw Exception('Response status code is not 200');
       }
     } on Exception catch (e) {
@@ -157,8 +187,13 @@ class ClusterRepository {
       } else {
         _logger.e('Response status code is not 200');
         _logger.e(response);
-        InstanceController().getByType<SnackBarService>().showErrorMessage(
-            'Error while removing entity from cluster:\n${response.data['detail']}');
+        if (response.data != null) {
+          InstanceController().getByType<SnackBarService>().showErrorMessage(
+              'Error while removing entity from cluster:\n${response.data['detail']}');
+        } else {
+          InstanceController().getByType<SnackBarService>().showErrorMessage(
+              'Error while removing entity from cluster');
+        }
         throw Exception('Response status code is not 200');
       }
     } on Exception catch (e) {

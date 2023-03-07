@@ -1,6 +1,9 @@
 import 'dart:ui';
 
 import 'package:easy_localization/easy_localization.dart';
+import 'package:eec_app/models/user_model/user_model.dart';
+import 'package:eec_app/repositories/user_repository/user_repository.dart';
+import 'package:eec_app/utils/instance_controller.dart';
 import 'package:eec_app/widgets/responsive_builder/responsive_builder.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -8,24 +11,27 @@ import 'package:go_router/go_router.dart';
 
 part './widgets/shell_page_small.dart';
 part './widgets/shell_page_large.dart';
+part './widgets/drawer_header.dart';
 part './data/navigation_item.dart';
 
 final navigationItems = [
   const NavigationItem(
       title: 'dashboard', index: 0, icon: Icons.dashboard, route: '/dashboard'),
   const NavigationItem(
-      title: 'labeling', index: 1, icon: Icons.checklist, route: '/labeling'),
+      title: 'user', index: 1, icon: Icons.person, route: '/user'),
   const NavigationItem(
-      title: 'data', index: 2, icon: Icons.data_array, route: '/data'),
+      title: 'labeling', index: 2, icon: Icons.checklist, route: '/labeling'),
+  const NavigationItem(
+      title: 'data', index: 3, icon: Icons.data_array, route: '/data'),
   const NavigationItem(
     title: 'logs',
-    index: 3,
+    index: 4,
     icon: Icons.list,
     route: '/logs',
   ),
   const NavigationItem(
     title: 'settings',
-    index: 4,
+    index: 5,
     icon: Icons.settings,
     route: '/settings',
   ),

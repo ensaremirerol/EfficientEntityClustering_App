@@ -7,6 +7,7 @@ class CustomTextField extends StatelessWidget {
       this.hintText,
       this.prefixIcon,
       this.obscureText,
+      this.trailing,
       this.onChanged})
       : initialValue = null,
         validator = null,
@@ -20,6 +21,7 @@ class CustomTextField extends StatelessWidget {
       this.prefixIcon,
       this.validator,
       this.onChanged,
+      this.trailing,
       this.obscureText})
       : isFormField = true;
 
@@ -31,6 +33,7 @@ class CustomTextField extends StatelessWidget {
   final void Function(String?)? onChanged;
   final bool isFormField;
   final bool? obscureText;
+  final Widget? trailing;
 
   @override
   Widget build(BuildContext context) {
@@ -40,6 +43,7 @@ class CustomTextField extends StatelessWidget {
         obscureText: obscureText ?? false,
         decoration: InputDecoration(
           hintText: hintText,
+          suffix: trailing,
           border: const OutlineInputBorder(
             borderSide: BorderSide(color: Colors.grey, width: 3),
           ),
@@ -58,6 +62,8 @@ class CustomTextField extends StatelessWidget {
       obscureText: obscureText ?? false,
       decoration: InputDecoration(
         hintText: hintText,
+        suffix: trailing,
+        
         border: const OutlineInputBorder(
           borderSide: BorderSide(color: Colors.grey, width: 3),
         ),

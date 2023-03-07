@@ -7,6 +7,7 @@ import 'package:eec_app/services/API_service/api_calls/user/update_password.dart
 import 'package:eec_app/services/API_service/api_calls/user/update_scopes.dart';
 import 'package:eec_app/services/API_service/api_calls/user/update_username.dart';
 import 'package:eec_app/services/API_service/api_service.dart';
+import 'package:eec_app/services/snackbar_service/snackbar_service.dart';
 import 'package:eec_app/utils/instance_controller.dart';
 import 'package:logger/logger.dart';
 
@@ -23,6 +24,9 @@ class UserRepository {
 
   List<UserModel> get users => [..._users];
 
+  final SnackBarService _snackBarService =
+      InstanceController().getByType<SnackBarService>();
+
   Future<void> refresh() async {
     try {
       final response = await apiService.call(const GetAllUsers(), null);
@@ -30,11 +34,17 @@ class UserRepository {
         _users.clear();
         _users
             .addAll((response.data as List).map((e) => UserModel.fromJson(e)));
-        _user =
-            _users.firstWhere((element) => element.user_id == _user?.user_id);
+        await getCurrentUser();
       } else {
         _logger.e('Response data is null');
         _logger.e(response);
+        if (response.data['detail'] != null) {
+          _snackBarService.showErrorMessage(
+              'Error while refreshing UserRepository:\n${response.data['detail']}');
+        } else {
+          _snackBarService.showErrorMessage(
+              'Error while refreshing UserRepository:\n${response.statusCode}');
+        }
         throw Exception('Response data is null');
       }
     } on Exception catch (e) {
@@ -51,6 +61,13 @@ class UserRepository {
       } else {
         _logger.e('Response data is null');
         _logger.e(response);
+        if (response.data['detail'] != null) {
+          _snackBarService.showErrorMessage(
+              'Error while getting current user:\n${response.data['detail']}');
+        } else {
+          _snackBarService.showErrorMessage(
+              'Error while getting current user:\n${response.statusCode}');
+        }
         throw Exception('Response data is null');
       }
     } on Exception catch (e) {
@@ -70,11 +87,18 @@ class UserRepository {
           UpdateUsernameArgs(
               id: userid, newUsername: username, password: password));
       if ((response.statusCode ?? 0) ~/ 100 == 2) {
-        apiService.getToken(username, password);
+        await apiService.getToken(username, password);
         await refresh();
       } else {
         _logger.e('Response data is null');
         _logger.e(response);
+        if (response.data['detail'] != null) {
+          _snackBarService.showErrorMessage(
+              'Error while updating username:\n${response.data['detail']}');
+        } else {
+          _snackBarService.showErrorMessage(
+              'Error while updating username:\n${response.statusCode}');
+        }
         throw Exception('Response data is null');
       }
     } on Exception catch (e) {
@@ -98,11 +122,19 @@ class UserRepository {
       } else {
         _logger.e('Response data is null');
         _logger.e(response);
+        if (response.data['detail'] != null) {
+          _snackBarService.showErrorMessage(
+              'Error while updating password:\n${response.data['detail']}');
+        } else {
+          _snackBarService.showErrorMessage(
+              'Error while updating password:\n${response.statusCode}');
+        }
         throw Exception('Response data is null');
       }
     } on Exception catch (e) {
       _logger.e('Error while updating password');
       _logger.e(e);
+      rethrow;
     }
   }
 
@@ -118,11 +150,19 @@ class UserRepository {
       } else {
         _logger.e('Response data is null');
         _logger.e(response);
+        if (response.data['detail'] != null) {
+          _snackBarService.showErrorMessage(
+              'Error while updating scopes:\n${response.data['detail']}');
+        } else {
+          _snackBarService.showErrorMessage(
+              'Error while updating scopes:\n${response.statusCode}');
+        }
         throw Exception('Response data is null');
       }
     } on Exception catch (e) {
       _logger.e('Error while updating scopes');
       _logger.e(e);
+      rethrow;
     }
   }
 
@@ -141,11 +181,19 @@ class UserRepository {
       } else {
         _logger.e('Response data is null');
         _logger.e(response);
+        if (response.data['detail'] != null) {
+          _snackBarService.showErrorMessage(
+              'Error while creating user:\n${response.data['detail']}');
+        } else {
+          _snackBarService.showErrorMessage(
+              'Error while creating user:\n${response.statusCode}');
+        }
         throw Exception('Response data is null');
       }
     } on Exception catch (e) {
       _logger.e('Error while creating user');
       _logger.e(e);
+      rethrow;
     }
   }
 
@@ -163,11 +211,19 @@ class UserRepository {
       } else {
         _logger.e('Response data is null');
         _logger.e(response);
+        if (response.data['detail'] != null) {
+          _snackBarService.showErrorMessage(
+              'Error while deleting user:\n${response.data['detail']}');
+        } else {
+          _snackBarService.showErrorMessage(
+              'Error while deleting user:\n${response.statusCode}');
+        }
         throw Exception('Response data is null');
       }
     } on Exception catch (e) {
       _logger.e('Error while deleting user');
       _logger.e(e);
+      rethrow;
     }
   }
 }

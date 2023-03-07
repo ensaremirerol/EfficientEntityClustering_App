@@ -108,7 +108,7 @@ class _SetupPageState extends State<SetupPage> {
                           const SizedBox(height: 20),
                           CustomTextField.formField(
                             controller: _usernameController,
-                            hintText: 'username',
+                            hintText: 'username'.tr(),
                             validator: (value) {
                               if (value == null || value.isEmpty) {
                                 return 'enter_text_warning'.tr();
@@ -119,7 +119,7 @@ class _SetupPageState extends State<SetupPage> {
                           const SizedBox(height: 20),
                           CustomTextField.formField(
                             controller: _passwordController,
-                            hintText: 'password',
+                            hintText: 'password'.tr(),
                             obscureText: true,
                             validator: (value) {
                               if (value == null || value.isEmpty) {
