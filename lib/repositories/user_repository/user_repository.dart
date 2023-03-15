@@ -226,4 +226,9 @@ class UserRepository {
       rethrow;
     }
   }
+
+  void dispose() {
+    _user = null;
+    _users.clear();
+  }
 }

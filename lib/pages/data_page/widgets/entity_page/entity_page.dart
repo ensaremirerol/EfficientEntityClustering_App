@@ -50,7 +50,7 @@ class _EntityPageState extends ConsumerState<_EntityPage> {
   }
 
   void _onImport() async {
-    FilePickerResult? result = await FilePicker.platform.pickFiles(
+    final FilePickerResult? result = await FilePicker.platform.pickFiles(
       type: FileType.custom,
       allowedExtensions: ['csv'],
     );

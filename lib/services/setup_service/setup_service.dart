@@ -92,6 +92,9 @@ class SetupService {
 
   void reset() {
     _baseUrl = null;
+    InstanceController().getByType<EntityRepository>().dispose();
+    InstanceController().getByType<ClusterRepository>().dispose();
+    InstanceController().getByType<UserRepository>().dispose();
     InstanceController().removeByKey(APIService);
     InstanceController().removeByKey(EntityRepository);
     InstanceController().removeByKey(ClusterRepository);

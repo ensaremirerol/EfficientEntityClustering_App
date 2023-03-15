@@ -64,7 +64,7 @@ class _ClusterPageState extends ConsumerState<_ClusterPage> {
               title: 'delete_cluster'.tr(),
               content: 'delete_clusters_confirm'.tr(namedArgs: {
                 'count': ref
-                    .watch(clusterProvider)
+                    .read(clusterProvider)
                     .selectedClusterIds
                     .length
                     .toString(),

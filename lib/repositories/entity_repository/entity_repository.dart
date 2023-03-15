@@ -194,4 +194,8 @@ class EntityRepository {
       rethrow;
     }
   }
+
+  void dispose(){
+    _entities.clear();
+  }
 }

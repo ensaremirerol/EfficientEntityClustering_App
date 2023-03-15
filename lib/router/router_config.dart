@@ -1,3 +1,4 @@
+import 'package:eec_app/pages/admin_page/admin_page.dart';
 import 'package:eec_app/pages/dashboard/dashboard.dart';
 import 'package:eec_app/pages/data_page/data_page.dart';
 import 'package:eec_app/pages/labeling_page/labeling_page.dart';
@@ -58,13 +59,7 @@ final router = GoRouter(
                     path: 'admin',
                     name: 'admin_panel',
                     pageBuilder: (context, state) {
-                      return _noTransitionBuilder(
-                          state,
-                          Scaffold(
-                              appBar: AppBar(
-                                title: const Text('Admin Panel'),
-                              ),
-                              body: const Text('admin_panel')));
+                      return _noTransitionBuilder(state, const AdminPage());
                     }),
               ],
               pageBuilder: (context, state) {

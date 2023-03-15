@@ -5,7 +5,7 @@ class CreateUser extends IAPICall {
   const CreateUser()
       : super(
             name: 'CreateUser',
-            path: '/users/create',
+            path: '/users/user/create',
             method: 'POST',
             requiresArgs: true);
 }

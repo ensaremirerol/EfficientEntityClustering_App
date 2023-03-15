@@ -1,7 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:eec_app/controllers/user_page/user_page_controller.dart';
 import 'package:eec_app/controllers/user_page/user_page_state.dart';
-import 'package:eec_app/models/user_model/user_model.dart';
 import 'package:eec_app/utils/restart_app.dart';
 import 'package:eec_app/widgets/custom_text_field/custom_text_field.dart';
 import 'package:flutter/material.dart';
@@ -13,7 +12,7 @@ part './widgets/change_username_dialog.dart';
 part './widgets/change_password_dialog.dart';
 
 final userController =
-    StateNotifierProvider<UserPageController, UserPageState>((ref) {
+    StateNotifierProvider.autoDispose<UserPageController, UserPageState>((ref) {
   return UserPageController(ref);
 });
 

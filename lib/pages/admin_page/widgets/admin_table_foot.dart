@@ -1,11 +1,11 @@
-part of '../../data_page.dart';
+part of '../admin_page.dart';
 
-class _ClusterTableFoot extends ConsumerWidget {
-  const _ClusterTableFoot();
+class _AdminTableFoot extends ConsumerWidget {
+  const _AdminTableFoot();
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final state = ref.watch(clusterProvider);
+    final state = ref.watch(adminPageController);
     return SizedBox(
       width: double.infinity,
       child: Padding(
@@ -19,7 +19,7 @@ class _ClusterTableFoot extends ConsumerWidget {
                     onPressed: state.tablePage == 0
                         ? null
                         : () {
-                            ref.read(clusterProvider.notifier).setPage(0);
+                            ref.read(adminPageController.notifier).setPage(0);
                           },
                     icon: const Icon(Icons.first_page)),
                 IconButton(
@@ -27,33 +27,33 @@ class _ClusterTableFoot extends ConsumerWidget {
                         ? null
                         : () {
                             ref
-                                .read(clusterProvider.notifier)
+                                .read(adminPageController.notifier)
                                 .setPage(state.tablePage - 1);
                           },
                     icon: const Icon(Icons.chevron_left)),
                 const Text('page').tr(namedArgs: {
                   'page': (state.tablePage + 1).toString(),
                   'total_pages':
-                      (state.clusterList.length ~/ state.tableRowsPerPage + 1)
+                      (state.users.length ~/ state.tableRowsPerPage + 1)
                           .toString(),
                 }),
                 IconButton(
                     onPressed: state.tablePage ==
-                            state.clusterList.length ~/ state.tableRowsPerPage
+                            state.users.length ~/ state.tableRowsPerPage
                         ? null
                         : () {
                             ref
-                                .read(clusterProvider.notifier)
+                                .read(adminPageController.notifier)
                                 .setPage(state.tablePage + 1);
                           },
                     icon: const Icon(Icons.chevron_right)),
                 IconButton(
                     onPressed: state.tablePage ==
-                            state.clusterList.length ~/ state.tableRowsPerPage
+                            state.users.length ~/ state.tableRowsPerPage
                         ? null
                         : () {
-                            ref.read(clusterProvider.notifier).setPage(
-                                state.clusterList.length ~/
+                            ref.read(adminPageController.notifier).setPage(
+                                state.users.length ~/
                                     state.tableRowsPerPage);
                           },
                     icon: const Icon(Icons.last_page)),
@@ -62,7 +62,7 @@ class _ClusterTableFoot extends ConsumerWidget {
                 ),
                 const Text('total_count').tr(
                   namedArgs: {
-                    'total_count': state.clusterList.length.toString(),
+                    'total_count': state.users.length.toString(),
                   },
                 ),
                 const VerticalDivider(
@@ -71,7 +71,7 @@ class _ClusterTableFoot extends ConsumerWidget {
                 const Text('selected_count').tr(
                   namedArgs: {
                     'selected_count':
-                        state.selectedClusterIds.length.toString(),
+                        state.selectedUserIds.length.toString(),
                   },
                 ),
                 const VerticalDivider(
@@ -88,7 +88,7 @@ class _ClusterTableFoot extends ConsumerWidget {
                             value: e, child: Text(e.toString())))
                         .toList(),
                     onChanged: (value) =>
-                        ref.read(clusterProvider.notifier).setPageSize(value!)),
+                        ref.read(adminPageController.notifier).setPageSize(value!)),
               ],
             ),
           ),
