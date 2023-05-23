@@ -107,5 +107,6 @@
     "logout": "Çıkış yap",
     "logout_desc": "Uygulamadan çıkış yapar.",
     "admin_panel": "Yönetici paneli",
-    "admin_panel_desc": "Yönetici paneline erişir."
+    "admin_panel_desc": "Yönetici paneline erişir.",
+    "user_id": "Kullanıcı ID"
 }

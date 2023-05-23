@@ -24,14 +24,8 @@ final navigationItems = [
   const NavigationItem(
       title: 'data', index: 3, icon: Icons.data_array, route: '/data'),
   const NavigationItem(
-    title: 'logs',
-    index: 4,
-    icon: Icons.list,
-    route: '/logs',
-  ),
-  const NavigationItem(
     title: 'settings',
-    index: 5,
+    index: 4,
     icon: Icons.settings,
     route: '/settings',
   ),

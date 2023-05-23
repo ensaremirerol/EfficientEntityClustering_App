@@ -107,5 +107,6 @@
     "logout": "Logout",
     "logout_desc": "Logs out the user.",
     "admin_panel": "Admin panel",
-    "admin_panel_desc": "Opens the admin panel."
+    "admin_panel_desc": "Opens the admin panel.",
+    "user_id": "User ID"
 }

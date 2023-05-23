@@ -42,10 +42,8 @@ class _LabelingPageSmall extends ConsumerWidget {
                           ),
                           const Icon(Icons.arrow_downward),
                           const SizedBox(height: 20),
-                          Expanded(
-                            child: _ClusterPane(
-                              
-                            ),
+                          const Expanded(
+                            child: _ClusterPane(),
                           ),
                         ],
                       ),

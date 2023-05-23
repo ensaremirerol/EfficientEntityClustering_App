@@ -76,11 +76,6 @@ final router = GoRouter(
               pageBuilder: (context, state) =>
                   _noTransitionBuilder(state, const DataPage())),
           GoRoute(
-              path: '/logs',
-              name: 'logs',
-              pageBuilder: (context, state) =>
-                  _noTransitionBuilder(state, const LogPage())),
-          GoRoute(
               path: '/settings',
               name: 'settings',
               pageBuilder: (context, state) =>

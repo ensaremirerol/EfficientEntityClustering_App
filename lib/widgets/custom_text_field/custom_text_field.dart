@@ -39,6 +39,7 @@ class CustomTextField extends StatelessWidget {
   Widget build(BuildContext context) {
     if (!isFormField) {
       return TextField(
+        key: key,
         controller: controller,
         obscureText: obscureText ?? false,
         decoration: InputDecoration(
@@ -63,7 +64,6 @@ class CustomTextField extends StatelessWidget {
       decoration: InputDecoration(
         hintText: hintText,
         suffix: trailing,
-        
         border: const OutlineInputBorder(
           borderSide: BorderSide(color: Colors.grey, width: 3),
         ),

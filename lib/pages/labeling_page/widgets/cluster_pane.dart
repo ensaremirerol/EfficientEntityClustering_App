@@ -37,6 +37,8 @@ class __ClusterPaneState extends ConsumerState<_ClusterPane>
       labelingProvider.select((value) => value.searchQuery),
       (previous, next) {
         _searchController.text = next ?? '';
+        _searchController.selection =
+            TextSelection.collapsed(offset: _searchController.text.length);
       },
     );
     return Card(

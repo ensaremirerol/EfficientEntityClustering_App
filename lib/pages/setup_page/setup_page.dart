@@ -94,17 +94,17 @@ class _SetupPageState extends State<SetupPage> {
                               return null;
                             },
                           ),
-                          const SizedBox(height: 20),
-                          CustomTextField.formField(
-                            controller: _wsUrlController,
-                            hintText: 'WS URL',
-                            validator: (value) {
-                              if (value == null || value.isEmpty) {
-                                return 'enter_text_warning'.tr();
-                              }
-                              return null;
-                            },
-                          ),
+                          // const SizedBox(height: 20),
+                          // CustomTextField.formField(
+                          //   controller: _wsUrlController,
+                          //   hintText: 'WS URL',
+                          //   validator: (value) {
+                          //     if (value == null || value.isEmpty) {
+                          //       return 'enter_text_warning'.tr();
+                          //     }
+                          //     return null;
+                          //   },
+                          // ),
                           const SizedBox(height: 20),
                           CustomTextField.formField(
                             controller: _usernameController,

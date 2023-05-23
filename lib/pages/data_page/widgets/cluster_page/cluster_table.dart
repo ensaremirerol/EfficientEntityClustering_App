@@ -82,6 +82,8 @@ class _ClusterDataTable extends ConsumerWidget {
                         DataColumn(label: const Text('delete').tr()),
                       ],
                       rows: state.clusterList
+                          .skip(state.tablePage * state.tableRowsPerPage)
+                          .take(state.tableRowsPerPage)
                           .map((e) => DataRow(
                                   selected: state.selectedClusterIds
                                       .contains(e.cluster_id),

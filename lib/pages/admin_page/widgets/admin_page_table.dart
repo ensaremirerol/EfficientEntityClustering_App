@@ -49,7 +49,7 @@ class _UserDataTable extends ConsumerWidget {
                             }
                           }),
                       DataColumn(
-                        label: const Text('change_scopes').tr(),
+                        label: const Text('scopes').tr(),
                       ),
                       DataColumn(
                         label: const Text('change_password').tr(),
